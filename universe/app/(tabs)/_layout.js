@@ -2,6 +2,7 @@ import { Tabs } from "expo-router";
 import React, { useState } from "react";
 import { Platform, View, Text, Button, StyleSheet  } from "react-native";
 
+import LoginScreen from "../login";
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
@@ -14,18 +15,7 @@ export default function TabLayout() {
 
 
   if (!isLoggedIn) {
-    // Render a basic login screen if not logged in
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Login Required</Text>
-        <Button
-          title="Log In"
-          onPress={() => {
-            setIsLoggedIn(true); // Simulate login
-          }}
-        />
-      </View>
-    );
+    return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
   }
 
   return (
@@ -83,18 +73,3 @@ export default function TabLayout() {
     </Tabs>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-});
