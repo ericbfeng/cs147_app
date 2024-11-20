@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Platform, View, Text, Button, StyleSheet  } from "react-native";
 
 import LoginScreen from "../login";
+import LoginInfo from "../login_info";
+import SignupInfo from "../signup_info";
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
@@ -12,10 +14,32 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Local state to simulate login
+  const [showLoginInfo, setShowLoginInfo] = useState(""); // State for navigating between screens
 
 
   if (!isLoggedIn) {
-    return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
+    if (showLoginInfo === "login_info") {
+      return (
+        <LoginInfo
+          onBack={() => setShowLoginInfo("login")} 
+          onLogin={() => setIsLoggedIn(true)} 
+        />
+      );
+    }else if(
+      showLoginInfo === "signup_info"
+    ){
+      return <SignupInfo
+          onBack={() => setShowLoginInfo("login")} 
+          onLogin={() => setIsLoggedIn(true)} 
+       />
+    }else{
+      return <LoginScreen onLogin={() => {
+        setShowLoginInfo("login_info")
+      }}
+      onSignUp={() => {
+        setShowLoginInfo("signup_info");
+      }}/>;
+    }
   }
 
   return (

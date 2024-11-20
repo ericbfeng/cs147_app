@@ -1,8 +1,10 @@
-import React from "react";
-import { View, Text, Button, StyleSheet, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function LoginScreen({ onLogin }) {
+export default function LoginScreen({ onLogin, onSignUp }) { 
+     // Local state to simulate login
+    const [isStudent, setIsStudent] = useState(null); // Local state to simulate login
     return (
     <LinearGradient
         colors={["#3B88C3", "#345DA7", "#345DA7"]} // Gradient colors
@@ -11,16 +13,34 @@ export default function LoginScreen({ onLogin }) {
         end={{ x: 0, y: 1 }} // End of the gradient
         style={styles.container} // Keep layout styling here
       >
-         <Image source={require("../assets/images/logo.png")} style={styles.logo} />
-        <Text style={styles.title}>Welcome!</Text>
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button title="Log In" onPress={onLogin} />
-          </View>
-          <View style={styles.button}>
-            <Button title="Sign Up" onPress={onLogin} />
-          </View>
-        </View>
+        <Image source={require("../assets/images/logo.png")} style={styles.logo} />
+        
+        {isStudent === null ? (
+            <>
+             <Text style={styles.title}>Choose Your Profile!</Text>
+             <View style={styles.buttonContainer}>
+             <TouchableOpacity style={styles.customButton} onPress={() => setIsStudent(false)}>
+                 <Text style={styles.customButtonText}>Counselor</Text>
+             </TouchableOpacity>
+             <TouchableOpacity style={styles.customButton} onPress={() => setIsStudent(true)}>
+                 <Text style={styles.customButtonText}>Student</Text>
+             </TouchableOpacity>
+             </View>
+             </>
+        ) :
+        (
+            <>
+            <Text style={styles.title}>Welcome {isStudent? "Student": "Counsoler" }!</Text>
+            <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.customButton} onPress={() => onLogin()}>
+                <Text style={styles.customButtonText}>Log In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.customButton} onPress={() => onSignUp()}>
+                <Text style={styles.customButtonText}>Sign Up</Text>
+            </TouchableOpacity>
+            </View>
+            </>
+        ) };
     </LinearGradient>
     );
   }
@@ -43,13 +63,24 @@ export default function LoginScreen({ onLogin }) {
       fontSize: 24,
       fontWeight: "bold",
       marginBottom: 16,
+      color: "white"
     },
     buttonContainer: {
       width: "100%", // Ensure buttons align consistently
       alignItems: "center",
     },
-    button: {
-      width: 200, // Set consistent button width
-      marginBottom: 10, // Add space between the buttons
-    },
+
+    customButton: {
+        backgroundColor: "#E2E8F0",
+        padding: 15,
+        borderRadius: 5,
+        width: 200,
+        alignItems: "center",
+        marginBottom: 10,
+      },
+      customButtonText: {
+        color: "#000000",
+        fontSize: 16,
+        fontWeight: "bold",
+      },
   });
