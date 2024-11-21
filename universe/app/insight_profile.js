@@ -23,35 +23,21 @@ export default function InsightProfile({ name, onClose }) {
         { weight: 15, actionableItem: "Participate in academic competitions" },
       ],
     },
-    {
-      name: "Liam",
-      profile: "../assets/images/logo.png",
-      details: [
-        { weight: 15, actionableItem: "Attend college prep workshops" },
-        { weight: 10, actionableItem: "Secure strong recommendation letters" },
-        { weight: 5, actionableItem: "Polish interview skills" },
-      ],
-    },
-    {
-      name: "Jack",
-      profile: "../assets/images/logo.png",
-      details: [
-        { weight: 5, actionableItem: "Research scholarship opportunities" },
-        { weight: 3, actionableItem: "Prepare for standardized tests" },
-        { weight: 2, actionableItem: "Refine application portfolio" },
-      ],
-    },
   ];
 
   const selectedDetails =
-    namesWithDetails.find((item) => item.name === name)?.details || [];
-  const maxWeight = selectedDetails.reduce((max, item) => Math.max(max, item.weight), 1);
+    namesWithDetails.find((item) => item.name === name) || {};
+  const maxWeight =
+    selectedDetails.details?.reduce(
+      (max, item) => Math.max(max, item.weight),
+      1
+    ) || 1;
 
   const calculateColor = (weight, maxWeight) => {
     const intensity = weight / maxWeight; // Normalize the weight (0-1)
     const baseColor = [52, 93, 167]; // Base color (#345DA7)
-    const color = baseColor.map((channel) =>
-      Math.round(channel * intensity + 255 * (1 - intensity)) // Blend towards white
+    const color = baseColor.map(
+      (channel) => Math.round(channel * intensity + 255 * (1 - intensity)) // Blend towards white
     );
     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
   };
@@ -64,32 +50,48 @@ export default function InsightProfile({ name, onClose }) {
     setSelectedAction(null); // Return to the list of actionable items
   };
 
-
-  const handleRecommendedItems = () => {
-    alert("THIS IS A PLACEHOLDER CONTINUE FROM HERE") // Return to the list of actionable items
-  };
-
   return (
-    <View style={styles.profileContainer}>
-      <TouchableOpacity style={styles.backButton} onPress={selectedAction ? handleBackToItems : onClose}>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={onClose}>
         <Text style={styles.backText}>Back</Text>
       </TouchableOpacity>
-      <Text style={styles.profileText}>Profile: {name}</Text>
-      <Image source={require("../assets/images/logo.png")} style={styles.logo} />
+
+      {/* Top Box */}
+      <View style={styles.topBox}>
+        <Image
+          source={require("../assets/images/logo.png")} // Replace with your image path
+          style={styles.avatar}
+        />
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.subtitle}>
+          Class: {selectedDetails.className || "N/A"}
+        </Text>
+        <Text style={styles.info}>
+          Background in {selectedDetails.background || "Unknown"}.
+        </Text>
+        <Text style={styles.info}>
+          Interested in {selectedDetails.interests || "Various topics"}.
+        </Text>
+      </View>
+
+      {/* Actionable Items or Selected Action */}
       {selectedAction ? (
-        // Render details of the selected actionable item
         <View style={styles.detailsContainer}>
           <Text style={styles.detailsTitle}>Actionable Item:</Text>
           <Text style={styles.detailsText}>{selectedAction}</Text>
-          <Text style={styles.detailsTitle}>Explination:</Text>
-          <Text style={styles.detailsText}> this is placeholder text...</Text>
-          <TouchableOpacity style={styles.backToItemsButton} onPress={handleRecommendedItems}>
-            <Text style={styles.backToItemsText}>See recommended actions</Text>
+          <Text style={styles.detailsTitle}>Explanation:</Text>
+          <Text style={styles.detailsText}>
+            This is placeholder text for the explanation of the actionable item.
+          </Text>
+          <TouchableOpacity
+            style={styles.backToItemsButton}
+            onPress={handleBackToItems}
+          >
+            <Text style={styles.backToItemsText}>Back to Actionable Items</Text>
           </TouchableOpacity>
         </View>
       ) : (
-        // Render the list of actionable items
-        selectedDetails.map(({ actionableItem, weight }, index) => (
+        selectedDetails.details?.map(({ actionableItem, weight }, index) => (
           <TouchableOpacity
             key={index}
             style={[
@@ -107,42 +109,10 @@ export default function InsightProfile({ name, onClose }) {
 }
 
 const styles = StyleSheet.create({
-  profileContainer: {
+  container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     padding: 20,
     backgroundColor: "white",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    elevation: 5,
-    width: "90%",
-  },
-  profileText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  actionButton: {
-    marginVertical: 5,
-    padding: 10,
-    backgroundColor: "#345DA7",
-    borderRadius: 5,
-    width: "100%",
-    alignItems: "center",
-  },
-  actionText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 20,
-    backgroundColor: "#345DA7",
   },
   backButton: {
     position: "absolute",
@@ -152,8 +122,48 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: "#345DA7",
     borderRadius: 5,
+    zIndex: 1,
   },
   backText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  topBox: {
+    backgroundColor: "#ECEFF7",
+    borderRadius: 15,
+    padding: 20,
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginBottom: 10,
+  },
+  name: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#555",
+    marginBottom: 5,
+  },
+  info: {
+    fontSize: 14,
+    color: "#777",
+    textAlign: "center",
+  },
+  actionButton: {
+    marginVertical: 5,
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  actionText: {
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
@@ -162,9 +172,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 20,
     borderRadius: 10,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#F0F0F0",
     alignItems: "center",
-    width: "100%",
   },
   detailsTitle: {
     fontSize: 20,

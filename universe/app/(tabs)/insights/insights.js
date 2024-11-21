@@ -1,35 +1,38 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import InsightProfile from "../insight_profile";
+import InsightProfile from "../../insight_profile";
 
-const names = [["Sarah", 100], ["John", 50], ["Liam",30] , ["Jack",10]]; 
-
+const names = [
+  ["Sarah", 100],
+  ["John", 50],
+  ["Liam", 30],
+  ["Jack", 10],
+];
 
 // A single Insight component
 const Insight = ({ name, backgroundColor, onPress }) => (
-  <TouchableOpacity  style={[styles.insight, { backgroundColor }]}  onPress={() => onPress(name)}>
+  <TouchableOpacity
+    style={[styles.insight, { backgroundColor }]}
+    onPress={() => onPress(name)}
+  >
     <Text style={styles.text}>{name}</Text>
   </TouchableOpacity>
 );
 
-
 export default function Insights() {
   const [selectedName, setSelectedName] = useState(null); // State for selected name
 
-
   const handlePress = (name) => {
-      setSelectedName(name);  
+    setSelectedName(name);
   };
 
   const handleCloseProfile = () => {
     setSelectedName(null);
   };
 
-
   const sortedNames = [...names].sort((a, b) => b[1] - a[1]);
-  const baseColor = [52, 93, 167];  // #345DA7
+  const baseColor = [52, 93, 167]; // #345DA7
   const steps = sortedNames.length;
-
 
   const calculateGradientColor = (index) => {
     const factor = 1 - index / steps; // Decrease intensity as index increases
@@ -38,7 +41,6 @@ export default function Insights() {
     );
     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
   };
-
 
   return (
     <View style={styles.container}>
