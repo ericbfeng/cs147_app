@@ -1,26 +1,40 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import InsightProfile from "../../insight_profile";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  FlatList,
+  Image,
+  SafeAreaView,
+} from "react-native";
 
 const names = [
-  ["Sarah", 100],
-  ["John", 50],
-  ["Liam", 30],
-  ["Jack", 10],
+  { name: "Sarah W." },
+  { name: "John L." },
+  { name: "Liam O." },
+  { name: "Jack P." },
+  { name: "Gill S." },
+  { name: "Samuel L." },
+  { name: "Doug T." },
+  { name: "Jude P." },
 ];
 
-// A single Insight component
-const Insight = ({ name, backgroundColor, onPress }) => (
-  <TouchableOpacity
-    style={[styles.insight, { backgroundColor }]}
-    onPress={() => onPress(name)}
-  >
-    <Text style={styles.text}>{name}</Text>
+const InsightCard = ({ name, onPress }) => (
+  <TouchableOpacity style={styles.card} onPress={() => onPress(name)}>
+    <Image
+      source={require("../../../assets/images/logo.png")} // Replace with actual avatar image
+      style={styles.avatar}
+    />
+    <Text style={styles.cardName}>{name}</Text>
+    <Text style={styles.cardDetails}>In: Extracurricular Activities</Text>
   </TouchableOpacity>
 );
 
 export default function Insights() {
   const [selectedName, setSelectedName] = useState(null); // State for selected name
+  const [searchQuery, setSearchQuery] = useState(""); // Search query
 
   const handlePress = (name) => {
     setSelectedName(name);
@@ -30,61 +44,138 @@ export default function Insights() {
     setSelectedName(null);
   };
 
-  const sortedNames = [...names].sort((a, b) => b[1] - a[1]);
-  const baseColor = [52, 93, 167]; // #345DA7
-  const steps = sortedNames.length;
-
-  const calculateGradientColor = (index) => {
-    const factor = 1 - index / steps; // Decrease intensity as index increases
-    const color = baseColor.map(
-      (channel) => Math.round(channel * factor + 255 * (1 - factor)) // Blend toward white
-    );
-    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-  };
+  const filteredNames = names.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>AI Insights</Text>
-      {/* Show the list of insights if no profile is selected */}
-      {!selectedName &&
-        sortedNames.map(([name, value], index) => (
-          <Insight
-            key={index}
-            name={name}
-            value={value}
-            backgroundColor={calculateGradientColor(index)}
-            onPress={handlePress}
-          />
-        ))}
+    <SafeAreaView style={styles.safeArea}>
+      {!selectedName ? (
+        <>
+          {/* Header */}
+          <Text style={styles.headerText}>Students</Text>
 
-      {/* Show the profile if a name is selected */}
-      {selectedName && (
+          {/* Search Bar */}
+          <TextInput
+            style={styles.searchBar}
+            placeholder="Search Student"
+            placeholderTextColor="#888"
+            value={searchQuery}
+            onChangeText={(text) => setSearchQuery(text)}
+          />
+
+          {/* Recent and Layout Options */}
+          <View style={styles.topRow}>
+            <Text style={styles.recentText}>Recent</Text>
+            <View style={styles.iconContainer}>
+              <TouchableOpacity>
+                <Text style={styles.icon}>≡</Text> {/* List View Icon */}
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.icon}>▢</Text> {/* Grid View Icon */}
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Grid of Insights */}
+          <FlatList
+            data={filteredNames}
+            keyExtractor={(item) => item.name}
+            numColumns={2} // Display two cards per row
+            renderItem={({ item }) => (
+              <InsightCard name={item.name} onPress={handlePress} />
+            )}
+            contentContainerStyle={styles.grid}
+          />
+        </>
+      ) : (
         <InsightProfile name={selectedName} onClose={handleCloseProfile} />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#FFF",
+  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-  },
-  insight: {
-    margin: 10,
     padding: 20,
+    backgroundColor: "#FFF",
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 15,
+    textAlign: "center",
+    color: "#2C2C54",
+  },
+  searchBar: {
+    backgroundColor: "#F0F0F5",
     borderRadius: 10,
+    padding: 10,
+    fontSize: 16,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: "#E4E4E7",
+    marginHorizontal: 20,
+  },
+  topRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 15,
+    paddingHorizontal: 20,
+  },
+  recentText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#2C2C54",
+  },
+  iconContainer: {
+    flexDirection: "row",
+    gap: 10,
+  },
+  icon: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#888",
+    marginLeft: 10,
+  },
+  grid: {
+    flexGrow: 1,
+    justifyContent: "flex-start",
+  },
+  card: {
+    flex: 1,
+    backgroundColor: "#ECEFF7",
+    borderRadius: 10,
+    padding: 15,
+    marginHorizontal: 15, // Horizontal margin for consistent spacing
+    marginVertical: 15, // Vertical margin for consistent spacing
+    alignItems: "center",
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-    width: "80%",
-    alignItems: "center",
   },
-  text: {
-    fontSize: 18,
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginBottom: 10,
+  },
+  cardName: {
+    fontSize: 16,
     fontWeight: "bold",
+    color: "#2C2C54",
+    marginBottom: 5,
+  },
+  cardDetails: {
+    fontSize: 14,
+    color: "#555",
+    textAlign: "center",
   },
 });
