@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 export default function InsightProfile({ name, onClose }) {
+  const [selectedAction, setSelectedAction] = useState(null); // Track selected actionable item
 
   const namesWithDetails = [
     {
@@ -42,43 +43,65 @@ export default function InsightProfile({ name, onClose }) {
     },
   ];
 
-  // Find the details for the selected name
   const selectedDetails =
     namesWithDetails.find((item) => item.name === name)?.details || [];
   const maxWeight = selectedDetails.reduce((max, item) => Math.max(max, item.weight), 1);
 
   const calculateColor = (weight, maxWeight) => {
-        const intensity = weight / maxWeight; // Normalize the weight (0-1)
-        const baseColor = [52, 93, 167]; // Base color (#345DA7)
-        const color = baseColor.map((channel) =>
-          Math.round(channel * intensity + 255 * (1 - intensity)) // Blend towards white
-        );
-        return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+    const intensity = weight / maxWeight; // Normalize the weight (0-1)
+    const baseColor = [52, 93, 167]; // Base color (#345DA7)
+    const color = baseColor.map((channel) =>
+      Math.round(channel * intensity + 255 * (1 - intensity)) // Blend towards white
+    );
+    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
   };
 
-  const handlePress = (actionableItem) => {
-        alert(`Selected: ${actionableItem}`);
-      };
+  const handleActionableItemPress = (actionableItem) => {
+    setSelectedAction(actionableItem); // Set the selected actionable item
+  };
+
+  const handleBackToItems = () => {
+    setSelectedAction(null); // Return to the list of actionable items
+  };
+
+
+  const handleRecommendedItems = () => {
+    alert("THIS IS A PLACEHOLDER CONTINUE FROM HERE") // Return to the list of actionable items
+  };
 
   return (
     <View style={styles.profileContainer}>
-      <TouchableOpacity style={styles.backButton} onPress={onClose}>
+      <TouchableOpacity style={styles.backButton} onPress={selectedAction ? handleBackToItems : onClose}>
         <Text style={styles.backText}>Back</Text>
       </TouchableOpacity>
       <Text style={styles.profileText}>Profile: {name}</Text>
       <Image source={require("../assets/images/logo.png")} style={styles.logo} />
-      {selectedDetails.map(({ actionableItem, weight }, index) => (
-        <TouchableOpacity
-          key={index}
-          style={[
-            styles.actionButton,
-            { backgroundColor: calculateColor(weight, maxWeight) },
-          ]}
-          onPress={() => handlePress(actionableItem)}
-        >
-          <Text style={styles.actionText}>{actionableItem}</Text>
-        </TouchableOpacity>
-      ))}
+      {selectedAction ? (
+        // Render details of the selected actionable item
+        <View style={styles.detailsContainer}>
+          <Text style={styles.detailsTitle}>Actionable Item:</Text>
+          <Text style={styles.detailsText}>{selectedAction}</Text>
+          <Text style={styles.detailsTitle}>Explination:</Text>
+          <Text style={styles.detailsText}> this is placeholder text...</Text>
+          <TouchableOpacity style={styles.backToItemsButton} onPress={handleRecommendedItems}>
+            <Text style={styles.backToItemsText}>See recommended actions</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        // Render the list of actionable items
+        selectedDetails.map(({ actionableItem, weight }, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[
+              styles.actionButton,
+              { backgroundColor: calculateColor(weight, maxWeight) },
+            ]}
+            onPress={() => handleActionableItemPress(actionableItem)}
+          >
+            <Text style={styles.actionText}>{actionableItem}</Text>
+          </TouchableOpacity>
+        ))
+      )}
     </View>
   );
 }
@@ -116,10 +139,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   logo: {
-    width: 150, // Set the width of the logo
-    height: 150, // Set the height of the logo
-    marginBottom: 20, // Add spacing below the logo
-    backgroundColor: "#345DA7"
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+    backgroundColor: "#345DA7",
   },
   backButton: {
     position: "absolute",
@@ -131,6 +154,35 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   backText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  detailsContainer: {
+    marginTop: 20,
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: "#f0f0f0",
+    alignItems: "center",
+    width: "100%",
+  },
+  detailsTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  detailsText: {
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  backToItemsButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "#345DA7",
+    borderRadius: 5,
+  },
+  backToItemsText: {
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
