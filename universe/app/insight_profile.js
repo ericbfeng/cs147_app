@@ -66,7 +66,7 @@ export default function InsightProfile({ name, onClose }) {
         <Text style={styles.backText}>Back</Text>
       </TouchableOpacity>
       <Text style={styles.profileText}>Profile: {name}</Text>
-      <Image source={require("../../assets/images/logo.png")} style={styles.logo} />
+      <Image source={require("../assets/images/logo.png")} style={styles.logo} />
       {selectedDetails.map(({ actionableItem, weight }, index) => (
         <TouchableOpacity
           key={index}

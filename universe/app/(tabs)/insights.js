@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import InsightProfile from "./insight_profile";
+import InsightProfile from "../insight_profile";
 
 const names = [["Sarah", 100], ["John", 50], ["Liam",30] , ["Jack",10]]; 
 
