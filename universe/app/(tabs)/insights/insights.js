@@ -9,6 +9,8 @@ import {
   Image,
   SafeAreaView,
 } from "react-native";
+import Profile from "./insightProfile";
+import { useRouter } from "expo-router";
 
 const names = [
   { name: "Sarah W." },
@@ -33,11 +35,17 @@ const InsightCard = ({ name, onPress }) => (
 );
 
 export default function Insights() {
+  const router = useRouter();
   const [selectedName, setSelectedName] = useState(null); // State for selected name
   const [searchQuery, setSearchQuery] = useState(""); // Search query
 
   const handlePress = (name) => {
-    setSelectedName(name);
+    // Navigate to the profile page with the name parameter
+    console.log("Navigating to profile with name:", name);
+    router.push({
+      pathname: "insights/insightProfile",
+      params: { name }, // Pass the name parameter
+    });
   };
 
   const handleCloseProfile = () => {
@@ -89,7 +97,7 @@ export default function Insights() {
           />
         </>
       ) : (
-        <InsightProfile name={selectedName} onClose={handleCloseProfile} />
+        <Profile name={selectedName} onClose={handleCloseProfile} />
       )}
     </SafeAreaView>
   );
