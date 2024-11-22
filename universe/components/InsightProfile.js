@@ -35,6 +35,12 @@ const studentDetails = {
   // Add more students here
 };
 
+const priorityColors = {
+  "High Priority": "#304674", // Red for high priority
+  "Medium Priority": "#8294C4", // Orange for medium priority
+  "Low Priority": "#ACB1D6", // Green for low priority
+};
+
 export default function StudentProfile({ name }) {
   const details = studentDetails[name] || {};
   const router = useRouter();
@@ -66,7 +72,7 @@ export default function StudentProfile({ name }) {
       {/* Top Card */}
       <View style={styles.topCard}>
         <Image
-          source={require("../assets/images/logo.png")} // Replace with student avatar
+          source={require("../assets/images/avatar.png")} // Replace with student avatar
           style={styles.avatar}
         />
         <Text style={styles.name}>{name}</Text>
@@ -89,7 +95,10 @@ export default function StudentProfile({ name }) {
       {details.insights.map((insight, index) => (
         <TouchableOpacity
           key={index}
-          style={styles.insightCard}
+          style={[
+            styles.insightCard,
+            { backgroundColor: priorityColors[insight.priority] || "#345DA7" }, // Default to blue if no match
+          ]}
           onPress={() => handleInsightPress(insight)} // Navigate when an insight is pressed
         >
           <Text style={styles.priority}>{insight.priority}</Text>
@@ -116,11 +125,11 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   topCard: {
-    backgroundColor: "#ECEFF7",
+    backgroundColor: "#DBDFEA",
     borderRadius: 15,
     padding: 20,
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 35,
   },
   avatar: {
     width: 80,
@@ -165,7 +174,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#345DA7",
     borderRadius: 10,
     padding: 15,
-    marginBottom: 10,
+    marginBottom: 25,
     alignItems: "center",
   },
   priority: {

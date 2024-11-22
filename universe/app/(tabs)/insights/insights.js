@@ -26,7 +26,7 @@ const names = [
 const InsightCard = ({ name, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={() => onPress(name)}>
     <Image
-      source={require("../../../assets/images/logo.png")} // Replace with actual avatar image
+      source={require("../../../assets/images/avatar.png")} // Replace with actual avatar image
       style={styles.avatar}
     />
     <Text style={styles.cardName}>{name}</Text>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    backgroundColor: "#ECEFF7",
+    backgroundColor: "#DBDFEA",
     borderRadius: 10,
     padding: 15,
     marginHorizontal: 15, // Horizontal margin for consistent spacing

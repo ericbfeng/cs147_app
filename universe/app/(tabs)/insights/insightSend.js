@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Alert,
+  Image,
 } from "react-native";
 import { useRouter } from "expo-router";
 
@@ -27,15 +28,22 @@ export default function PopupScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.popup}>
-        <Text style={styles.message}>
-          Hi Sarah, I think it would be really helpful if you do some
-          extracurriculars.{"\n\n"}
-          Joining the debate team is a great option because it can help with
-          your public speaking and improve your capacity to engage with topics
-          outside your comfort zone!{"\n\n"}
-          Let’s schedule a meeting to discuss more about this!
-        </Text>
-
+        <View style={styles.avatarContainer}>
+          <Image
+            source={require("../../../assets/images/avatar.png")} // Replace with student avatar
+            style={styles.avatar}
+          />
+        </View>
+        <View style={styles.textBox}>
+          <Text style={styles.message}>
+            Hi Sarah, I think it would be really helpful if you do some
+            extracurriculars.{"\n\n"}
+            Joining the debate team is a great option because it can help with
+            your public speaking and improve your capacity to engage with topics
+            outside your comfort zone!{"\n\n"}
+            Let’s schedule a meeting to discuss more about this!
+          </Text>
+        </View>
         {/* Buttons */}
         <View style={styles.buttonRow}>
           <TouchableOpacity
@@ -78,6 +86,7 @@ const styles = StyleSheet.create({
     color: "#333",
     marginBottom: 20,
     lineHeight: 22,
+    padding: 15,
   },
   buttonRow: {
     flexDirection: "row",
@@ -91,13 +100,44 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cancelButton: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#8E9BAD",
+    borderRadius: 10, // Rounded corners
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    shadowColor: "#000", // Shadow color (black)
+    shadowOffset: { width: 0, height: 2 }, // Offset the shadow (x, y)
+    shadowOpacity: 0.7, // Shadow opacity
+    shadowRadius: 4, // Shadow blur radius
   },
   sendButton: {
-    backgroundColor: "#345DA7",
+    backgroundColor: "#304674",
+    borderRadius: 10, // Rounded corners
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    shadowColor: "#000", // Shadow color (black)
+    shadowOffset: { width: 0, height: 2 }, // Offset the shadow (x, y)
+    shadowOpacity: 0.7, // Shadow opacity
+    shadowRadius: 4, // Shadow blur radius
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
+  },
+  textBox: {
+    borderWidth: 0.3,
+    borderColor: "black",
+    borderRadius: 10,
+    margin: 15,
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginBottom: 10,
+    justifyContent: "center",
+  },
+  avatarContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
