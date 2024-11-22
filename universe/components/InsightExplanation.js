@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 
 const insightDetails = {
@@ -47,6 +47,12 @@ export default function InsightExplanation({ action }) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.pieContainer}>
+        <Image
+          source={require("../assets/images/Pie.png")} // Replace with actual avatar image
+          style={styles.pie}
+        />
+      </View>
       {/* Priority Header */}
       <View style={styles.priorityCard}>
         <Text style={styles.priority}>{details.priority}</Text>
@@ -56,17 +62,25 @@ export default function InsightExplanation({ action }) {
       {/* Explanation Section */}
       <View style={styles.detailsSection}>
         <Text style={styles.detailsHeader}>Explanation</Text>
-        <Text style={styles.detailsText}>{details.explanation}</Text>
-        <Text style={styles.detailsText}>{details.importance}</Text>
+        <View style={styles.textBox}>
+          <Text style={styles.detailsText}>{details.explanation}</Text>
+          <Text style={styles.detailsText}>{details.importance}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.recommendedButton}
+          onPress={() => handleActionPress()}
+        >
+          <Text style={styles.recommendedText}>See recommended actions</Text>
+        </TouchableOpacity>
       </View>
 
-      {/* Recommended Actions */}
+      {/* Recommended Actions
       <TouchableOpacity
         style={styles.recommendedButton}
         onPress={() => handleActionPress()}
       >
         <Text style={styles.recommendedText}>See recommended actions</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -78,29 +92,29 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   priorityCard: {
-    backgroundColor: "#345DA7",
+    backgroundColor: "#304674",
     borderRadius: 15,
     padding: 20,
-    marginBottom: 20,
+    marginBottom: 40,
     alignItems: "center",
   },
   priority: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#FFF",
     marginBottom: 5,
   },
   action: {
     fontSize: 18,
-    fontWeight: "600",
+    fontWeight: "normal",
     color: "#FFF",
     textAlign: "center",
   },
   detailsSection: {
-    backgroundColor: "#ECEFF7",
+    backgroundColor: "#DBDFEA",
     borderRadius: 15,
     padding: 20,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   detailsHeader: {
     fontSize: 18,
@@ -117,8 +131,8 @@ const styles = StyleSheet.create({
     textAlign: "justify", // Optional: Justify text for better paragraph alignment
   },
   recommendedButton: {
-    backgroundColor: "#345DA7",
-    borderRadius: 10,
+    backgroundColor: "#304674",
+    borderRadius: 25,
     paddingVertical: 15,
     alignItems: "center",
     marginTop: 20,
@@ -131,5 +145,19 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontWeight: "bold",
     fontSize: 16,
+  },
+  pie: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginBottom: 30,
+  },
+  pieContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textBox: {
+    borderRadius: 10,
+    margin: 15,
   },
 });

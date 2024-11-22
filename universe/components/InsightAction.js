@@ -75,11 +75,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   priorityCard: {
-    backgroundColor: "#345DA7",
-    borderRadius: 10,
+    backgroundColor: "#304674",
+    borderRadius: 15,
     padding: 20,
+    marginBottom: 40,
+    marginTop: 20,
     alignItems: "center",
-    marginBottom: 20,
   },
   priority: {
     fontSize: 18,
@@ -97,36 +98,51 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#2C2C54",
     marginBottom: 10,
+    textAlign: "center",
+    marginBottom: 30,
   },
   recommendationCard: {
-    backgroundColor: "#ECEFF7",
-    borderRadius: 10,
+    backgroundColor: "#DBDFEA", // Keep your provided color
+    borderRadius: 10, // Slightly rounded corners for a paper-like effect
     padding: 20,
     marginBottom: 20,
+    shadowColor: "#000", // Black shadow for depth
+    shadowOpacity: 0.2, // Subtle shadow to lift the card
+    shadowRadius: 5, // Soft shadow
+    shadowOffset: { width: 3, height: 3 }, // Shadow slightly offset for natural look
+    elevation: 4, // Shadow effect for Android
+    borderWidth: 1, // Adds a subtle border
+    borderColor: "#C8C8D3", // Slightly darker shade for the border
+    // transform: [{ rotate: "-3deg" }], // Slight rotation for casual, sticky note effect
   },
+
   recommendationTitle: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#2C2C54",
     marginBottom: 10,
+    textAlign: "center",
   },
   recommendationText: {
-    fontSize: 14,
-    color: "#555",
-    lineHeight: 20,
+    fontSize: 16,
+    color: "#333",
+    marginBottom: 20,
+    lineHeight: 22,
+    padding: 10,
   },
   buttonRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   actionButton: {
-    backgroundColor: "#345DA7",
-    borderRadius: 10,
+    backgroundColor: "#304674",
+    borderRadius: 10, // Rounded corners
     paddingVertical: 12,
-    paddingHorizontal: 20,
-    flex: 1,
-    alignItems: "center",
-    marginHorizontal: 5,
+    paddingHorizontal: 10,
+    shadowColor: "#000", // Shadow color (black)
+    shadowOffset: { width: 0, height: 2 }, // Offset the shadow (x, y)
+    shadowOpacity: 0.7, // Shadow opacity
+    shadowRadius: 4, // Shadow blur radius
   },
   buttonText: {
     color: "#FFF",

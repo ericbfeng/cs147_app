@@ -12,7 +12,7 @@ export default function InsightDetailPage() {
     action: "Improve extracurricular activities",
     recommendation: {
       title: "Join the debate team",
-      details: `Sarah has very good writing skills but relatively weak in speaking. 
+      details: `Sarah has very good writing skills but relatively weak in speaking. \n
 This experience could make her a more well-rounded applicant, highlighting her capacity to engage with diverse topics and excel outside her primary interests.`,
     },
   };
