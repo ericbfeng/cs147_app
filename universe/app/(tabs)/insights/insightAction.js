@@ -1,31 +1,36 @@
-import { useGlobalSearchParams } from "expo-router";
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
-import InsightExplanation from "../../../components/InsightExplanation";
+import InsightAction from "../../../components/InsightAction";
+import { SafeAreaView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
-export default function InsightDetail() {
-  const { priority, action } = useGlobalSearchParams();
+export default function InsightDetailPage() {
   const router = useRouter();
 
-  console.log("Received parameters:", { priority, action }); // Debugging
+  // Hardcoded insight details
+  const insight = {
+    priority: "High Priority",
+    action: "Improve extracurricular activities",
+    recommendation: {
+      title: "Join the debate team",
+      details: `Sarah has very good writing skills but relatively weak in speaking. 
+This experience could make her a more well-rounded applicant, highlighting her capacity to engage with diverse topics and excel outside her primary interests.`,
+    },
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Back Button */}
+      {/* Back Button
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backArrow}>←</Text>
         <Text style={styles.backButtonText}>Back</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      {/* Profile Content */}
-      <InsightExplanation action={action} />
+      {/* Render the InsightAction component */}
+      <InsightAction
+        priority={insight.priority}
+        action={insight.action}
+        recommendation={insight.recommendation}
+      />
     </SafeAreaView>
   );
 }
@@ -33,35 +38,22 @@ export default function InsightDetail() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#FFF",
     padding: 20,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 20,
   },
-  detail: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  backButton: {
-    position: "absolute", // Position it absolutely in the container
-    top: 45, // Space from the top
-    left: 15, // Space from the left
-    flexDirection: "row", // Align arrow and text in a row
-    alignItems: "center", // Vertically center the arrow and text
-    zIndex: 1, // Ensure it's above other elements
+  backArrow: {
+    fontSize: 18,
+    color: "#345DA7",
+    marginRight: 5,
   },
   backButtonText: {
-    color: "#345DA7", // Subtle blue for the text
-    fontSize: 16, // Reasonable font size
-    fontWeight: "500", // Medium font weight
-    marginLeft: 5, // Add a little space between the arrow and the text
-  },
-  backArrow: {
-    fontSize: 18, // Slightly larger arrow
-    color: "#345DA7", // Match the arrow color to the text
+    fontSize: 16,
+    color: "#345DA7",
+    fontWeight: "bold",
   },
 });

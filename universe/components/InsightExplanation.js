@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 
 const insightDetails = {
   "Improve extracurricular activities": {
@@ -21,7 +22,7 @@ const insightDetails = {
 
 export default function InsightExplanation({ action }) {
   const details = insightDetails[action];
-
+  const router = useRouter();
   if (!details) {
     return (
       <View style={styles.container}>
@@ -32,6 +33,17 @@ export default function InsightExplanation({ action }) {
       </View>
     );
   }
+
+  const handleActionPress = (insight) => {
+    // console.log("Navigating to insightDetail with:", insight); // Debug the data
+    router.push({
+      pathname: "/insights/insightAction", // Adjust the path
+      //   params: {
+      //     priority: insight.priority,
+      //     action: insight.action,
+      //   },
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -49,7 +61,10 @@ export default function InsightExplanation({ action }) {
       </View>
 
       {/* Recommended Actions */}
-      <TouchableOpacity style={styles.recommendedButton}>
+      <TouchableOpacity
+        style={styles.recommendedButton}
+        onPress={() => handleActionPress()}
+      >
         <Text style={styles.recommendedText}>See recommended actions</Text>
       </TouchableOpacity>
     </View>

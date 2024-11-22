@@ -18,11 +18,11 @@ export default function InsightDetail() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Back Button */}
+      {/* Back Button
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backArrow}>←</Text>
         <Text style={styles.backButtonText}>Back</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       {/* Profile Content */}
       <InsightExplanation action={action} />
