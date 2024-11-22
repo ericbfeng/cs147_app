@@ -13,7 +13,7 @@ import StudentProfile from "../../../components/InsightProfile";
 export default function Profile() {
   const router = useRouter();
   const { name } = useGlobalSearchParams(); // Retrieve the `name` parameter
-  console.log("Student name received in Profile:", name); // Debugging log
+  //   console.log("Student name received in Profile:", name); // Debugging log
 
   return (
     <SafeAreaView style={styles.container}>

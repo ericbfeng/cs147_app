@@ -41,7 +41,7 @@ export default function Insights() {
 
   const handlePress = (name) => {
     // Navigate to the profile page with the name parameter
-    console.log("Navigating to profile with name:", name);
+    // console.log("Navigating to profile with name:", name);
     router.push({
       pathname: "insights/insightProfile",
       params: { name }, // Pass the name parameter

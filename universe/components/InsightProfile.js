@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 
 const studentDetails = {
   "Sarah W.": {
@@ -36,6 +37,7 @@ const studentDetails = {
 
 export default function StudentProfile({ name }) {
   const details = studentDetails[name] || {};
+  const router = useRouter();
 
   if (!details.background) {
     return (
@@ -47,6 +49,17 @@ export default function StudentProfile({ name }) {
       </View>
     );
   }
+
+  const handleInsightPress = (insight) => {
+    console.log("Navigating to insightDetail with:", insight); // Debug the data
+    router.push({
+      pathname: "/insights/insightDetail", // Adjust the path
+      params: {
+        priority: insight.priority,
+        action: insight.action,
+      },
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -74,7 +87,11 @@ export default function StudentProfile({ name }) {
       </View>
 
       {details.insights.map((insight, index) => (
-        <TouchableOpacity key={index} style={styles.insightCard}>
+        <TouchableOpacity
+          key={index}
+          style={styles.insightCard}
+          onPress={() => handleInsightPress(insight)} // Navigate when an insight is pressed
+        >
           <Text style={styles.priority}>{insight.priority}</Text>
           <Text style={styles.action}>{insight.action}</Text>
         </TouchableOpacity>
