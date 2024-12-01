@@ -1,74 +1,140 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
+import Theme from "../../assets/theme";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const DATA = [
+  {
+    id: "1",
+    name: "Jack L.",
+    similarStudent: "Jarod W.",
+    academicInterests: "Math, History, Art",
+    collegeTargets: "Stanford, Williams, Tufts",
+    profileImage: "https://via.placeholder.com/150", // Replace with actual image URL
+  },
+  {
+    id: "2",
+    name: "Jane D.",
+    similarStudent: "Emily H.",
+    academicInterests: "Biology, Chemistry, Literature",
+    collegeTargets: "Harvard, Princeton, Yale",
+    profileImage: "https://via.placeholder.com/150", // Replace with actual image URL
+  },
+  // Add more student data as needed
+];
 
-export default function HomeScreen() {
+export default function RecommendedStudents() {
+  const renderItem = ({ item }) => (
+    <View style={styles.card}>
+      <Image source={{ uri: item.profileImage }} style={styles.profileImage} />
+      <View style={styles.infoContainer}>
+        <Text style={styles.studentName}>{item.name}</Text>
+        <Text style={styles.similarText}>
+          Most similar student: {item.similarStudent}
+        </Text>
+        <Text style={styles.details}>
+          <Text style={styles.label}>Academic Interests:</Text>{" "}
+          {item.academicInterests}
+        </Text>
+        <Text style={styles.details}>
+          <Text style={styles.label}>College targets:</Text>{" "}
+          {item.collegeTargets}
+        </Text>
+      </View>
+    </View>
+  );
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.safeArea}>
+      {/* Header */}
+      <Text style={styles.header}>Recommended Students</Text>
+
+      {/* Student List */}
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.flatList}
+      />
+
+      {/* Navigation Bar */}
+      <View style={styles.navBar}>
+        <Text style={styles.navIcon}>🔍</Text>
+        <Text style={styles.navIcon}>📚</Text>
+        <Text style={styles.navIcon}>🎓</Text>
+        <Text style={styles.navIcon}>👤</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  header: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginVertical: 20,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  flatList: {
+    paddingHorizontal: 20,
+  },
+  card: {
+    backgroundColor: Theme.colors.lightPurple,
+    borderRadius: 10,
+    padding: 20,
+    marginBottom: 15,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  profileImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    alignSelf: "center",
+    marginBottom: 10,
+  },
+  infoContainer: {
+    alignItems: "center",
+  },
+  studentName: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  similarText: {
+    fontSize: 14,
+    color: "#555",
+    marginVertical: 5,
+  },
+  details: {
+    fontSize: 14,
+    textAlign: "center",
+  },
+  label: {
+    fontWeight: "bold",
+  },
+  navBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#FFFFFF",
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: "#DDD",
+  },
+  navIcon: {
+    fontSize: 24,
+    color: "#555",
   },
 });

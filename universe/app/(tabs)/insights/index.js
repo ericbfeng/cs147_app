@@ -12,6 +12,7 @@ import {
 import Profile from "./insightProfile";
 import { useRouter } from "expo-router";
 
+
 const names = [
   { name: "Sarah W." },
   { name: "John L." },
@@ -119,6 +120,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
     color: "#2C2C54",
+    fontFamily: "Outfit-Bold",
+    // fontWeight: '700',
   },
   searchBar: {
     backgroundColor: "#F0F0F5",
