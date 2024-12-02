@@ -23,6 +23,7 @@ export default function Layout() {
         name="index"
         options={{
           title: "Recommended Students",
+          headerTitleAlign: "center",
           // headerShown: false,
         }}
       />
@@ -32,6 +33,7 @@ export default function Layout() {
         name="details"
         options={{
           title: "Student Details", // Title for the Details screen
+          headerTitleAlign: "center",
           headerShown: true, // Show header for the main screen
           headerBackTitle: "Back", // Explicitly remove back button text
           // headerBackTitleVisible: false, // Ensure text is hidden
@@ -44,6 +46,7 @@ export default function Layout() {
         name="message"
         options={{
           title: "Message Student", // Title for the Details screen
+          headerTitleAlign: "center",
           headerShown: true, // Show header for the main screen
           headerBackTitle: "Back", // Explicitly remove back button text
           // headerBackTitleVisible: false, // Ensure text is hidden
@@ -56,6 +59,7 @@ export default function Layout() {
         name="success"
         options={{
           title: "Request Sent", // Title for the Details screen
+          headerTitleAlign: "center",
           headerShown: true, // Show header for the main screen
           headerBackTitle: "Back", // Explicitly remove back button text
           // headerBackTitleVisible: false, // Ensure text is hidden
