@@ -12,6 +12,11 @@ import { ScrollView } from 'react-native';
 
 export default function TabTwoScreen() {
   return (
+    <ThemedView style={styles.container}>
+    <ThemedView style={styles.topBanner}>
+    <ThemedText style={styles.bannerText}>Profile</ThemedText>
+    <IconSymbol name="ellipsis-horizontal" style={styles.bannerIcon} />
+    </ThemedView>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <ProfileCard />
       <ThemedText style={styles.largeText}>Hours Mentored This Week</ThemedText>
@@ -24,14 +29,37 @@ export default function TabTwoScreen() {
       <ThemedText style={styles.sectionTitle}>My Achievements</ThemedText>
       <ThemedView style={styles.cardContainer}>
         <ThemedView style={styles.card}><ThemedText style={styles.cardText}>Mentored 100 students</ThemedText></ThemedView>
-        <ThemedView style={styles.card}><ThemedText style={styles.cardText}>Mentored a student's mother for "extra credit"</ThemedText></ThemedView>
-        <ThemedView style={styles.card}><ThemedText style={styles.cardText}>Successfully scammed a student</ThemedText></ThemedView>
+        <ThemedView style={styles.card}><ThemedText style={styles.cardText}>Mentored 100 hours</ThemedText></ThemedView>
+        <ThemedView style={styles.card}><ThemedText style={styles.cardText}>Top rated Counselor</ThemedText></ThemedView>
       </ThemedView>
     </ScrollView>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
+  topBanner: {
+    width: '100%',
+    height: 60,
+    backgroundColor: '#f4f4f4',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  bannerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'black'
+  },
+  bannerIcon: {
+    position: 'absolute',
+    right: 16,
+    fontSize: 24,
+    color: '#888',
+  },
   divider: {
     width: '100%',
     height: 1,
