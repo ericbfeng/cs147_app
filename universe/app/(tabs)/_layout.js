@@ -63,7 +63,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="find"
+        name="index"
         options={{
           title: "Find",
           headerShown: false,
