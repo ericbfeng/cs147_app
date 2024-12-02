@@ -12,7 +12,6 @@ import {
 import Profile from "./insightProfile";
 import { useRouter } from "expo-router";
 
-
 const names = [
   { name: "Sarah W." },
   { name: "John L." },

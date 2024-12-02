@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import Theme from "../assets/theme";
 import ImageAssets from "../assets/ImageAssets";
 
-export default function StudentCard({ profile, onPress }) {
+export default function StudentCard({ profile }) {
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress}>
+    <View style={styles.card}>
       <View style={styles.topText}>
         <Text style={styles.studentName}>{profile.name}</Text>
         <View style={styles.similarContainer}>
@@ -14,7 +14,7 @@ export default function StudentCard({ profile, onPress }) {
         </View>
       </View>
       <Image
-        source={require("../assets/images/girl1.png")} // Adjust this dynamically
+        source={require("../assets/images/girl1.png")} // Adjust this to dynamically load images
         style={styles.profileImage}
       />
       <View style={styles.infoContainer}>
@@ -26,8 +26,16 @@ export default function StudentCard({ profile, onPress }) {
           <Text style={styles.label}>College targets: </Text>
           {profile.collegeTargets}
         </Text>
+        <Text style={styles.details}>
+          <Text style={styles.label}>Seeking help on: </Text>
+          {profile.seekingHelpOn}
+        </Text>
+        <Text style={styles.details}>
+          <Text style={styles.label}>Want a mentor who is: </Text>
+          {profile.wantAMentorWhoIs}
+        </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
@@ -47,24 +55,23 @@ const styles = StyleSheet.create({
   topText: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 10,
+    marginBottom: 15,
   },
   profileImage: {
     width: 200,
     height: 200,
-    // borderRadius:,
+    borderRadius: 75,
     alignSelf: "center",
-    marginBottom: 10,
+    marginBottom: 15,
   },
   infoContainer: {
     flexDirection: "column",
-    gap: 8, // Consistent spacing between text rows
+    gap: 10, // Add consistent spacing between text rows
   },
   studentName: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "bold",
     fontFamily: "Outfit",
-    color: "#333",
   },
   similarContainer: {
     flexDirection: "column",
@@ -74,11 +81,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#555",
     fontFamily: "Outfit",
+    textAlign: "right", // Align text to the right
   },
   details: {
     fontSize: 16,
     fontFamily: "Outfit",
-    lineHeight: 20, // Consistent line spacing
+    lineHeight: 22, // Ensure consistent line spacing
     color: "#333",
   },
   label: {

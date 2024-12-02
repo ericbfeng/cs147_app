@@ -1,54 +1,13 @@
-import { SafeAreaView, FlatList, StyleSheet, Text, View } from "react-native";
-import { useNavigation } from "expo-router"; // Import navigation
-import StudentCard from "../../components/StudentCard";
-import STUDENT_DATA from "../data/StudentData.json"; // Adjust the path as needed
-import Theme from "../../assets/theme";
+import { useEffect } from "react";
+import { useRouter } from "expo-router";
 
-export default function RecommendedStudents() {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      {/* Header */}
-      <Text style={styles.header}>Recommended Students</Text>
+export default function RedirectToFind() {
+  const router = useRouter();
 
-      {/* Student List */}
+  useEffect(() => {
+    // Redirect to the "find" tab
+    router.replace("/(tabs)/find"); // Ensure the route matches the correct structure
+  }, []);
 
-      <FlatList
-        data={STUDENT_DATA}
-        renderItem={({ item }) => <StudentCard profile={item} />}
-        keyExtractor={(item, index) => index.toString()} // Use index if IDs are not available
-        contentContainerStyle={styles.flatList}
-      />
-    </SafeAreaView>
-  );
+  return null; // No UI for this redirection page
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#F5F5F5",
-  },
-  header: {
-    fontSize: Theme.sizes.textHeading,
-    fontFamily: "Outfit-Bold",
-    textAlign: "center",
-    marginVertical: 20,
-  },
-  flatList: {
-    paddingHorizontal: 30,
-    // borderWidth: 1,
-    // borderColor: 'red',
-    gap: 20,
-  },
-});
-
-
-// import React from "react";
-// import { Text, View } from "react-native";
-
-// export default function Teach() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//       <Text>Hi</Text>
-//     </View>
-//   );
-// }

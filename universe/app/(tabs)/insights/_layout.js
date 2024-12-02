@@ -9,7 +9,7 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="index"
+        name="insights"
         options={{
           title: "Students", // Title for the index screen
         }}
