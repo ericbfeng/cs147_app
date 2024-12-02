@@ -19,6 +19,8 @@ export default function Layout() {
         options={{
           title: "AI Insights on Student", // Title for the details screen
           headerShown: true, // Show header for the details screen
+          headerTitleAlign: "center",
+          
         }}
       />
       <Stack.Screen
@@ -27,6 +29,7 @@ export default function Layout() {
           // presentation: "modal",
           title: "AI Insights on Student", // Title for the new post screen
           headerShown: true, // Show header for the new post screen
+          headerTitleAlign: "center",
         }}
       />
       <Stack.Screen
@@ -35,6 +38,7 @@ export default function Layout() {
           // presentation: "modal",
           title: "AI Insights on Student", // Title for the new post screen
           headerShown: true, // Show header for the new post screen
+          headerTitleAlign: "center",
         }}
       />
       <Stack.Screen
@@ -42,6 +46,7 @@ export default function Layout() {
         options={{
           presentation: "transparentModal", // Modal presentation with transparent background
           headerShown: false, // Hide the header
+          headerTitleAlign: "center",
         }}
       />
     </Stack>
