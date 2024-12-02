@@ -63,16 +63,17 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="find"
         options={{
           title: "Find",
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="teach"
+        name="classes"
         options={{
           title: "Classes",
           tabBarIcon: ({ color }) => (

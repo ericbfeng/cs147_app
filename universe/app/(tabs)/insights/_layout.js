@@ -1,6 +1,7 @@
 import { Stack } from "expo-router/stack";
 
 export default function Layout() {
+  console.log("Rendering Insights Stack Layout");
   return (
     <Stack
       screenOptions={{
@@ -8,7 +9,7 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="index"
+        name="insights"
         options={{
           title: "Students", // Title for the index screen
         }}
