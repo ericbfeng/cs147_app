@@ -40,8 +40,8 @@ export default function InsightAction({ priority, action, recommendation }) {
 
       {/* Action Buttons */}
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.actionButton}>
-          <Text style={styles.buttonText} onPress={() => handleSendPress()}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => handleSendPress()}>
+          <Text style={styles.buttonText}>
             Send to student
           </Text>
         </TouchableOpacity>
