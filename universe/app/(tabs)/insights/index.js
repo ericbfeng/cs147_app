@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 15,
     textAlign: "center",
-    color: "#2C2C54",
+    color: "black",
     fontFamily: "Outfit-Bold",
     // fontWeight: '700',
   },
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   recentText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#2C2C54",
+    color: "black",
   },
   iconContainer: {
     flexDirection: "row",
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   cardName: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#2C2C54",
+    color: "black",
     marginBottom: 5,
   },
   cardDetails: {

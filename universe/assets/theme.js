@@ -8,7 +8,7 @@ export default {
     red: "#EB4D3D",
   },
   sizes: {
-    iconSmall: 16,
+    textHeading: 20,
     textMedium: 16,
     textLarge: 20,
   },

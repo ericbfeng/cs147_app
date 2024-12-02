@@ -1,29 +1,23 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function LoginScreen({ onLogin, onSignUp }) {
-  // Local state to simulate login
-  const [isStudent, setIsStudent] = useState(null); // Local state to simulate login
+  const [isStudent, setIsStudent] = useState(null); // Local state for profile selection
+
   return (
     <LinearGradient
       colors={["#304674", "#8294C4"]} // Gradient colors
       locations={[0.45, 1.0]} // Gradient stops
-      start={{ x: 0, y: 0 }} // Start of the gradient
-      end={{ x: 0, y: 1 }} // End of the gradient
-      style={styles.container} // Keep layout styling here
+      start={{ x: 0, y: 0 }} // Start point
+      end={{ x: 0, y: 1 }} // End point
+      style={styles.container}
     >
       <Image
-        source={require("../assets/images/logo.png")}
+        source={require("../assets/images/logo.png")} // Ensure the path to your logo is correct
         style={styles.logo}
       />
+
       {isStudent === null ? (
         <>
           <Text style={styles.title}>Choose Your Profile!</Text>
@@ -45,25 +39,18 @@ export default function LoginScreen({ onLogin, onSignUp }) {
       ) : (
         <>
           <Text style={styles.title}>
-            Welcome {isStudent ? "Student" : "Counsoler"}!
+            Welcome {isStudent ? "Student" : "Counselor"}!
           </Text>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.customButton}
-              onPress={() => onLogin()}
-            >
+            <TouchableOpacity style={styles.customButton} onPress={onLogin}>
               <Text style={styles.customButtonText}>Log In</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.customButton}
-              onPress={() => onSignUp()}
-            >
+            <TouchableOpacity style={styles.customButton} onPress={onSignUp}>
               <Text style={styles.customButtonText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
         </>
       )}
-      ;
     </LinearGradient>
   );
 }
@@ -76,9 +63,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   logo: {
-    width: 150, // Set the width of the logo
-    height: 150, // Set the height of the logo
-    marginBottom: 20, // Add spacing below the logo
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
@@ -87,10 +74,9 @@ const styles = StyleSheet.create({
     color: "white",
   },
   buttonContainer: {
-    width: "100%", // Ensure buttons align consistently
+    width: "100%",
     alignItems: "center",
   },
-
   customButton: {
     backgroundColor: "#E2E8F0",
     padding: 15,

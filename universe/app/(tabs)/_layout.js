@@ -10,6 +10,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import Theme from "@/assets/theme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Jack L.",
+    "similarStudent": "Jarod W.",
+    "academicInterests": "Math, History, Art",
+    "collegeTargets": "Stanford, Williams, Tufts",
+    "profileImage": "boy1.png"
+  },
+  {
+    "name": "Jane D.",
+    "similarStudent": "Emily H.",
+    "academicInterests": "Biology, Chemistry, Literature",
+    "collegeTargets": "Harvard, Princeton, Yale",
+    "profileImage": "girl1.png"
+  },
+  {
+    "name": "Jack L.",
+    "similarStudent": "Jarod W.",
+    "academicInterests": "Math, History, Art",
+    "collegeTargets": "Stanford, Williams, Tufts",
+    "profileImage": "boy2.png"
+  },
+  {
+    "name": "Jane D.",
+    "similarStudent": "Emily H.",
+    "academicInterests": "Biology, Chemistry, Literature",
+    "collegeTargets": "Harvard, Princeton, Yale",
+    "profileImage": "girl2.png"
+  }
+]
