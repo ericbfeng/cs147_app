@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -23,7 +23,7 @@ export default function MessageScreen() {
   const student = STUDENT_DATA.find((item) => item.id.toString() === id);
 
   console.log("Student ID from params:", id); // Debug ID
-  console.log("Student found:", student);    // Debug the student object
+  console.log("Student found:", student); // Debug the student object
 
   if (!student) {
     console.warn("No student found for the given ID:", id);
@@ -35,6 +35,19 @@ export default function MessageScreen() {
   const dismissKeyboard = () => {
     Keyboard.dismiss();
   };
+
+  // Reset navigation stack when switching tabs or navigating back to "find/index"
+  useEffect(() => {
+    const unsubscribe = router.events?.addListener("focus", (event) => {
+      if (event?.routeName === "find") {
+        router.replace("/find/index"); // Reset stack to ensure clean navigation
+      }
+    });
+
+    return () => {
+      unsubscribe?.(); // Cleanup listener when component unmounts
+    };
+  }, [router]);
 
   return (
     <KeyboardAvoidingView
@@ -70,7 +83,7 @@ export default function MessageScreen() {
               }
             }}
           >
-            <Text style={styles.buttonText}>Message {student.name}</Text>
+            <Text style={styles.buttonText}>Send</Text>
           </TouchableOpacity>
         </ScrollView>
       </TouchableWithoutFeedback>

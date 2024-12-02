@@ -4,6 +4,14 @@ import Theme from "../assets/theme";
 import ImageAssets from "../assets/ImageAssets";
 
 export default function StudentCard({ profile, onPress }) {
+  if (!profile) {
+    // Render nothing or fallback UI when profile is undefined
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>No student information available</Text>
+      </View>
+    );
+  }
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
       <View style={styles.topText}>
