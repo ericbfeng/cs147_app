@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   View,
   Text,
@@ -6,12 +6,27 @@ import {
   TouchableOpacity,
   Dimensions,
   Alert,
+  TextInput,
   Image,
 } from "react-native";
 import { useRouter } from "expo-router";
 
+
+const VAL = `
+Hi Sarah, I think it would be really helpful if you do some extracurriculars.  
+
+Joining the debate team is a great option because it can help with your public speaking and improve your capacity to engage with topics outside your comfort zone!  
+
+Let’s schedule a meeting to discuss more about this! 
+`;
+
+
+
 export default function PopupScreen() {
   const router = useRouter();
+
+  const [message, setMessage] = useState(VAL);
+
   const handleSendPress = () => {
     Alert.alert(
       "Message Sent", // Title
@@ -35,14 +50,11 @@ export default function PopupScreen() {
           />
         </View>
         <View style={styles.textBox}>
-          <Text style={styles.message}>
-            Hi Sarah, I think it would be really helpful if you do some
-            extracurriculars.{"\n\n"}
-            Joining the debate team is a great option because it can help with
-            your public speaking and improve your capacity to engage with topics
-            outside your comfort zone!{"\n\n"}
-            Let’s schedule a meeting to discuss more about this!
-          </Text>
+          <TextInput style={styles.message}
+                      value={message}
+                      onChangeText={setMessage} 
+                      multiline/>
+    
         </View>
         {/* Buttons */}
         <View style={styles.buttonRow}>
@@ -85,6 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#333",
     marginBottom: 20,
+    minHeight: 150,
     lineHeight: 22,
     padding: 15,
   },
