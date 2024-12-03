@@ -10,7 +10,7 @@ export default function RecommendedStudents() {
 
   const handlePress = (student) => {
     // Navigate to the details page with student ID and name
-    router.push(`/find/details?id=${student.id}`);
+    router.push(`/details?id=${student.id}`);
   };
 
   return (

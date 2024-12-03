@@ -6,23 +6,18 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import ProfileCard from "../../components/profileCard";
+import ProfileCard from "../../../components/profileCard";
 
 import { ScrollView } from 'react-native';
 
-export default function TabTwoScreen() {
+export default function Profile() {
   return (
-    <ThemedView style={styles.container}>
-    <ThemedView style={styles.topBanner}>
-    <ThemedText style={styles.bannerText}>Profile</ThemedText>
-    <IconSymbol name="ellipsis-horizontal" style={styles.bannerIcon} />
-    </ThemedView>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <ProfileCard />
       <ThemedText style={styles.largeText}>Hours Mentored This Week</ThemedText>
       <ThemedText style={styles.smallText}>April 1 - April 7th</ThemedText>
       <Image
-        source={require('../../assets/images/largeImage.png')}
+        source={require('../../../assets/images/largeImage.png')}
         style={styles.largeImage}
       />
       <ThemedView style={styles.divider} />
@@ -33,7 +28,6 @@ export default function TabTwoScreen() {
         <ThemedView style={styles.card}><ThemedText style={styles.cardText}>Top rated Counselor</ThemedText></ThemedView>
       </ThemedView>
     </ScrollView>
-    </ThemedView>
   );
 }
 

@@ -40,7 +40,7 @@ export default function MessageScreen() {
   useEffect(() => {
     const unsubscribe = router.events?.addListener("focus", (event) => {
       if (event?.routeName === "find") {
-        router.replace("/find/index"); // Reset stack to ensure clean navigation
+        router.replace("/"); // Reset stack to ensure clean navigation
       }
     });
 
@@ -77,7 +77,7 @@ export default function MessageScreen() {
             onPress={() => {
               try {
                 // router.push("/find/success"); // Ensure the route matches your structure
-                router.push(`/find/success?id=${student.id}`);
+                router.push(`/success?id=${student.id}`);
               } catch (error) {
                 console.error("Navigation Error:", error);
               }

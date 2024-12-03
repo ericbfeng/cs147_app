@@ -38,7 +38,7 @@ export default function StudentDetails() {
       <TouchableOpacity
         style={styles.button}
         onPress={() =>
-          router.push(`/find/message?id=${student.id}`)
+          router.push(`/message?id=${student.id}`)
         }
       >
         <Text style={styles.buttonText}>Message {student.name}</Text>
