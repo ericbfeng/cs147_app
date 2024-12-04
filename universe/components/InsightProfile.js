@@ -19,19 +19,157 @@ const studentDetails = {
     ],
   },
   "John L.": {
-    extracurricular: "Basketball Team",
-    gpa: "3.6",
-    interests: "Sports, Teamwork",
-    background: "Athletics",
-    class: "Class: Athletics",
+    extracurricular: "Basketball Team Captain",
+    gpa: "3.8",
+    interests: "Team Sports, Strategy, Leadership",
+    background: "Sports Leadership",
+    class: "Class: Sports Leadership",
     insights: [
-      { priority: "High Priority", action: "Focus on GPA improvement" },
+      {
+        priority: "High Priority",
+        action: "Enhance leadership skills in team sports",
+      },
       {
         priority: "Medium Priority",
-        action: "Join community service programs",
+        action: "Focus on time management",
+      },
+      {
+        priority: "Low Priority",
+        action: "Improve public speaking abilities",
       },
     ],
   },
+  "Liam O.": {
+    extracurricular: "Robotics Club President",
+    gpa: "4.0",
+    interests: "Engineering, Problem Solving, Innovation",
+    background: "STEM Leadership",
+    class: "Class: Engineering and Robotics",
+    insights: [
+      {
+        priority: "High Priority",
+        action: "Develop advanced robotics projects",
+      },
+      {
+        priority: "Medium Priority",
+        action: "Strengthen teamwork and collaboration skills",
+      },
+      {
+        priority: "Low Priority",
+        action: "Attend engineering conferences and workshops",
+      },
+    ],
+  },
+  "Jack P.": {
+    extracurricular: "Student Government President",
+    gpa: "3.7",
+    interests: "Leadership, Community Engagement, Public Policy",
+    background: "Leadership in Community and Politics",
+    class: "Class: Political Science and Leadership",
+    insights: [
+      {
+        priority: "High Priority",
+        action: "Strengthen leadership abilities in political campaigns",
+      },
+      {
+        priority: "Medium Priority",
+        action: "Engage in community outreach programs",
+      },
+      {
+        priority: "Low Priority",
+        action: "Improve debating skills",
+      },
+    ],
+  },
+
+  "Gill S.": {
+    extracurricular: "Environmental Club Vice President",
+    gpa: "3.8",
+    interests: "Sustainability, Environmental Advocacy, Research",
+    background: "Environmental Science Leadership",
+    class: "Class: Environmental Studies and Advocacy",
+    insights: [
+      {
+        priority: "High Priority",
+        action: "Lead sustainability initiatives on campus",
+      },
+      {
+        priority: "Medium Priority",
+        action: "Improve environmental research skills",
+      },
+      {
+        priority: "Low Priority",
+        action: "Attend environmental policy workshops",
+      },
+    ],
+  },
+
+  "Samuel L.": {
+    extracurricular: "Science Club President",
+    gpa: "3.9",
+    interests: "STEM, Research, Innovation",
+    background: "STEM Leadership and Research",
+    class: "Class: Science and Innovation",
+    insights: [
+      {
+        priority: "High Priority",
+        action: "Lead cutting-edge research projects",
+      },
+      {
+        priority: "Medium Priority",
+        action: "Enhance problem-solving skills in science",
+      },
+      {
+        priority: "Low Priority",
+        action: "Collaborate on scientific papers",
+      },
+    ],
+  },
+
+  "Doug T.": {
+    extracurricular: "Theater Club Director",
+    gpa: "3.6",
+    interests: "Performing Arts, Directing, Public Speaking",
+    background: "Theater Arts Leadership",
+    class: "Class: Drama and Performing Arts",
+    insights: [
+      {
+        priority: "High Priority",
+        action: "Direct and produce a successful play",
+      },
+      {
+        priority: "Medium Priority",
+        action: "Enhance acting skills",
+      },
+      {
+        priority: "Low Priority",
+        action: "Attend drama workshops and masterclasses",
+      },
+    ],
+  },
+
+  "Jude P.": {
+    extracurricular: "Music Club President",
+    gpa: "3.8",
+    interests: "Music Composition, Performance, Music Theory",
+    background: "Music Leadership and Composition",
+    class: "Class: Music Composition and Performance",
+    insights: [
+      {
+        priority: "High Priority",
+        action: "Compose and perform original music",
+      },
+      {
+        priority: "Medium Priority",
+        action: "Collaborate with other musicians",
+      },
+      {
+        priority: "Low Priority",
+        action: "Study advanced music theory",
+      },
+    ],
+  },
+
   // Add more students here
 };
 
