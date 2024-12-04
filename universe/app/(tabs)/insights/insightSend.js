@@ -42,7 +42,7 @@ export default function PopupScreen() {
       <View style={styles.popup}>
         <View style={styles.avatarContainer}>
           <Image
-            source={require("../../../assets/images/avatar.png")} // Replace with student avatar
+            source={require("../../../assets/images/boy1.png")} // Replace with student avatar
             style={styles.avatar}
           />
         </View>
