@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "data": [
+      {
+        "id": 1,
+        "name": "Lesson #1",
+        "description": "Extracurriculars That Are Most Unique!",
+        "zoomLink": "xxxx",
+        "date": "Mon, Nov 15",
+        "agenda": [
+          "What are the best ECs?",
+          "How to write the best ECs",
+          [
+            "Examples:",
+            "Community service",
+            "Starting a non-profit",
+            "Donate millions of dollars"
+          ]
+        ],
+        "occurred": true
+      },
+      {
+        "id": 2,
+        "name": "Lesson #2",
+        "description": "Stale and Overplayed: Avoid These Boring Activities!",
+        "zoomLink": "xxxx",
+        "date": "Wed, Nov 17",
+        "agenda": [
+          "What are the best ECs?",
+          "How to write the best ECs",
+          [
+            "Examples:",
+            "Community service",
+            "Starting a non-profit",
+            "Donate millions of dollars"
+          ]
+        ],
+        "occurred": true
+      },
+      {
+        "id": 3,
+        "name": "Lesson #3",
+        "description": "Why You Should Try Art",
+        "zoomLink": "xxxx",
+        "date": "Mon, Nov 22",
+        "agenda": [
+          "What are the best ECs?",
+          "How to write the best ECs",
+          [
+            "Examples:",
+            "Community service",
+            "Starting a non-profit",
+            "Donate millions of dollars"
+          ]
+        ],
+        "occurred": false
+      },
+      {
+        "id": 4,
+        "name": "Lesson #4",
+        "description": "How To Write Your Activites Descriptions",
+        "zoomLink": "xxxx",
+        "date": "Fri, Nov 26",
+        "agenda": [
+          "What are the best ECs?",
+          "How to write the best ECs",
+          [
+            "Examples:",
+            "Community service",
+            "Starting a non-profit",
+            "Donate millions of dollars"
+          ]
+        ],
+        "occurred": false
+      }
+    ]
+  }
+]
