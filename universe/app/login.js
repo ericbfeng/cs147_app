@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+    fontFamily: "Outfit",
     color: "white",
   },
   buttonContainer: {
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
   customButtonText: {
     color: "#000000",
     fontSize: 16,
+    fontFamily: "Outfit-Bold",
     fontWeight: "bold",
   },
 });

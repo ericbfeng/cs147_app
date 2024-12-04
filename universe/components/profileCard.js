@@ -1,20 +1,22 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, Button } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Theme from "../assets/theme";
 
 export default function ProfileCard() {
-  const profileImage = require("../assets/images/profile.png"); 
+  const profileImage = require("../assets/images/profile.png");
 
   return (
     <View style={styles.card}>
       <Image source={profileImage} style={styles.profileImage} />
       <Text style={styles.title}>John Doe</Text>
-      <Text style={styles.subtitle}> joined 2 years ago</Text>
+      <Text style={styles.subtitle}>joined 2 years ago</Text>
       <Text style={styles.body}>
         Passionate about creating impactful help for young students interested in the Arts!
       </Text>
       <View style={styles.buttonContainer}>
-        <Button title="Edit profile" onPress={() => console.log("Learn More Pressed")} color={Theme.colors.primary} />
+        <TouchableOpacity style={styles.button} onPress={() => console.log("Learn More Pressed")}>
+          <Text style={styles.buttonText}>Edit Profile</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -60,5 +62,17 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignSelf: "flex-end",
+  },
+  button: {
+    backgroundColor: "#8294C4",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontFamily: "Outfit-Bold",
+    fontSize: 16,
   },
 });

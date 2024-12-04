@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
   },
   bannerText: {
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: "Outfit-Bold",
     color: 'black'
   },
   bannerIcon: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: "Outfit-Bold",
     color: 'black',
     marginBottom: 15,
   },
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 14,
+    fontFamily: "Outfit",
     textAlign: 'center',
     color: 'red'
   },
@@ -96,13 +97,14 @@ const styles = StyleSheet.create({
   },
   largeText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: "Outfit-Bold",
     color: 'black',
     marginTop: 20,
   },
   smallText: {
     fontSize: 14,
     color: '#555',
+    fontFamily: "Outfit",
     marginTop: 5,
     marginBottom: 20,
   },
