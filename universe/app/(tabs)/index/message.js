@@ -70,6 +70,7 @@ export default function MessageScreen() {
             onChangeText={setMessage}
             returnKeyType="done"
             onSubmitEditing={dismissKeyboard}
+            fontFamily="Outfit"
             textAlignVertical="top" // Start text at the top of the input box
           />
           <TouchableOpacity
