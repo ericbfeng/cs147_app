@@ -8,6 +8,7 @@ import {
   FlatList,
   Image,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import Profile from "./insightProfile";
 import { useRouter } from "expo-router";
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E4E4E7",
     marginHorizontal: 20,
+    fontFamily: "Outfit",
     // borderColor: "blue",
     // borderWidth: 1,
   },
@@ -165,6 +167,7 @@ const styles = StyleSheet.create({
   grid: {
     flexGrow: 1,
     justifyContent: "flex-start",
+    paddingBottom: 80,
   },
   card: {
     flex: 1,
