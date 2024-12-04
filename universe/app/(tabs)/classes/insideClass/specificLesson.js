@@ -8,11 +8,13 @@ import {
   ScrollView,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import ClassroomData from "../../../data/LessonData.json";
 import { useRoute } from "@react-navigation/native";
 
 export default function LessonDetailScreen() {
   const route = useRoute();
-  const dataFinal = route.params.data;
+  const dataFinal = ClassroomData[0].data[0];
+  console.log(dataFinal);
 
   const handleLaunchZoom = () => {
     Alert.alert("Zoom Link", "https://fake.zoom.link/meeting123");
@@ -24,7 +26,7 @@ export default function LessonDetailScreen() {
     <ScrollView style={styles.container}>
       {/* Date Section */}
       <View style={styles.dateContainer}>
-        <Text style={styles.dateLabel}>Date: Mon December 1st</Text>
+        <Text style={styles.dateLabel}>Date:</Text>
         <Text style={styles.dateText}>{dataFinal.date}</Text>
       </View>
 
@@ -32,7 +34,7 @@ export default function LessonDetailScreen() {
       <View style={styles.agendaContainer}>
         <Text style={styles.agendaTitle}>Agenda:</Text>
         <View>
-          {Object.keys(dataFinal).map((item, index) => (
+          {dataFinal.agenda.map((item, index) => (
             <Text key={index}>
               {"\u2022"} {item}
             </Text>
