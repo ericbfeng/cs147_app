@@ -49,7 +49,7 @@ export default function InsightExplanation({ action }) {
     <View style={styles.container}>
       <View style={styles.pieContainer}>
         <Image
-          source={require("../assets/images/Pie.png")} // Replace with actual avatar image
+          source={require("../assets/images/spider.png")} // Replace with actual avatar image
           style={styles.pie}
         />
       </View>
@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 20,
     marginBottom: 30,
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexDirection: "column",
+    alignItems: "center",
   },
   detailsHeader: {
     fontSize: 18,
@@ -140,17 +140,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#304674",
     borderRadius: 25,
     paddingVertical: 15,
-    paddingHorizontal: 20, 
+    paddingHorizontal: 20,
     alignItems: "center",
     marginTop: 20,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-    // borderWidth: 1, 
+    // borderWidth: 1,
     // borderColor: 'red',
     // width: 300,
-
   },
   recommendedText: {
     color: "#FFF",
@@ -159,9 +158,9 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit",
   },
   pie: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
     marginBottom: 30,
   },
   pieContainer: {
