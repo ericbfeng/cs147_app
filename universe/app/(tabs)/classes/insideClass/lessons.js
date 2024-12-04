@@ -36,10 +36,16 @@ export default function LessonsScreen() {
   }
 
   const handleLessonPress = (item) => {
-    console.log("HELLO ITEM ", item);
     router.push({
       pathname: "classes/insideClass/specificLesson",
       params: { data: item },
+    });
+  };
+
+  const navigateToStudents = () => {
+    router.push({
+      pathname: "classes/insideClass/students",
+      params: { classroomID },
     });
   };
 
@@ -49,6 +55,16 @@ export default function LessonsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+
+    <View style={styles.header}>
+        <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
+          <Text style={[styles.tabButtonText, styles.activeTabText]}>Lessons</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabButton} onPress={navigateToStudents}>
+          <Text style={styles.tabButtonText}>Students</Text>
+        </TouchableOpacity>
+      </View>
+
       {/* Search Bar */}
       <View style={styles.searchContainer}>
         <TextInput
@@ -85,6 +101,27 @@ const styles = StyleSheet.create({
     margin: 16,
     borderRadius: 8,
     paddingHorizontal: 12,
+  },
+  activeTab: {
+    borderBottomWidth: 2,
+    borderBottomColor: "#1e3a8a",
+  },
+  tabButtonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#666",
+  },
+  activeTabText: {
+    color: "#1e3a8a",
+  },
+  header: {
+    flexDirection: "row", // Horizontal layout
+    justifyContent: "space-around", // Evenly distribute buttons
+    alignItems: "center",
+    backgroundColor: "#f9f9f9",
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
   },
   searchBar: {
     backgroundColor: "#F0F0F5",
