@@ -73,6 +73,7 @@ export default function TabLayout() {
         options={{
           title: "Find",
           headerShown: false,
+          unmountOnBlur: true,
           tabBarIcon: ({ size, color }) => (
             <FontAwesome size={size} name="search" color={color} />
           ),
@@ -92,6 +93,7 @@ export default function TabLayout() {
         options={{
           title: "Students",
           headerShown: false,
+          unmountOnBlur: true,
           tabBarIcon: ({ size, color }) => (
             <FontAwesome size={size} name="group" color={color} />
           ),

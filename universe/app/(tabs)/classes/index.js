@@ -22,7 +22,7 @@ const ClassButton = ({ title, onPress }) => (
   >
     <View style={styles.buttonContainer}>
       <Image
-        source={require("../../../assets/images/PlanetShape.png")}
+        source={require("../../../assets/images/blue.png")}
         style={styles.planetImage}
         resizeMode="contain"
       />
@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     fontSize: 16,
+    fontFamily: "Outfit",
   },
   editButton: {
     position: "absolute",

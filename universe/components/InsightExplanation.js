@@ -49,7 +49,7 @@ export default function InsightExplanation({ action }) {
     <View style={styles.container}>
       <View style={styles.pieContainer}>
         <Image
-          source={require("../assets/images/spider.png")} // Replace with actual avatar image
+          source={require("../assets/images/newspider.png")} // Replace with actual avatar image
           style={styles.pie}
         />
       </View>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   pie: {
     width: 200,
     height: 200,
-    borderRadius: 100,
+    // borderRadius: 100,
     marginBottom: 30,
   },
   pieContainer: {
