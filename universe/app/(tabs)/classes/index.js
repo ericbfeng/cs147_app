@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   View,
   Text,
@@ -100,8 +100,6 @@ const styles = StyleSheet.create({
   },
   gridContainer: {
     flex: 1,
-    margin: width * 0.08,
-    paddingTop: VERTICAL_SPACING * 0.3,
   },
   classButton: {
     width: BUTTON_SIZE,
