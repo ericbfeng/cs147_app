@@ -61,27 +61,29 @@ export default function Insights() {
       {!selectedName ? (
         <>
           {/* Header */}
-          <Text style={styles.headerText}>Students</Text>
+          {/* <Text style={styles.headerText}>Students</Text> */}
 
           {/* Search Bar */}
-          <TextInput
-            style={styles.searchBar}
-            placeholder="Search Student"
-            placeholderTextColor="#888"
-            value={searchQuery}
-            onChangeText={(text) => setSearchQuery(text)}
-          />
+          <View style={styles.topContainer}>
+            <TextInput
+              style={styles.searchBar}
+              placeholder="Search Student"
+              placeholderTextColor="#888"
+              value={searchQuery}
+              onChangeText={(text) => setSearchQuery(text)}
+            />
 
-          {/* Recent and Layout Options */}
-          <View style={styles.topRow}>
-            <Text style={styles.recentText}>Recent</Text>
-            <View style={styles.iconContainer}>
-              <TouchableOpacity>
-                <Text style={styles.icon}>≡</Text> {/* List View Icon */}
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.icon}>▢</Text> {/* Grid View Icon */}
-              </TouchableOpacity>
+            {/* Recent and Layout Options */}
+            <View style={styles.topRow}>
+              <Text style={styles.recentText}>Recent</Text>
+              <View style={styles.iconContainer}>
+                <TouchableOpacity>
+                  <Text style={styles.icon}>≡</Text> {/* List View Icon */}
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={styles.icon}>▢</Text> {/* Grid View Icon */}
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
 
@@ -107,11 +109,14 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: "#FFF",
+    // borderWidth: 1,
+    // borderColor: "red",
+    // paddingTop: 20,
   },
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: "#FFF",
+  topContainer: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    paddingTop: 20,
   },
   headerText: {
     fontSize: 20,
@@ -131,6 +136,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E4E4E7",
     marginHorizontal: 20,
+    // borderColor: "blue",
+    // borderWidth: 1,
   },
   topRow: {
     flexDirection: "row",
@@ -189,3 +196,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+

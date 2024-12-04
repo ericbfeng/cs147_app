@@ -4,8 +4,22 @@ export default function Layout() {
   console.log("Rendering Insights Stack Layout");
   return (
     <Stack
+      // screenOptions={{
+      //   headerShown: false, // Hide headers globally
+      // }}
       screenOptions={{
-        headerShown: false, // Hide headers globally
+        headerShown: true, // Ensure headers are visible for navigation
+        headerStyle: {
+          backgroundColor: "white", // Customize the header background color
+        },
+        headerTintColor: "black", // Arrow and text color
+        headerTitleStyle: {
+          fontFamily: "Outfit-Bold",
+          color: "black",
+          fontSize: 20,
+          fontWeight: "bold",
+        },
+        headerBackTitle: "", // Explicitly set back title to an empty string
       }}
     >
       <Stack.Screen
@@ -20,7 +34,6 @@ export default function Layout() {
           title: "AI Insights on Student", // Title for the details screen
           headerShown: true, // Show header for the details screen
           headerTitleAlign: "center",
-          
         }}
       />
       <Stack.Screen
