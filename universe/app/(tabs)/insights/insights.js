@@ -193,10 +193,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     marginBottom: 5,
+    fontFamily: "Outfit-Bold",
   },
   cardDetails: {
     fontSize: 14,
     color: "#555",
     textAlign: "center",
+    fontFamily: "Outfit",
   },
 });
