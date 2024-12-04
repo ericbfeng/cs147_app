@@ -36,12 +36,14 @@ export default function LessonsScreen() {
   }
 
   const handleLessonPress = (item) => {
-    
+    navigation.navigate("specificLesson", { data: item });
+    /*
     console.log("HELLO ITEM ", item);
     router.push({
       pathname: "classes/insideClass/specificLesson",
       params: { data: item },
     });
+    */
   };
 
   const renderItem = ({ item }) => (
