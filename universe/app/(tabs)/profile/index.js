@@ -15,7 +15,7 @@ export default function Profile() {
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <ProfileCard />
       <ThemedText style={styles.largeText}>Hours Mentored This Week</ThemedText>
-      <ThemedText style={styles.smallText}>April 1 - April 7th</ThemedText>
+      <ThemedText style={styles.smallText}>April 1st - April 7th</ThemedText>
       <Image
         source={require('../../../assets/images/largeImage.png')}
         style={styles.largeImage}
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   largeText: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'black',
     marginTop: 20,

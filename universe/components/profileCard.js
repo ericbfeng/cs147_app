@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, Button } from "react-native";
 import Theme from "../assets/theme";
 
 export default function ProfileCard() {
-  const profileImage = require("../assets/images/avatar.png"); // Static hardcoded image
+  const profileImage = require("../assets/images/profile.png"); 
 
   return (
     <View style={styles.card}>
@@ -11,10 +11,10 @@ export default function ProfileCard() {
       <Text style={styles.title}>John Doe</Text>
       <Text style={styles.subtitle}> joined 2 years ago</Text>
       <Text style={styles.body}>
-        Passionate about creating impactful help for young idiots who don't know better
+        Passionate about creating impactful help for young students interested in the Arts!
       </Text>
       <View style={styles.buttonContainer}>
-        <Button title="Learn More" onPress={() => console.log("Learn More Pressed")} color={Theme.colors.primary} />
+        <Button title="Edit profile" onPress={() => console.log("Learn More Pressed")} color={Theme.colors.primary} />
       </View>
     </View>
   );
