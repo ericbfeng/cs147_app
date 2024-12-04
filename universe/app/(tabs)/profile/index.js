@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     alignItems: 'center',
     padding: 16,
-    alignItems: 'center',
   },
   largeText: {
     fontSize: 20,

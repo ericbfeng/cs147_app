@@ -26,6 +26,7 @@ export default function Layout() {
         name="insights"
         options={{
           title: "Students", // Title for the index screen
+          headerTitleAlign: "center",
         }}
       />
       <Stack.Screen
