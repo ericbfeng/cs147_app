@@ -15,17 +15,20 @@ export default function ProfileCard() {
         in the Arts!
       </Text>
       <View style={styles.buttonContainer}>
-<<<<<<< HEAD
-        <TouchableOpacity style={styles.button} onPress={() => console.log("Learn More Pressed")}>
+        {/* <<<<<<< HEAD */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => console.log("Learn More Pressed")}
+        >
           <Text style={styles.buttonText}>Edit Profile</Text>
         </TouchableOpacity>
-=======
-        <Button
+        {/* ======= */}
+        {/* <Button
           title="Edit profile"
           onPress={() => console.log("Learn More Pressed")}
           color={Theme.colors.primary}
-        />
->>>>>>> 5065994 (Changed font for insight page)
+        /> */}
+        {/* >>>>>>> 5065994 (Changed font for insight page) */}
       </View>
     </View>
   );
