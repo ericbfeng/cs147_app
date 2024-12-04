@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { useNavigation } from "@react-navigation/native";
 
 import LESSON_DATA from "../../../data/LessonData.json";
 import LessonItem from "../../../../components/LessonItem";
@@ -18,12 +19,13 @@ import { useRouter } from "expo-router";
 export default function LessonsScreen() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(""); // Search query
+  const navigation = useNavigation();
 
   const { classroomID } = useLocalSearchParams();
   const lessonData = LESSON_DATA.find(
     (item) => item.id === Number(classroomID)
   ).data;
-  console.log("this is lessondata", lessonData);
+  console.log("this is lesson data", lessonData);
 
   if (!lessonData) {
     return (
@@ -34,10 +36,14 @@ export default function LessonsScreen() {
   }
 
   const handleLessonPress = (item) => {
+    navigation.navigate("specificLesson", { data: item });
+    /*
+    console.log("HELLO ITEM ", item);
     router.push({
       pathname: "classes/insideClass/specificLesson",
       params: { data: item },
     });
+    */
   };
 
   const renderItem = ({ item }) => (

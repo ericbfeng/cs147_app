@@ -1,47 +1,67 @@
 import { Tabs } from "expo-router";
-import React from "react";
-import { Platform, View, Text, Button, StyleSheet } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Link } from "expo-router";
 
-import { HapticTab } from "@/components/HapticTab";
-import TabBarBackground from "@/components/ui/TabBarBackground";
-import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function TabsLayout() {
+  const navigation = useNavigation();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
-        tabBarShowIcon: false,
-        tabBarButton: HapticTab,
-        tabBarPosition: "top",
-        tabBarBackground: TabBarBackground,
-        tabBarActiveTintColor: "#304674", // Active tab icon color
-        tabBarStyle: {
-          display: "flex",
-        },
-        tabBarLabelStyle: {
-          fontFamily: "Outfit-SemiBold", // Replace with your desired font family
-          fontSize: 12, // Optional: Customize font size
+        headerShown: true,
+        headerStyle: {
+          height: 45, // Make this header smaller than main header
         },
       }}
     >
       <Tabs.Screen
         name="lessons"
         options={{
-          title: "Lessons",
-          headerShown: false,
+          title: "",
+          header: () => (
+            <View style={styles.tabHeader}>
+              <Text style={styles.tabText}>Lessons | </Text>
+              <Link href="/(tabs)/classes/insideClass/students">
+                <Text style={[styles.tabText, { color: "#BAC1CD" }]}>
+                  Students
+                </Text>
+              </Link>
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
         name="students"
         options={{
-          title: "Students",
+          title: "",
+          header: () => (
+            <View style={styles.tabHeader}>
+              <Link href="/(tabs)/classes/insideClass/lessons">
+                <Text style={[styles.tabText, { color: "#BAC1CD" }]}>
+                  Lessons
+                </Text>
+              </Link>
+
+              <Text style={styles.tabText}> | Students</Text>
+            </View>
+          ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabHeader: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 10,
+    backgroundColor: "white",
+  },
+  tabText: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+});

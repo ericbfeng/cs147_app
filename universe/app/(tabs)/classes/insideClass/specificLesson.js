@@ -7,23 +7,26 @@ import {
   ScrollView,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import { useRoute } from "@react-navigation/native";
 
 export default function LessonDetailScreen() {
-  const { data } = useLocalSearchParams();
-  console.log("specific agenda: ", data.agenda);
+  const route = useRoute();
+  const dataFinal = route.params.data;
+
+  console.log("specific agenda: ", dataFinal.agenda);
   return (
     <ScrollView style={styles.container}>
       {/* Date Section */}
       <View style={styles.dateContainer}>
         <Text style={styles.dateLabel}>Date:</Text>
-        <Text style={styles.dateText}>{data.date}</Text>
+        <Text style={styles.dateText}>{dataFinal.date}</Text>
       </View>
 
       {/* Agenda Section */}
       <View style={styles.agendaContainer}>
         <Text style={styles.agendaTitle}>Agenda:</Text>
         <View>
-          {data.agenda.map((item, index) => (
+          {dataFinal.agenda.map((item, index) => (
             <Text key={index}>
               {"\u2022"} {item}
             </Text>
@@ -32,7 +35,7 @@ export default function LessonDetailScreen() {
       </View>
 
       {/* Launch Zoom Button */}
-      <View style={styles.zoomButton} onPress={handleLaunchZoom}>
+      <View style={styles.zoomButton}>
         <Text style={styles.zoomButtonText}>Launch Zoom</Text>
       </View>
     </ScrollView>
@@ -65,7 +68,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     margin: 16,
-    marginTop: 0,
   },
   agendaTitle: {
     fontSize: 20,
@@ -95,6 +97,7 @@ const styles = StyleSheet.create({
   zoomButton: {
     margin: 16,
     marginTop: 0,
+    padding: 20,
   },
   zoomButtonText: {
     fontSize: 16,
