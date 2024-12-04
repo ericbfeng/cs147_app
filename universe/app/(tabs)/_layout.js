@@ -63,7 +63,7 @@ export default function TabLayout() {
           default: {},
         }),
         tabBarLabelStyle: {
-          fontFamily: "Outfit-Bold", // Replace with your desired font family
+          fontFamily: "Outfit-SemiBold", // Replace with your desired font family
           fontSize: 12, // Optional: Customize font size
         },
       }}

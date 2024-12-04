@@ -117,6 +117,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 20,
     marginBottom: 30,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   detailsHeader: {
     fontSize: 18,
@@ -138,12 +140,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#304674",
     borderRadius: 25,
     paddingVertical: 15,
+    paddingHorizontal: 20, 
     alignItems: "center",
     marginTop: 20,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
+    // borderWidth: 1, 
+    // borderColor: 'red',
+    // width: 300,
+
   },
   recommendedText: {
     color: "#FFF",

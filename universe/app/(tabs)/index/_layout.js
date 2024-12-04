@@ -36,7 +36,6 @@ export default function Layout() {
           headerTitleAlign: "center",
           headerShown: true, // Show header for the main screen
           headerBackTitle: "Back", // Explicitly remove back button text
-          // headerBackTitleVisible: false, // Ensure text is hidden
           headerBackTitleStyle: {
             fontFamily: "Outfit",
           },
@@ -49,7 +48,6 @@ export default function Layout() {
           headerTitleAlign: "center",
           headerShown: true, // Show header for the main screen
           headerBackTitle: "Back", // Explicitly remove back button text
-          // headerBackTitleVisible: false, // Ensure text is hidden
           headerBackTitleStyle: {
             fontFamily: "Outfit",
           },

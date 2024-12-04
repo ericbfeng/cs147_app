@@ -9,7 +9,7 @@ export default function ProfileCard() {
     <View style={styles.card}>
       <Image source={profileImage} style={styles.profileImage} />
       <Text style={styles.title}>John Doe</Text>
-      <Text style={styles.subtitle}>joined 2 years ago</Text>
+      <Text style={styles.subtitle}>Joined 2 years ago</Text>
       <Text style={styles.body}>
         Passionate about creating impactful help for young students interested
         in the Arts!

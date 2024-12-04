@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   recommendationHeader: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#2C2C54",
+    color: "black",
     marginBottom: 10,
     textAlign: "center",
     marginBottom: 30,
@@ -148,8 +148,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     shadowColor: "#000", // Shadow color (black)
     shadowOffset: { width: 0, height: 2 }, // Offset the shadow (x, y)
-    shadowOpacity: 0.7, // Shadow opacity
-    shadowRadius: 4, // Shadow blur radius
+    shadowOpacity: 0.3, // Shadow opacity
+    shadowRadius: 2, // Shadow blur radius
   },
   buttonText: {
     color: "#FFF",

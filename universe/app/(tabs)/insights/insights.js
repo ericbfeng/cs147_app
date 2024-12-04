@@ -26,7 +26,7 @@ const names = [
 const InsightCard = ({ name, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={() => onPress(name)}>
     <Image
-      source={require("../../../assets/images/avatar.png")} // Replace with actual avatar image
+      source={require("../../../assets/images/boy1.png")} // Replace with actual avatar image
       style={styles.avatar}
     />
     <Text style={styles.cardName}>{name}</Text>
@@ -143,11 +143,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 5,
     paddingHorizontal: 20,
   },
   recentText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
     color: "black",
     fontFamily: "Outfit",

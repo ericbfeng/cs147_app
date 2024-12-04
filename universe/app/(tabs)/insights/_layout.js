@@ -35,6 +35,10 @@ export default function Layout() {
           title: "AI Insights on Student", // Title for the details screen
           headerShown: true, // Show header for the details screen
           headerTitleAlign: "center",
+          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitleStyle: {
+            fontFamily: "Outfit",
+          },
         }}
       />
       <Stack.Screen
@@ -44,6 +48,10 @@ export default function Layout() {
           title: "AI Insights on Student", // Title for the new post screen
           headerShown: true, // Show header for the new post screen
           headerTitleAlign: "center",
+          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitleStyle: {
+            fontFamily: "Outfit",
+          },
         }}
       />
       <Stack.Screen
@@ -53,6 +61,10 @@ export default function Layout() {
           title: "AI Insights on Student", // Title for the new post screen
           headerShown: true, // Show header for the new post screen
           headerTitleAlign: "center",
+          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitleStyle: {
+            fontFamily: "Outfit",
+          },
         }}
       />
       <Stack.Screen
@@ -61,6 +73,10 @@ export default function Layout() {
           presentation: "transparentModal", // Modal presentation with transparent background
           headerShown: false, // Hide the header
           headerTitleAlign: "center",
+          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitleStyle: {
+            fontFamily: "Outfit",
+          },
         }}
       />
     </Stack>

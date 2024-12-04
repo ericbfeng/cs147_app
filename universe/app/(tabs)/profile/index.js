@@ -33,86 +33,87 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
   topBanner: {
-    width: '100%',
+    width: "100%",
     height: 60,
-    backgroundColor: '#f4f4f4',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#f4f4f4",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: "#ccc",
   },
   bannerText: {
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: "center",
     fontFamily: "Outfit-Bold",
-    color: 'black'
+    color: "black",
   },
   bannerIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 16,
     fontSize: 24,
-    color: '#888',
+    color: "#888",
   },
   divider: {
-    width: '100%',
+    width: "100%",
     height: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: "#ccc",
     marginVertical: 20,
   },
   sectionTitle: {
     fontSize: 20,
     fontFamily: "Outfit-Bold",
-    color: 'black',
+    color: "black",
     marginBottom: 15,
   },
   cardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
     marginTop: 10,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   card: {
-    backgroundColor: '#f8d7da',
+    backgroundColor: "#f8d7da",
     padding: 10,
     borderRadius: 8,
     flex: 1,
     marginHorizontal: 5,
-    
   },
   cardText: {
     fontSize: 14,
-    fontFamily: "Outfit",
-    textAlign: 'center',
-    color: 'red'
+    fontFamily: "Outfit-SemiBold",
+    textAlign: "center",
+    color: "red",
   },
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   scrollContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 16,
+    backgroundColor: "#FFF",
+    paddingBottom: 100,
   },
   largeText: {
     fontSize: 20,
     fontFamily: "Outfit-Bold",
-    color: 'black',
+    color: "black",
     marginTop: 20,
   },
   smallText: {
     fontSize: 14,
-    color: '#555',
+    color: "#555",
     fontFamily: "Outfit",
     marginTop: 5,
     marginBottom: 20,
   },
   largeImage: {
-    width: '100%', // Image spans the full width of the parent container
+    width: "100%", // Image spans the full width of the parent container
     height: undefined, // Let aspectRatio control the height
     aspectRatio: 1156 / 634, // Preserve the original aspect ratio
-    resizeMode: 'contain',
+    resizeMode: "contain",
     flexShrink: 0, // Prevent the image from shrinking unexpectedly
   },
 });

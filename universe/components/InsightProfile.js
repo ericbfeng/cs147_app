@@ -210,7 +210,7 @@ export default function StudentProfile({ name }) {
       {/* Top Card */}
       <View style={styles.topCard}>
         <Image
-          source={require("../assets/images/avatar.png")} // Replace with student avatar
+          source={require("../assets/images/boy1.png")} // Replace with student avatar
           style={styles.avatar}
         />
         <Text style={styles.name}>{name}</Text>
@@ -221,14 +221,14 @@ export default function StudentProfile({ name }) {
 
       {/* AI Insights Section */}
       <Text style={styles.sectionTitle}>AI Insights</Text>
-      <View style={styles.iconRow}>
+      {/* <View style={styles.iconRow}>
         <TouchableOpacity>
           <Text style={styles.icon}>+</Text>
         </TouchableOpacity>
         <TouchableOpacity>
           <Text style={styles.icon}>≡</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       {details.insights.map((insight, index) => (
         <TouchableOpacity
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#2C2C54",
+    color: "black",
     fontFamily: "Outfit-Bold",
   },
   iconRow: {
@@ -342,9 +342,9 @@ const styles = StyleSheet.create({
     borderTopColor: "#ECEFF7",
   },
   bottomText: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
-    color: "#2C2C54",
+    color: "black",
     fontFamily: "Outfit",
   },
 });
