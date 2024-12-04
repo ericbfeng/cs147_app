@@ -9,9 +9,9 @@
         "zoomLink": "xxxx",
         "date": "Fri, Nov 26",
         "agenda": [
-          "What are the best ECs?",
-          "How to write the best ECs",
-          "How to stand out as a CS major"
+          "Discussion on Extracurriculars That Are Most Unique!",
+          "How to find unique extracurricular activities",
+          "How to showcase uniqueness in applications"
         ],
         "occurred": true
       },
@@ -22,14 +22,9 @@
         "zoomLink": "xxxx",
         "date": "Wed, Nov 17",
         "agenda": [
-          "What are the best ECs?",
-          "How to write the best ECs",
-          [
-            "Examples:",
-            "Community service",
-            "Starting a non-profit",
-            "Donate millions of dollars"
-          ]
+          "Identifying overplayed extracurriculars",
+          "Tips to avoid common mistakes in activities",
+          "Innovative ideas to stand out with activities"
         ],
         "occurred": true
       },
@@ -40,32 +35,22 @@
         "zoomLink": "xxxx",
         "date": "Mon, Nov 22",
         "agenda": [
-          "What are the best ECs?",
-          "How to write the best ECs",
-          [
-            "Examples:",
-            "Community service",
-            "Starting a non-profit",
-            "Donate millions of dollars"
-          ]
+          "Benefits of exploring art as an extracurricular",
+          "How art develops creativity and problem-solving",
+          "Steps to get started with art activities"
         ],
         "occurred": false
       },
       {
         "id": 4,
         "name": "Lesson #4",
-        "description": "How To Write Your Activites Descriptions",
+        "description": "How To Write Your Activities Descriptions",
         "zoomLink": "xxxx",
         "date": "Fri, Nov 26",
         "agenda": [
-          "What are the best ECs?",
-          "How to write the best ECs",
-          [
-            "Examples:",
-            "Community service",
-            "Starting a non-profit",
-            "Donate millions of dollars"
-          ]
+          "Crafting impactful activity descriptions",
+          "Storytelling techniques for writing descriptions",
+          "Best practices for concise and effective writing"
         ],
         "occurred": false
       }

@@ -8,12 +8,13 @@ import {
   ScrollView,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import ClassroomData from "../../../data/LessonData.json";
+import LessonData from "../../../data/LessonData.json";
 import { useRoute } from "@react-navigation/native";
 
 export default function LessonDetailScreen() {
   const route = useRoute();
-  const dataFinal = ClassroomData[0].data[0];
+  const { lesson_item } = useLocalSearchParams();
+  const dataFinal = LessonData[0].data[lesson_item];
   console.log(dataFinal);
 
   const handleLaunchZoom = () => {
@@ -21,7 +22,7 @@ export default function LessonDetailScreen() {
   };
 
 
-  console.log("specific agenda: ", dataFinal.agenda);
+  console.log("specific agenda: "  , dataFinal.agenda);
   return (
     <ScrollView style={styles.container}>
       {/* Date Section */}

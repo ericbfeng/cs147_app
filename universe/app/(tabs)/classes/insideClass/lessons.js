@@ -38,7 +38,7 @@ export default function LessonsScreen() {
   const handleLessonPress = (item) => {
     router.push({
       pathname: "classes/insideClass/specificLesson",
-      params: { data: item },
+      params: { lesson_item: (item.id - 1) },
     });
   };
 
