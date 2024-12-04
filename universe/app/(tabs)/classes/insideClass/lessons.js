@@ -21,7 +21,7 @@ export default function LessonsScreen() {
   const [searchQuery, setSearchQuery] = useState(""); // Search query
   const navigation = useNavigation();
 
-  const { classroomID } = useLocalSearchParams();
+  const { classroomID, headerTitle } = useLocalSearchParams();
   const lessonData = LESSON_DATA.find(
     (item) => item.id === Number(classroomID)
   ).data;
@@ -45,7 +45,7 @@ export default function LessonsScreen() {
   const navigateToStudents = () => {
     router.push({
       pathname: "classes/insideClass/students",
-      params: { classroomID },
+      params: { classroomID, headerTitle }, // Pass both classroomID and headerTitle
     });
   };
 
@@ -56,7 +56,7 @@ export default function LessonsScreen() {
   return (
     <SafeAreaView style={styles.container}>
 
-    <View style={styles.header}>
+      <View style={styles.header}>
         <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
           <Text style={[styles.tabButtonText, styles.activeTabText]}>Lessons</Text>
         </TouchableOpacity>
