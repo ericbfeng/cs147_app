@@ -48,6 +48,12 @@ export default function TabsLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="specificLesson"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Tabs>
   );
 }
