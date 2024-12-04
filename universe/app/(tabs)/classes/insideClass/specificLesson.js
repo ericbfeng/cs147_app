@@ -24,7 +24,7 @@ export default function LessonDetailScreen() {
     <ScrollView style={styles.container}>
       {/* Date Section */}
       <View style={styles.dateContainer}>
-        <Text style={styles.dateLabel}>Date:</Text>
+        <Text style={styles.dateLabel}>Date: Mon December 1st</Text>
         <Text style={styles.dateText}>{dataFinal.date}</Text>
       </View>
 

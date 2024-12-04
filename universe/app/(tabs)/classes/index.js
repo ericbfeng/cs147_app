@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -14,38 +14,54 @@ import { useRouter } from "expo-router"; // Use useRouter for navigation
 import ClassroomData from "../../data/ClassroomData.json";
 import Feather from "@expo/vector-icons/Feather";
 
-const ClassButton = ({ title, onPress }) => (
-  <TouchableOpacity
-    onPress={onPress}
-    style={styles.classButton}
-    activeOpacity={0.7}
-  >
-    <View style={styles.buttonContainer}>
-      <Image
-        source={require("../../../assets/images/blue.png")}
-        style={styles.planetImage}
-        resizeMode="contain"
-      />
-      {/* Overlay container for centered text */}
-      <View style={styles.textOverlay}>
-        <Text style={styles.buttonText}>{title}</Text>
+const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
+  <View style={styles.classButtonContainer}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={styles.classButton}
+      activeOpacity={0.7}
+    >
+      <View style={styles.buttonContainer}>
+        <Image
+          source={require("../../../assets/images/blue.png")}
+          style={styles.planetImage}
+          resizeMode="contain"
+        />
+        <View style={styles.textOverlay}>
+          <Text style={styles.buttonText}>{title}</Text>
+        </View>
       </View>
-    </View>
-  </TouchableOpacity>
+    </TouchableOpacity>
+    {showDelete && (
+      <TouchableOpacity
+        style={styles.deleteButton}
+        onPress={onDelete}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.deleteButtonText}>Delete</Text>
+      </TouchableOpacity>
+    )}
+  </View>
 );
 
-const EditButton = ({ onPress }) => (
+const EditButton = ({ onPress, isEditMode }) => (
   <TouchableOpacity
     style={styles.editButton}
     onPress={onPress}
     activeOpacity={0.7}
   >
-    <Feather name="edit-2" size={30} color="white" />
+    <Feather
+      name={isEditMode ? "x" : "edit-2"} // Toggle between "x" and "edit-2"
+      size={30}
+      color="white"
+    />
   </TouchableOpacity>
 );
 
 const ClassesInterface = () => {
   const router = useRouter();
+  const [editMode, setEditMode] = useState(false); // Track edit mode state
+  const [data, setData] = useState(ClassroomData); // Manage the classroom data
 
   const handleClassPress = (item) => {
     router.push({
@@ -55,19 +71,27 @@ const ClassesInterface = () => {
   };
 
   const handleEditPress = () => {
-    console.log("Edit button pressed");
-    // Handle edit mode or navigation here
+    setEditMode((prev) => !prev); // Toggle edit mode
+  };
+
+  const handleDelete = (id) => {
+    setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
   };
 
   const renderItem = ({ item }) => (
-    <ClassButton title={item.name} onPress={() => handleClassPress(item)} />
+    <ClassButton
+      title={item.name}
+      onPress={() => handleClassPress(item)}
+      showDelete={editMode} // Show delete button only in edit mode
+      onDelete={() => handleDelete(item.id)} // Handle delete action
+    />
   );
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.gridContainer}>
         <FlatList
-          data={ClassroomData}
+          data={data}
           contentContainerStyle={{ gap: VERTICAL_SPACING }}
           columnWrapperStyle={{ gap: HORIZONTAL_SPACING }}
           renderItem={renderItem}
@@ -76,15 +100,15 @@ const ClassesInterface = () => {
         />
       </View>
 
-      <EditButton onPress={handleEditPress} />
+      <EditButton onPress={handleEditPress} isEditMode={editMode} />
     </SafeAreaView>
   );
 };
 
 const { width } = Dimensions.get("window");
 const BUTTON_SIZE = width * 0.35;
-const HORIZONTAL_SPACING = width * 0.12; // Increased spacing between columns
-const VERTICAL_SPACING = HORIZONTAL_SPACING; // Increased vertical spacing
+const HORIZONTAL_SPACING = width * 0.12;
+const VERTICAL_SPACING = HORIZONTAL_SPACING;
 const EDIT_BUTTON_SIZE = 56;
 
 const styles = StyleSheet.create({
@@ -92,24 +116,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    gap: 35,
-  },
   gridContainer: {
     flex: 1,
-    margin: width * 0.08,
-    paddingTop: VERTICAL_SPACING * 0.3,
+  },
+  classButtonContainer: {
+    alignItems: "center",
   },
   classButton: {
     width: BUTTON_SIZE,
     height: BUTTON_SIZE,
     justifyContent: "center",
     alignItems: "center",
-    elevation: 4, // Android shadow
-    shadowColor: "#000", // iOS shadow
+    elevation: 4,
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -140,6 +159,19 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 16,
     fontFamily: "Outfit",
+  },
+  deleteButton: {
+    marginTop: 10,
+    backgroundColor: "red",
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    alignItems: "center",
+  },
+  deleteButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 14,
   },
   editButton: {
     position: "absolute",
