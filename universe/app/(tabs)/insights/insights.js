@@ -78,10 +78,10 @@ export default function Insights() {
               <Text style={styles.recentText}>Recent</Text>
               <View style={styles.iconContainer}>
                 <TouchableOpacity>
-                  <Text style={styles.icon}>≡</Text> {/* List View Icon */}
+                  {/* <Text style={styles.icon}>≡</Text> List View Icon */}
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.icon}>▢</Text> {/* Grid View Icon */}
+                  {/* <Text style={styles.icon}>▢</Text> Grid View Icon */}
                 </TouchableOpacity>
               </View>
             </View>
@@ -196,4 +196,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-
