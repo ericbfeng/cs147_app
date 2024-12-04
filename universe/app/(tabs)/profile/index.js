@@ -109,8 +109,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   largeImage: {
-    width: '100%',
-    aspectRatio: 1156 / 634,
+    width: '100%', // Image spans the full width of the parent container
+    height: undefined, // Let aspectRatio control the height
+    aspectRatio: 1156 / 634, // Preserve the original aspect ratio
     resizeMode: 'contain',
+    flexShrink: 0, // Prevent the image from shrinking unexpectedly
   },
 });
