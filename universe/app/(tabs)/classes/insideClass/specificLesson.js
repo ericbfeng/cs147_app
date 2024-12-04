@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  Alert,
   ScrollView,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
@@ -12,6 +13,11 @@ import { useRoute } from "@react-navigation/native";
 export default function LessonDetailScreen() {
   const route = useRoute();
   const dataFinal = route.params.data;
+
+  const handleLaunchZoom = () => {
+    Alert.alert("Zoom Link", "https://fake.zoom.link/meeting123");
+  };
+
 
   console.log("specific agenda: ", dataFinal.agenda);
   return (
@@ -26,7 +32,7 @@ export default function LessonDetailScreen() {
       <View style={styles.agendaContainer}>
         <Text style={styles.agendaTitle}>Agenda:</Text>
         <View>
-          {dataFinal.agenda.map((item, index) => (
+          {Object.keys(dataFinal).map((item, index) => (
             <Text key={index}>
               {"\u2022"} {item}
             </Text>
@@ -35,9 +41,9 @@ export default function LessonDetailScreen() {
       </View>
 
       {/* Launch Zoom Button */}
-      <View style={styles.zoomButton}>
+      <TouchableOpacity style={styles.zoomButton} onPress={handleLaunchZoom}>
         <Text style={styles.zoomButtonText}>Launch Zoom</Text>
-      </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
