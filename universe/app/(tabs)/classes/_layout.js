@@ -19,10 +19,13 @@ export default function Layout() {
           fontWeight: "bold",
         },
         headerLeft: () => (
-          <TouchableOpacity onPress={() => router.back()} style={{ paddingHorizontal: 10 }}>
+          <TouchableOpacity
+            onPress={() => router.back()}
+            style={{ paddingHorizontal: 10 }}
+          >
             <Ionicons name="chevron-back" size={32} color="black" />
           </TouchableOpacity>
-        )
+        ),
       }}
     >
       {/* Main Screen */}
@@ -31,6 +34,7 @@ export default function Layout() {
         options={{
           title: "My Classes",
           headerTitleAlign: "center",
+          headerLeft: null,
         }}
       />
       <Stack.Screen

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -8,21 +8,28 @@ import {
   ScrollView,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import LessonData from "../../../data/LessonData.json";
+import ClassroomData from "../../../data/LessonData.json";
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LessonDetailScreen() {
   const route = useRoute();
-  const { lesson_item } = useLocalSearchParams();
-  const dataFinal = LessonData[0].data[lesson_item];
+  const navigation = useNavigation();
+
+  const dataFinal = ClassroomData[0].data[0];
   console.log(dataFinal);
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: dataFinal.name,
+    });
+  }, [navigation]);
 
   const handleLaunchZoom = () => {
     Alert.alert("Zoom Link", "https://fake.zoom.link/meeting123");
   };
 
-
-  console.log("specific agenda: "  , dataFinal.agenda);
+  console.log("specific agenda: ", dataFinal.agenda);
   return (
     <ScrollView style={styles.container}>
       {/* Date Section */}

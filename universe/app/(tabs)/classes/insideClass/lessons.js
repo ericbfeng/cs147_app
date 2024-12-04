@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -27,6 +27,12 @@ export default function LessonsScreen() {
   ).data;
   console.log("this is lesson data", lessonData);
 
+  useEffect(() => {
+    navigation.setOptions({
+      title: headerTitle,
+    });
+  }, [navigation]);
+
   if (!lessonData) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -38,7 +44,7 @@ export default function LessonsScreen() {
   const handleLessonPress = (item) => {
     router.push({
       pathname: "classes/insideClass/specificLesson",
-      params: { lesson_item: (item.id - 1) },
+      params: { data: item },
     });
   };
 
@@ -55,10 +61,11 @@ export default function LessonsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-
       <View style={styles.header}>
         <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-          <Text style={[styles.tabButtonText, styles.activeTabText]}>Lessons</Text>
+          <Text style={[styles.tabButtonText, styles.activeTabText]}>
+            Lessons
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabButton} onPress={navigateToStudents}>
           <Text style={styles.tabButtonText}>Students</Text>
