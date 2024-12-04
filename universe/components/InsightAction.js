@@ -40,10 +40,11 @@ export default function InsightAction({ priority, action, recommendation }) {
 
       {/* Action Buttons */}
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => handleSendPress()}>
-          <Text style={styles.buttonText}>
-            Send to student
-          </Text>
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={() => handleSendPress()}
+        >
+          <Text style={styles.buttonText}>Send to student</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.actionButton}>
           <Text style={styles.buttonText}>See next action</Text>
@@ -72,7 +73,8 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 16,
     color: "#345DA7",
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "Outfit",
   },
   priorityCard: {
     backgroundColor: "#304674",
@@ -84,14 +86,16 @@ const styles = StyleSheet.create({
   },
   priority: {
     fontSize: 18,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "#FFF",
     marginBottom: 10,
+    fontFamily: "Outfit-Bold",
   },
   action: {
     fontSize: 16,
     color: "#EEE",
     textAlign: "center",
+    fontFamily: "Outfit",
   },
   recommendationHeader: {
     fontSize: 18,
@@ -100,6 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
     marginBottom: 30,
+    fontFamily: "Outfit-Bold",
   },
   recommendationCard: {
     backgroundColor: "#DBDFEA", // Keep your provided color
@@ -118,7 +123,8 @@ const styles = StyleSheet.create({
 
   recommendationTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "Outfit-Bold",
     color: "#2C2C54",
     marginBottom: 10,
     textAlign: "center",
@@ -129,6 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     lineHeight: 22,
     padding: 10,
+    fontFamily: "Outfit",
   },
   buttonRow: {
     flexDirection: "row",
@@ -147,6 +154,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FFF",
     fontSize: 14,
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "Outfit-Bold",
   },
 });

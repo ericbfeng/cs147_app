@@ -100,15 +100,17 @@ const styles = StyleSheet.create({
   },
   priority: {
     fontSize: 18,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "#FFF",
     marginBottom: 5,
+    fontFamily: "Outfit-Bold",
   },
   action: {
     fontSize: 18,
     fontWeight: "normal",
     color: "#FFF",
     textAlign: "center",
+    fontFamily: "Outfit",
   },
   detailsSection: {
     backgroundColor: "#DBDFEA",
@@ -118,10 +120,11 @@ const styles = StyleSheet.create({
   },
   detailsHeader: {
     fontSize: 18,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "#2C2C54",
     marginBottom: 10,
     textAlign: "center",
+    fontFamily: "Outfit-Bold",
   },
   detailsText: {
     fontSize: 16,
@@ -129,6 +132,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     marginBottom: 15, // Space between paragraphs
     textAlign: "justify", // Optional: Justify text for better paragraph alignment
+    fontFamily: "Outfit",
   },
   recommendedButton: {
     backgroundColor: "#304674",
@@ -145,6 +149,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontWeight: "bold",
     fontSize: 16,
+    fontFamily: "Outfit",
   },
   pie: {
     width: 120,

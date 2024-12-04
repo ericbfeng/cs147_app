@@ -277,25 +277,29 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 22,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     marginBottom: 5,
+    fontFamily: "Outfit-Bold",
   },
   class: {
     fontSize: 16,
     fontWeight: "600",
     marginBottom: 5,
     color: "#2C2C54",
+    fontFamily: "Outfit",
   },
   info: {
     fontSize: 14,
     color: "#777",
     textAlign: "center",
+    fontFamily: "Outfit",
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
     color: "#2C2C54",
+    fontFamily: "Outfit-Bold",
   },
   iconRow: {
     flexDirection: "row",
@@ -320,11 +324,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FFF",
     marginBottom: 5,
+    fontFamily: "Outfit",
   },
   action: {
     fontSize: 14,
     color: "#EEE",
     textAlign: "center",
+    fontFamily: "Outfit",
   },
   bottomSection: {
     flexDirection: "row",
@@ -339,5 +345,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#2C2C54",
+    fontFamily: "Outfit",
   },
 });
