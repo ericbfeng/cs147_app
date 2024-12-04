@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -11,9 +11,9 @@ import {
   ScrollView,
 } from "react-native";
 import Profile from "../../insights/insightProfile";
-import { useRouter,
-  useLocalSearchParams
- } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const names = [
   { name: "Bob C." },
@@ -35,6 +35,8 @@ const InsightCard = ({ name }) => (
 
 export default function StudentsScreen() {
   const router = useRouter();
+  const navigation = useNavigation();
+
   const { classroomID, headerTitle } = useLocalSearchParams();
   const [selectedName, setSelectedName] = useState(null); // State for selected name
   const [searchQuery, setSearchQuery] = useState(""); // Search query
@@ -47,11 +49,16 @@ export default function StudentsScreen() {
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  useEffect(() => {
+    navigation.setOptions({
+      title: headerTitle,
+    });
+  }, [navigation]);
 
-  const navigateToLessons= () => {
+  const navigateToLessons = () => {
     router.push({
       pathname: "classes/insideClass/lessons",
-      params: { headerTitle , classroomID }
+      params: { headerTitle, classroomID },
     });
   };
 
@@ -62,36 +69,34 @@ export default function StudentsScreen() {
           {/* Header */}
           {/* <Text style={styles.headerText}>Students</Text> */}
           <View style={styles.header}>
-          <TouchableOpacity style={[styles.tabButton ]} onPress={navigateToLessons}>
-            <Text style={[styles.tabButtonText, styles.activeTabText]}>Lessons</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.tabButton, styles.activeTab]} >
-            <Text style={styles.tabButtonText}>Students</Text>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity
+              style={[styles.tabButton]}
+              onPress={navigateToLessons}
+            >
+              <Text style={[styles.tabButtonText, styles.activeTabText]}>
+                Lessons
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
+              <Text style={styles.tabButtonText}>Students</Text>
+            </TouchableOpacity>
+          </View>
 
           {/* Search Bar */}
-          <View style={styles.topContainer}>
+          <View style={styles.searchContainer}>
             <TextInput
-              style={styles.searchBar}
-              placeholder="Search Student"
+              style={styles.searchInput}
+              placeholder="Search student"
               placeholderTextColor="#888"
               value={searchQuery}
               onChangeText={(text) => setSearchQuery(text)}
             />
-
-            {/* Recent and Layout Options */}
-            <View style={styles.topRow}>
-              <Text style={styles.recentText}>Recent</Text>
-              <View style={styles.iconContainer}>
-                <TouchableOpacity>
-                  {/* <Text style={styles.icon}>≡</Text> List View Icon */}
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  {/* <Text style={styles.icon}>▢</Text> Grid View Icon */}
-                </TouchableOpacity>
-              </View>
-            </View>
+            <Icon
+              name="search"
+              size={24}
+              color="#999"
+              style={styles.searchIcon}
+            />
           </View>
 
           {/* Grid of Students */}
@@ -118,10 +123,23 @@ const styles = StyleSheet.create({
     // borderColor: "red",
     // paddingTop: 20,
   },
-  topContainer: {
-    // borderWidth: 1,
-    // borderColor: 'red',
-    paddingTop: 20,
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F5F5F5",
+    margin: 16,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+  },
+  searchInput: {
+    flex: 1,
+    padding: 12,
+    fontSize: 16,
+    color: "#333",
+    fontFamily: "Outfit",
+  },
+  searchIcon: {
+    marginLeft: 8,
   },
   headerText: {
     fontSize: 20,
@@ -131,19 +149,6 @@ const styles = StyleSheet.create({
     color: "black",
     fontFamily: "Outfit-Bold",
     // fontWeight: '700',
-  },
-  searchBar: {
-    backgroundColor: "#F0F0F5",
-    borderRadius: 10,
-    padding: 10,
-    fontSize: 16,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: "#E4E4E7",
-    marginHorizontal: 20,
-    fontFamily: "Outfit",
-    // borderColor: "blue",
-    // borderWidth: 1,
   },
   activeTab: {
     borderBottomWidth: 2,

@@ -21,7 +21,7 @@ export default function LessonDetailScreen() {
 
   useEffect(() => {
     navigation.setOptions({
-      title: dataFinal.name,
+      title: `${dataFinal.name} Details`,
     });
   }, [navigation]);
 
