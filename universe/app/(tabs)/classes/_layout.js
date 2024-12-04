@@ -18,6 +18,11 @@ export default function Layout() {
           fontSize: 20,
           fontWeight: "bold",
         },
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => router.back()} style={{ paddingHorizontal: 10 }}>
+            <Ionicons name="chevron-back" size={32} color="black" />
+          </TouchableOpacity>
+        )
       }}
     >
       {/* Main Screen */}
@@ -29,16 +34,25 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
-        name="insideClass"
-        options={({ route }) => ({
-          title: route.params?.headerTitle,
+        name="insideClass/lessons"
+        options={{
+          title: "My Lessons",
           headerTitleAlign: "center",
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()}>
-              <Ionicons name="chevron-back" size={32} color={"black"} />
-            </TouchableOpacity>
-          ),
-        })}
+        }}
+      />
+      <Stack.Screen
+        name="insideClass/specificLesson"
+        options={{
+          title: "Lesson Details",
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name="insideClass/students"
+        options={{
+          title: "Student List",
+          headerTitleAlign: "center",
+        }}
       />
     </Stack>
   );
