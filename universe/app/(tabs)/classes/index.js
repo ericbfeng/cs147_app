@@ -118,6 +118,8 @@ const styles = StyleSheet.create({
   },
   gridContainer: {
     flex: 1,
+    margin: width * 0.08,
+    paddingTop: VERTICAL_SPACING * 0.3,
   },
   classButtonContainer: {
     alignItems: "center",
