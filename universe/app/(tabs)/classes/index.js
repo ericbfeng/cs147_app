@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     fontSize: 16,
+    fontFamily: "Outfit",
   },
   editButton: {
     position: "absolute",
