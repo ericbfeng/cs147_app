@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Image,
   FlatList,
+  Alert,
 } from "react-native";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
 import EditButton from "../../../components/EditButton";
@@ -43,7 +44,11 @@ const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
   </View>
 );
 
-const ClassesInterface = () => {
+const SharedContext = createContext();
+
+export const useSharedContext = () => useContext(SharedContext);
+
+const ClassesInterface = ({ children }) => {
   const router = useRouter();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
   const [data, setData] = useState(ClassroomData); // Manage the classroom data
@@ -63,17 +68,40 @@ const ClassesInterface = () => {
     setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
   };
 
+  const showAlert = (id) => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this item?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: () => handleDelete(id),
+          style: "destructive", // iOS only - makes the button red
+        },
+      ],
+      { cancelable: true } // Android only - allows tap outside to dismiss
+    );
+  };
+
   const renderItem = ({ item }) => (
     <ClassButton
       title={item.name}
       onPress={() => handleClassPress(item)}
       showDelete={editMode} // Show delete button only in edit mode
-      onDelete={() => handleDelete(item.id)} // Handle delete action
+      onDelete={() => showAlert(item.id)} // Handle delete action
     />
   );
 
   return (
     <SafeAreaView style={styles.container}>
+      <SharedContext.Provider value={{ editMode, setEditMode }}>
+        {children}
+      </SharedContext.Provider>
+
       <View style={styles.gridContainer}>
         <FlatList
           data={data}
