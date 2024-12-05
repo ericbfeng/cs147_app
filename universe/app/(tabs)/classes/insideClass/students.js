@@ -40,6 +40,10 @@ export default function StudentsScreen() {
     /* Not sure if we should be able to navigate from this page to the individual students pages */
   }
 
+  const handleNewStudent = () => {
+    console.log("test");
+  };
+
   const handleDelete = (id) => {
     setData((prevData) => prevData.filter((item) => item.name !== id)); // Remove item by ID
   };
@@ -108,7 +112,10 @@ export default function StudentsScreen() {
   const renderItem = ({ item }) => {
     if (item.name === "CREATE_NEW" && editMode) {
       return (
-        <TouchableOpacity style={styles.createNewCard}>
+        <TouchableOpacity
+          style={styles.createNewCard}
+          onPress={handleNewStudent}
+        >
           <Text style={styles.addNewText}>+</Text>
         </TouchableOpacity>
       );
@@ -135,7 +142,7 @@ export default function StudentsScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-              <Text style={styles.tabButtonText}>Students</Text>
+              <Text style={styles.tabButtonTextMain}>Students</Text>
             </TouchableOpacity>
           </View>
 
@@ -222,6 +229,11 @@ const styles = StyleSheet.create({
     borderBottomColor: "#1e3a8a",
   },
   tabButtonText: {
+    fontSize: 16,
+    fontFamily: "Outfit",
+    color: "#666",
+  },
+  tabButtonTextMain: {
     fontSize: 16,
     fontFamily: "Outfit-Bold",
     color: "#666",
@@ -318,15 +330,16 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginTop: 10,
-    backgroundColor: "red",
+    borderWidth: 3,
     borderRadius: 8,
+    borderColor: "red",
     paddingVertical: 6,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   deleteButtonText: {
-    color: "white",
+    color: "red",
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 12,
   },
 });

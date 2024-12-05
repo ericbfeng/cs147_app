@@ -208,16 +208,17 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginTop: 10,
-    backgroundColor: "red",
+    borderWidth: 3,
     borderRadius: 8,
+    borderColor: "red",
     paddingVertical: 6,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   deleteButtonText: {
-    color: "white",
+    color: "red",
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 12,
   },
 });
 

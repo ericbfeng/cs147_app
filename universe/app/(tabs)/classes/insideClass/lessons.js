@@ -68,6 +68,10 @@ export default function LessonsScreen() {
     );
   };
 
+  const handleNewLesson = () => {
+    console.log("test");
+  };
+
   const handleEditPress = () => {
     setEditMode((prev) => !prev); // Toggle edit mode
   };
@@ -99,7 +103,7 @@ export default function LessonsScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-          <Text style={[styles.tabButtonText, styles.activeTabText]}>
+          <Text style={[styles.tabButtonTextMain, styles.activeTabText]}>
             Lessons
           </Text>
         </TouchableOpacity>
@@ -123,7 +127,7 @@ export default function LessonsScreen() {
       {/* Create New Lesson Bar */}
       {editMode && (
         <View style={styles.createContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleNewLesson}>
             <Text style={styles.createNewText}>Create New Lesson</Text>
           </TouchableOpacity>
         </View>
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
   },
   tabButtonText: {
     fontSize: 16,
-    fontFamily: "Outfit-Bold",
+    fontFamily: "Outfit",
     color: "#666",
   },
   activeTabText: {
@@ -178,6 +182,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
+  },
+  tabButtonTextMain: {
+    fontSize: 16,
+    fontFamily: "Outfit-Bold",
+    color: "#666",
   },
   createContainer: {
     flexDirection: "row",
