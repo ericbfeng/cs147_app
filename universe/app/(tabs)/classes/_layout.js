@@ -1,9 +1,12 @@
 import { Stack, useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { TouchableOpacity, View } from "react-native";
+// import { useNavigation } from "@react-navigation/native";
 
 export default function Layout() {
   const router = useRouter();
+  // const navigation = useNavigation();
+
   return (
     <Stack
       screenOptions={{

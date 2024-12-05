@@ -10,9 +10,8 @@ import {
   FlatList,
 } from "react-native";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
-
+import EditButton from "../../../components/EditButton";
 import ClassroomData from "../../data/ClassroomData.json";
-import Feather from "@expo/vector-icons/Feather";
 
 const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
   <View style={styles.classButtonContainer}>
@@ -42,20 +41,6 @@ const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
       </TouchableOpacity>
     )}
   </View>
-);
-
-const EditButton = ({ onPress, isEditMode }) => (
-  <TouchableOpacity
-    style={styles.editButton}
-    onPress={onPress}
-    activeOpacity={0.7}
-  >
-    <Feather
-      name={isEditMode ? "x" : "edit-2"} // Toggle between "x" and "edit-2"
-      size={30}
-      color="white"
-    />
-  </TouchableOpacity>
 );
 
 const ClassesInterface = () => {
@@ -109,7 +94,6 @@ const { width } = Dimensions.get("window");
 const BUTTON_SIZE = width * 0.35;
 const HORIZONTAL_SPACING = width * 0.12;
 const VERTICAL_SPACING = HORIZONTAL_SPACING;
-const EDIT_BUTTON_SIZE = 56;
 
 const styles = StyleSheet.create({
   container: {
@@ -174,25 +158,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 14,
-  },
-  editButton: {
-    position: "absolute",
-    bottom: 100,
-    right: 24,
-    width: EDIT_BUTTON_SIZE,
-    height: EDIT_BUTTON_SIZE,
-    borderRadius: EDIT_BUTTON_SIZE / 2,
-    backgroundColor: "#1e3a8a",
-    justifyContent: "center",
-    alignItems: "center",
-    elevation: 4,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
   },
 });
 

@@ -14,6 +14,7 @@ import Profile from "../../insights/insightProfile";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import EditButton from "../../../../components/EditButton";
 
 const names = [
   { name: "Bob C." },
@@ -36,6 +37,7 @@ const InsightCard = ({ name }) => (
 export default function StudentsScreen() {
   const router = useRouter();
   const navigation = useNavigation();
+  const [editMode, setEditMode] = useState(false); // Track edit mode state
 
   const { classroomID, headerTitle } = useLocalSearchParams();
   const [selectedName, setSelectedName] = useState(null); // State for selected name
@@ -60,6 +62,10 @@ export default function StudentsScreen() {
       pathname: "classes/insideClass/lessons",
       params: { headerTitle, classroomID },
     });
+  };
+
+  const handleEditPress = () => {
+    setEditMode((prev) => !prev); // Toggle edit mode
   };
 
   return (
@@ -111,6 +117,8 @@ export default function StudentsScreen() {
       ) : (
         <Profile name={selectedName} onClose={handleCloseProfile} />
       )}
+
+      <EditButton onPress={handleEditPress} isEditMode={editMode} />
     </View>
   );
 }

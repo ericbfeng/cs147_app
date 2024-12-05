@@ -11,6 +11,7 @@ import {
 import { useLocalSearchParams } from "expo-router";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
+import EditButton from "../../../../components/EditButton";
 
 import LESSON_DATA from "../../../data/LessonData.json";
 import LessonItem from "../../../../components/LessonItem";
@@ -20,6 +21,7 @@ export default function LessonsScreen() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(""); // Search query
   const navigation = useNavigation();
+  const [editMode, setEditMode] = useState(false); // Track edit mode state
 
   const { classroomID, headerTitle } = useLocalSearchParams();
   const lessonData = LESSON_DATA.find(
@@ -40,6 +42,10 @@ export default function LessonsScreen() {
       </SafeAreaView>
     );
   }
+
+  const handleEditPress = () => {
+    setEditMode((prev) => !prev); // Toggle edit mode
+  };
 
   const handleLessonPress = (item) => {
     router.push({
@@ -92,6 +98,8 @@ export default function LessonsScreen() {
         style={styles.list}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
+
+      <EditButton onPress={handleEditPress} isEditMode={editMode} />
     </SafeAreaView>
   );
 }
