@@ -151,9 +151,11 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F0F0F5",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E4E4E7",
     margin: 16,
-    borderRadius: 8,
     paddingHorizontal: 12,
   },
   activeTab: {
@@ -208,9 +210,11 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    padding: 12,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 4,
     fontSize: 16,
-    color: "#333",
+    fontFamily: "Outfit",
   },
   searchIcon: {
     marginLeft: 8,
