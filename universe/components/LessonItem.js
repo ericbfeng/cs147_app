@@ -73,15 +73,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#000",
+    fontFamily: "Outfit",
   },
   lessonDate: {
     fontSize: 14,
     color: "#666",
+    fontFamily: "Outfit",
   },
   lessonDescription: {
     fontSize: 14,
     color: "#333",
     marginBottom: 8,
+    fontFamily: "Outfit",
   },
   zoomLinkContainer: {
     marginTop: 4,
@@ -89,10 +92,11 @@ const styles = StyleSheet.create({
   zoomLinkText: {
     fontSize: 14,
     color: "#666",
+    fontFamily: "Outfit",
   },
   deleteButton: {
     marginTop: 10,
-    backgroundColor: "red",
+    backgroundColor: "#EB4D3D",
     borderRadius: 8,
     paddingVertical: 6,
     paddingHorizontal: 16,
@@ -102,5 +106,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 12,
+    fontFamily: "Outfit",
   },
 });

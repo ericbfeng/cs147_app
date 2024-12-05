@@ -114,6 +114,7 @@ export default function LessonsScreen() {
           style={styles.searchInput}
           placeholder="Search lesson by keywords"
           placeholderTextColor="#888"
+          fontFamily="Outfit"
           value={searchQuery}
           onChangeText={(text) => setSearchQuery(text)}
         />
@@ -181,17 +182,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "gray",
+    backgroundColor: "#E4E4E4",
     marginLeft: 18,
     height: 50,
     marginRight: 18,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#E4E4E7",
+    // borderWidth: 1,
+    // borderColor: "#E4E4E7",
   },
   createNewText: {
     fontFamily: "Outfit-Bold",
-    fontSize: 22,
+    fontSize: 16,
   },
   searchBar: {
     backgroundColor: "#F0F0F5",
