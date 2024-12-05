@@ -9,6 +9,7 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
+  Alert,
 } from "react-native";
 import Profile from "../../insights/insightProfile";
 import { useRouter, useLocalSearchParams } from "expo-router";
@@ -24,16 +25,6 @@ const names = [
   { name: "Andrew P." },
 ];
 
-const InsightCard = ({ name }) => (
-  <View style={styles.card}>
-    <Image
-      source={require("../../../../assets/images/boy1.png")} // Replace with actual avatar image
-      style={styles.avatar}
-    />
-    <Text style={styles.cardName}>{name}</Text>
-  </View>
-);
-
 export default function StudentsScreen() {
   const router = useRouter();
   const navigation = useNavigation();
@@ -47,9 +38,53 @@ export default function StudentsScreen() {
     /* Not sure if we should be able to navigate from this page to the individual students pages */
   }
 
+  const handleDelete = (id) => {
+    setData((prevData) => prevData.filter((item) => item.name !== id)); // Remove item by ID
+  };
+
+  const showAlert = (name) => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this item?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: () => handleDelete(name),
+          style: "destructive", // iOS only - makes the button red
+        },
+      ],
+      { cancelable: true } // Android only - allows tap outside to dismiss
+    );
+  };
+
+  const InsightCard = ({ name }) => (
+    <View style={styles.card}>
+      <Image
+        source={require("../../../../assets/images/boy1.png")} // Replace with actual avatar image
+        style={styles.avatar}
+      />
+      <Text style={styles.cardName}>{name}</Text>
+      {editMode && (
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={() => showAlert(name)}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.deleteButtonText}>Delete</Text>
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+
   const filteredNames = names.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const [data, setData] = useState(filteredNames);
 
   useEffect(() => {
     navigation.setOptions({
@@ -107,7 +142,7 @@ export default function StudentsScreen() {
 
           {/* Grid of Students */}
           <FlatList
-            data={filteredNames}
+            data={data}
             keyExtractor={(item) => item.name}
             numColumns={2} // Display two cards per row
             renderItem={({ item }) => <InsightCard name={item.name} />}
@@ -238,5 +273,18 @@ const styles = StyleSheet.create({
     color: "#555",
     textAlign: "center",
     fontFamily: "Outfit",
+  },
+  deleteButton: {
+    marginTop: 10,
+    backgroundColor: "red",
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    alignItems: "center",
+  },
+  deleteButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 14,
   },
 });

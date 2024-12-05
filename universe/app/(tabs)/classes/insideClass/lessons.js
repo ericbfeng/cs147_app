@@ -7,6 +7,7 @@ import {
   FlatList,
   TextInput,
   View,
+  Alert,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -27,7 +28,8 @@ export default function LessonsScreen() {
   const lessonData = LESSON_DATA.find(
     (item) => item.id === Number(classroomID)
   ).data;
-  console.log("this is lesson data", lessonData);
+
+  const [data, setData] = useState(lessonData); // Manage the classroom data
 
   useEffect(() => {
     navigation.setOptions({
@@ -42,6 +44,29 @@ export default function LessonsScreen() {
       </SafeAreaView>
     );
   }
+
+  const handleDelete = (id) => {
+    setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
+  };
+
+  const showAlert = (id) => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this item?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: () => handleDelete(id),
+          style: "destructive", // iOS only - makes the button red
+        },
+      ],
+      { cancelable: true } // Android only - allows tap outside to dismiss
+    );
+  };
 
   const handleEditPress = () => {
     setEditMode((prev) => !prev); // Toggle edit mode
@@ -62,7 +87,12 @@ export default function LessonsScreen() {
   };
 
   const renderItem = ({ item }) => (
-    <LessonItem lesson={item} onPress={() => handleLessonPress(item)} />
+    <LessonItem
+      lesson={item}
+      onPress={() => handleLessonPress(item)}
+      showDelete={editMode} // Show delete button only in edit mode
+      onDelete={() => showAlert(item.id)}
+    />
   );
 
   return (
@@ -92,7 +122,7 @@ export default function LessonsScreen() {
 
       {/* Lessons List */}
       <FlatList
-        data={lessonData.slice().reverse()}
+        data={data.slice().reverse()}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         style={styles.list}

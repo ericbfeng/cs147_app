@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function LessonItem({ lesson, onPress }) {
+export default function LessonItem({ lesson, onPress, showDelete, onDelete }) {
   return (
     <TouchableOpacity
       style={styles.lessonContainer}
@@ -23,8 +23,19 @@ export default function LessonItem({ lesson, onPress }) {
         <Text style={styles.lessonDate}>{lesson.date}</Text>
       </View>
       <Text style={styles.lessonDescription}>{lesson.description}</Text>
-      <View style={styles.zoomLinkContainer}>
-        <Text style={styles.zoomLinkText}>Zoom Link: {lesson.zoomLink}</Text>
+      <View style={styles.lessonHeader}>
+        <View style={styles.zoomLinkContainer}>
+          <Text style={styles.zoomLinkText}>Zoom Link: {lesson.zoomLink}</Text>
+        </View>
+        {showDelete && (
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={onDelete}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.deleteButtonText}>Delete</Text>
+          </TouchableOpacity>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -78,5 +89,18 @@ const styles = StyleSheet.create({
   zoomLinkText: {
     fontSize: 14,
     color: "#666",
+  },
+  deleteButton: {
+    marginTop: 10,
+    backgroundColor: "red",
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    alignItems: "center",
+  },
+  deleteButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 12,
   },
 });

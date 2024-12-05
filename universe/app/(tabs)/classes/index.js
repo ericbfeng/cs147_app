@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Image,
   FlatList,
+  Alert,
 } from "react-native";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
 import EditButton from "../../../components/EditButton";
@@ -59,18 +60,67 @@ const ClassesInterface = () => {
     setEditMode((prev) => !prev); // Toggle edit mode
   };
 
+  const handleAddNew = () => {
+    console.log("test"); // Toggle edit mode
+  };
+
   const handleDelete = (id) => {
     setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
   };
 
-  const renderItem = ({ item }) => (
-    <ClassButton
-      title={item.name}
-      onPress={() => handleClassPress(item)}
-      showDelete={editMode} // Show delete button only in edit mode
-      onDelete={() => handleDelete(item.id)} // Handle delete action
-    />
-  );
+  const showAlert = (id) => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this item?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: () => handleDelete(id),
+          style: "destructive", // iOS only - makes the button red
+        },
+      ],
+      { cancelable: true } // Android only - allows tap outside to dismiss
+    );
+  };
+
+  const renderItem = ({ item }) => {
+    if (item.id === -1 && editMode) {
+      return (
+        <TouchableOpacity
+          style={styles.classButton}
+          activeOpacity={0.7}
+          onPress={handleAddNew}
+        >
+          <View style={styles.buttonContainer}>
+            <Image
+              source={require("../../../assets/images/blue.png")}
+              style={styles.addPlanetImage}
+              resizeMode="contain"
+            />
+            {/* Overlay container for centered text */}
+            <View style={styles.textOverlay}>
+              <Text style={styles.addNewText}>+</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      );
+    } else if (item.id === -1) {
+      return;
+    } else {
+      return (
+        <ClassButton
+          title={item.name}
+          onPress={() => handleClassPress(item)}
+          showDelete={editMode} // Show delete button only in edit mode
+          onDelete={() => showAlert(item.id)} // Handle delete action
+        />
+      );
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -128,12 +178,21 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    padding: 25,
   },
   planetImage: {
     position: "absolute",
     width: "100%",
     height: "100%",
+  },
+  addNewText: {
+    fontFamily: "Outfit",
+    fontSize: 100,
+  },
+  addPlanetImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    tintColor: "#BEBEBE",
   },
   buttonContainer: {
     width: "100%",

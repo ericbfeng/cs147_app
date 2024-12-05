@@ -21,14 +21,10 @@ export default function Layout() {
           fontSize: 20,
           fontWeight: "bold",
         },
-        headerLeft: () => (
-          <TouchableOpacity
-            onPress={() => router.back()}
-            style={{ paddingHorizontal: 10 }}
-          >
-            <Ionicons name="chevron-back" size={32} color="black" />
-          </TouchableOpacity>
-        ),
+        headerBackTitle: "Back", // Explicitly remove back button text
+        headerBackTitleStyle: {
+          fontFamily: "Outfit",
+        },
       }}
     >
       {/* Main Screen */}
