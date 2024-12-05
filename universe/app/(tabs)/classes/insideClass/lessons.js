@@ -120,6 +120,15 @@ export default function LessonsScreen() {
         <Icon name="search" size={24} color="#999" style={styles.searchIcon} />
       </View>
 
+      {/* Create New Lesson Bar */}
+      {editMode && (
+        <View style={styles.createContainer}>
+          <TouchableOpacity>
+            <Text style={styles.createNewText}>Create New Lesson</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
       {/* Lessons List */}
       <FlatList
         data={data.slice().reverse()}
@@ -167,6 +176,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
+  },
+  createContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "gray",
+    marginLeft: 18,
+    height: 50,
+    marginRight: 18,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E4E4E7",
+  },
+  createNewText: {
+    fontFamily: "Outfit-Bold",
+    fontSize: 22,
   },
   searchBar: {
     backgroundColor: "#F0F0F5",
