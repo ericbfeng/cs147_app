@@ -25,7 +25,7 @@ export default function LoginScreen({ onLogin, onSignUp }) {
       )}
 
       <Image
-        source={require("../assets/images/logo.png")} // Ensure the path to your logo is correct
+        source={require("../assets/images/newlogo.png")} // Ensure the path to your logo is correct
         style={styles.logo}
       />
 
@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   customButton: {
-    backgroundColor: "#E2E8F0",
+    backgroundColor: "white",
+    opacity: 0.6,
     padding: 15,
     borderRadius: 5,
     width: 200,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   },
   customButtonText: {
     color: "#000000",
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: "Outfit-Bold",
     fontWeight: "bold",
   },

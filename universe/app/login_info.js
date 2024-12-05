@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
 export default function LoginInfo({ onBack, onLogin }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.backButtonContainer} onPress={onBack}>
         <Text style={styles.backButtonText}>Back</Text>
       </TouchableOpacity>
@@ -16,7 +16,7 @@ export default function LoginInfo({ onBack, onLogin }) {
       <TouchableOpacity style={styles.submitButton} onPress={onLogin}>
         <Text style={styles.submitButtonText}>Submit</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
+    marginTop: 10,
   },
   backButtonContainer: {
     position: "absolute",
