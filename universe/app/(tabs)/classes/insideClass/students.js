@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   },
   tabButtonText: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Outfit-Bold",
     color: "#666",
   },
   activeTabText: {

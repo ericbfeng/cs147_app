@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
+import Theme from "../assets/theme";
 
 const EditButton = ({ onPress, isEditMode }) => (
   <TouchableOpacity
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     width: EDIT_BUTTON_SIZE,
     height: EDIT_BUTTON_SIZE,
     borderRadius: EDIT_BUTTON_SIZE / 2,
-    backgroundColor: "#1e3a8a",
+    backgroundColor: Theme.colors.darkBlue,
     justifyContent: "center",
     alignItems: "center",
     elevation: 4,
