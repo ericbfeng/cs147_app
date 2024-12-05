@@ -51,7 +51,7 @@ export default function LessonDetailScreen() {
       </View>
 
       {/* Launch Zoom Button */}
-      <TouchableOpacity style={styles.zoomButton} onPress={handleLaunchZoom}>
+      <TouchableOpacity style={styles.zoomButton}>
         <Text style={styles.zoomButtonText}>Launch Zoom</Text>
       </TouchableOpacity>
     </ScrollView>

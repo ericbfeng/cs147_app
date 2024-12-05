@@ -43,13 +43,14 @@ export default function LessonItem({ lesson, onPress, showDelete, onDelete }) {
 
 const styles = StyleSheet.create({
   lessonContainer: {
-    padding: 16,
+    padding: 12,
+    paddingTop: 16,
   },
   lessonHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 8,
+    marginBottom: 6,
   },
   lessonHeaderLeft: {
     flexDirection: "row",
@@ -96,14 +97,16 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginTop: 10,
+    borderWidth: 3,
     backgroundColor: "#EB4D3D",
     borderRadius: 8,
-    paddingVertical: 6,
+    borderColor: "red",
+    paddingVertical: 3,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   deleteButtonText: {
-    color: "white",
+    color: "red",
     fontWeight: "bold",
     fontSize: 12,
     fontFamily: "Outfit",

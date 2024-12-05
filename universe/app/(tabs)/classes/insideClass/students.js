@@ -8,6 +8,7 @@ import {
   FlatList,
   Image,
   SafeAreaView,
+  Dimensions,
   ScrollView,
   Alert,
 } from "react-native";
@@ -38,6 +39,10 @@ export default function StudentsScreen() {
   {
     /* Not sure if we should be able to navigate from this page to the individual students pages */
   }
+
+  const handleNewStudent = () => {
+    console.log("test");
+  };
 
   const handleDelete = (id) => {
     setData((prevData) => prevData.filter((item) => item.name !== id)); // Remove item by ID
@@ -107,7 +112,10 @@ export default function StudentsScreen() {
   const renderItem = ({ item }) => {
     if (item.name === "CREATE_NEW" && editMode) {
       return (
-        <TouchableOpacity style={styles.createNewCard}>
+        <TouchableOpacity
+          style={styles.createNewCard}
+          onPress={handleNewStudent}
+        >
           <Text style={styles.addNewText}>+</Text>
         </TouchableOpacity>
       );
@@ -134,7 +142,7 @@ export default function StudentsScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-              <Text style={styles.tabButtonText}>Students</Text>
+              <Text style={styles.tabButtonTextMain}>Students</Text>
             </TouchableOpacity>
           </View>
 
@@ -156,13 +164,15 @@ export default function StudentsScreen() {
           </View>
 
           {/* Grid of Students */}
-          <FlatList
-            data={data}
-            keyExtractor={(item) => item.name}
-            numColumns={2} // Display two cards per row
-            renderItem={renderItem}
-            contentContainerStyle={styles.grid}
-          />
+          <View style={styles.inner}>
+            <FlatList
+              data={data}
+              keyExtractor={(item) => item.name}
+              numColumns={2} // Display two cards per row
+              renderItem={renderItem}
+              contentContainerStyle={styles.grid}
+            />
+          </View>
         </>
       ) : (
         <Profile name={selectedName} onClose={handleCloseProfile} />
@@ -173,6 +183,8 @@ export default function StudentsScreen() {
   );
 }
 
+const { width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
@@ -181,19 +193,23 @@ const styles = StyleSheet.create({
     // borderColor: "red",
     // paddingTop: 20,
   },
+  inner: { flex: 1, alignItems: "center" },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F0F0F5",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E4E4E7",
     margin: 16,
-    borderRadius: 8,
     paddingHorizontal: 12,
   },
   searchInput: {
     flex: 1,
-    padding: 12,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 4,
     fontSize: 16,
-    color: "#333",
     fontFamily: "Outfit",
   },
   searchIcon: {
@@ -214,7 +230,12 @@ const styles = StyleSheet.create({
   },
   tabButtonText: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Outfit",
+    color: "#666",
+  },
+  tabButtonTextMain: {
+    fontSize: 16,
+    fontFamily: "Outfit-Bold",
     color: "#666",
   },
   activeTabText: {
@@ -262,8 +283,8 @@ const styles = StyleSheet.create({
     paddingBottom: 80,
   },
   createNewCard: {
-    flex: 1,
     backgroundColor: "#BEBEBE",
+    width: width * 0.42,
     borderRadius: 10,
     padding: 15,
     marginHorizontal: 15, // Horizontal margin for consistent spacing
@@ -276,8 +297,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   card: {
-    flex: 1,
     backgroundColor: "#DBDFEA",
+    width: width * 0.42,
     borderRadius: 10,
     padding: 15,
     marginHorizontal: 15, // Horizontal margin for consistent spacing
@@ -309,15 +330,16 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginTop: 10,
-    backgroundColor: "red",
+    borderWidth: 3,
     borderRadius: 8,
+    borderColor: "red",
     paddingVertical: 6,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   deleteButtonText: {
-    color: "white",
+    color: "red",
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 12,
   },
 });
