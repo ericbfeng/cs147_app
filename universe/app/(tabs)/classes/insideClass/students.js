@@ -332,14 +332,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 3,
     borderRadius: 8,
-    borderColor: "red",
+    borderColor: "#EB4D3D",
     paddingVertical: 6,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   deleteButtonText: {
-    color: "red",
-    fontWeight: "bold",
+    color: "#EB4D3D",
+    // fontWeight: "bold",
     fontSize: 12,
+    fontFamily: "Outfit-Bold",
   },
 });

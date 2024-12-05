@@ -98,15 +98,15 @@ const styles = StyleSheet.create({
   deleteButton: {
     marginTop: 10,
     borderWidth: 3,
-    backgroundColor: "#EB4D3D",
+    backgroundColor: "white",
     borderRadius: 8,
-    borderColor: "red",
+    borderColor: "#EB4D3D",
     paddingVertical: 3,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   deleteButtonText: {
-    color: "red",
+    color: "#EB4D3D",
     fontWeight: "bold",
     fontSize: 12,
     fontFamily: "Outfit",
