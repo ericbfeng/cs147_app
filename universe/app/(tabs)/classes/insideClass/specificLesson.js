@@ -43,7 +43,7 @@ export default function LessonDetailScreen() {
         <Text style={styles.agendaTitle}>Agenda:</Text>
         <View>
           {dataFinal.agenda.map((item, index) => (
-            <Text key={index}>
+            <Text key={index} style={styles.agendaText}>
               {"\u2022"} {item}
             </Text>
           ))}
@@ -73,11 +73,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     fontWeight: "600",
+    fontFamily: "Outfit",
   },
   dateText: {
     color: "white",
-    fontSize: 20,
+    fontSize: 18,
     marginTop: 4,
+    fontFamily: "Outfit",
   },
   agendaContainer: {
     backgroundColor: "#E8E9F1",
@@ -89,6 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     marginBottom: 12,
+    fontFamily: "Outfit",
   },
   topicContainer: {
     flexDirection: "row",
@@ -107,8 +110,9 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   topicText: {
-    fontSize: 16,
+    fontSize: 18,
     flex: 1,
+    fontFamily: "Outfit",
   },
   zoomButton: {
     margin: 16,
@@ -116,8 +120,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   zoomButtonText: {
-    fontSize: 16,
+    fontSize: 18,
     color: "#334173",
     textDecorationLine: "underline",
+    fontFamily: "Outfit",
+  },
+  agendaText: {
+    fontSize: 16,
+    // marginTop: 4,
+    fontFamily: "Outfit",
   },
 });
