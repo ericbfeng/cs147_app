@@ -23,6 +23,7 @@ const names = [
   { name: "Jimmy L." },
   { name: "Vivek Z." },
   { name: "Andrew P." },
+  { name: "CREATE_NEW" },
 ];
 
 export default function StudentsScreen() {
@@ -103,6 +104,20 @@ export default function StudentsScreen() {
     setEditMode((prev) => !prev); // Toggle edit mode
   };
 
+  const renderItem = ({ item }) => {
+    if (item.name === "CREATE_NEW" && editMode) {
+      return (
+        <TouchableOpacity style={styles.createNewCard}>
+          <Text style={styles.addNewText}>+</Text>
+        </TouchableOpacity>
+      );
+    } else if (item.name === "CREATE_NEW") {
+      return;
+    } else {
+      return <InsightCard name={item.name} />;
+    }
+  };
+
   return (
     <View style={styles.safeArea}>
       {!selectedName ? (
@@ -145,7 +160,7 @@ export default function StudentsScreen() {
             data={data}
             keyExtractor={(item) => item.name}
             numColumns={2} // Display two cards per row
-            renderItem={({ item }) => <InsightCard name={item.name} />}
+            renderItem={renderItem}
             contentContainerStyle={styles.grid}
           />
         </>
@@ -205,6 +220,10 @@ const styles = StyleSheet.create({
   activeTabText: {
     color: "#1e3a8a",
   },
+  addNewText: {
+    fontFamily: "Outfit",
+    fontSize: 100,
+  },
   header: {
     flexDirection: "row", // Horizontal layout
     justifyContent: "space-around", // Evenly distribute buttons
@@ -241,6 +260,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "flex-start",
     paddingBottom: 80,
+  },
+  createNewCard: {
+    flex: 1,
+    backgroundColor: "#BEBEBE",
+    borderRadius: 10,
+    padding: 15,
+    marginHorizontal: 15, // Horizontal margin for consistent spacing
+    marginVertical: 15, // Vertical margin for consistent spacing
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
   card: {
     flex: 1,
