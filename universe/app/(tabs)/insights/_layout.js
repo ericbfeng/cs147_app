@@ -4,9 +4,6 @@ export default function Layout() {
   console.log("Rendering Insights Stack Layout");
   return (
     <Stack
-      // screenOptions={{
-      //   headerShown: false, // Hide headers globally
-      // }}
       screenOptions={{
         headerShown: true, // Ensure headers are visible for navigation
         headerStyle: {
@@ -35,7 +32,7 @@ export default function Layout() {
           title: "AI Insights on Student", // Title for the details screen
           headerShown: true, // Show header for the details screen
           headerTitleAlign: "center",
-          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitle: "Back",
           headerBackTitleStyle: {
             fontFamily: "Outfit",
           },
@@ -44,11 +41,10 @@ export default function Layout() {
       <Stack.Screen
         name="insightDetail"
         options={{
-          // presentation: "modal",
-          title: "AI Insights on Student", // Title for the new post screen
-          headerShown: true, // Show header for the new post screen
+          title: "AI Insights on Student",
+          headerShown: true,
           headerTitleAlign: "center",
-          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitle: "Back",
           headerBackTitleStyle: {
             fontFamily: "Outfit",
           },
@@ -57,11 +53,10 @@ export default function Layout() {
       <Stack.Screen
         name="insightAction"
         options={{
-          // presentation: "modal",
-          title: "AI Insights on Student", // Title for the new post screen
-          headerShown: true, // Show header for the new post screen
+          title: "AI Insights on Student",
+          headerShown: true,
           headerTitleAlign: "center",
-          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitle: "Back",
           headerBackTitleStyle: {
             fontFamily: "Outfit",
           },
@@ -72,8 +67,14 @@ export default function Layout() {
         options={{
           presentation: "transparentModal", // Modal presentation with transparent background
           headerShown: false, // Hide the header
+        }}
+      />
+      <Stack.Screen
+        name="chats"
+        options={{
+          title: "Chats", // Title for the Chats page
           headerTitleAlign: "center",
-          headerBackTitle: "Back", // Explicitly remove back button text
+          headerBackTitle: "Back",
           headerBackTitleStyle: {
             fontFamily: "Outfit",
           },
