@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   recommendedButton: {
     backgroundColor: "#304674",
-    borderRadius: 25,
+    borderRadius: 15,
     paddingVertical: 15,
     paddingHorizontal: 20,
     alignItems: "center",
