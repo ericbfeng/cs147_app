@@ -84,15 +84,16 @@ const styles = StyleSheet.create({
   lessonDescription: {
     fontSize: 14,
     color: "#333",
-    marginBottom: 8,
+    marginBottom: 10,
+    marginTop: 5,
     fontFamily: "Outfit",
   },
   zoomLinkContainer: {
-    marginTop: 4,
+    marginTop: 0,
   },
   zoomLinkText: {
     fontSize: 14,
-    color: "#666",
+    color: "#333",
     fontFamily: "Outfit",
   },
   deleteButton: {

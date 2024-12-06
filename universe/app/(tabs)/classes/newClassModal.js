@@ -103,11 +103,11 @@ const NewClass = () => {
         />
       </View>
 
-      <View style={styles.doneButtonContainer}>
+      <SafeAreaView style={styles.doneButtonContainer}>
         <TouchableOpacity style={styles.doneButton}>
           <Text style={styles.doneButtonText}>Done</Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     </View>
   );
 };
