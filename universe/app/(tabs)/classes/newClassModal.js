@@ -25,7 +25,7 @@ const NewClass = () => {
   const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
   const navigation = useNavigation();
-  const { items, addItem } = useData();
+  const { classes, addClass } = useData();
   const router = useRouter();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const NewClass = () => {
       name: title,
       dataID: 1,
     };
-    addItem(newData);
+    addClass(newData);
     router.back();
   };
 

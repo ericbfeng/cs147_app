@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { TextInput, Image, FlatList, SafeAreaView } from "react-native";
+import { useData } from "../DataContext";
 
 const FriendItem = ({ item }) => (
   <View style={styles.friendItem}>
@@ -13,31 +14,22 @@ const FriendItem = ({ item }) => (
       />
       <Text style={styles.name}>{item.name}</Text>
     </View>
-    <Text>Checkbox</Text>
+
+    <TouchableOpacity
+      onPress={() => toggleSelection(item.id)}
+      style={styles.checkboxContainer}
+    >
+      <View style={[styles.checkbox, item.selected && styles.checkboxSelected]}>
+        {item.selected && <Text style={styles.checkmark}>✓</Text>}
+      </View>
+    </TouchableOpacity>
   </View>
 );
 
 export default function Modal() {
+  const [checked, setChecked] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const [suggestedFriends, setSuggestedFriends] = useState([
-    {
-      id: "1",
-      name: "Darrell Underwood",
-      selected: false,
-    },
-    {
-      id: "2",
-      name: "sasaki.girl333",
-      selected: false,
-    },
-    {
-      id: "3",
-      name: "gogoncalves.21",
-      selected: false,
-    },
-  ]);
-
+  const { names, addName } = useData();
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -60,6 +52,17 @@ export default function Modal() {
       });
   }, [navigation]);
 
+  const handleSubmit = () => {
+    const newData = {
+      id: Date.now().toString(),
+      name: title,
+      selected: false,
+      inClass: true,
+    };
+    addName(newData);
+    router.back();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchContainer}>
@@ -81,7 +84,7 @@ export default function Modal() {
         keyExtractor={(item) => item.id}
       />
 
-      <TouchableOpacity style={styles.doneButton}>
+      <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
         <Text style={styles.doneButtonText}>Done</Text>
       </TouchableOpacity>
     </SafeAreaView>

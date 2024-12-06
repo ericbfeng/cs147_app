@@ -17,35 +17,24 @@ import { useRouter, useLocalSearchParams, Link } from "expo-router";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import EditButton from "../../../../components/EditButton";
-
-const names = [
-  { name: "Bob C." },
-  { name: "Anthony S." },
-  { name: "Jimmy L." },
-  { name: "Vivek Z." },
-  { name: "Andrew P." },
-  { name: "CREATE_NEW" },
-];
+import { useData } from "../DataContext";
 
 export default function StudentsScreen() {
   const router = useRouter();
   const navigation = useNavigation();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
-
+  const { names, deleteName } = useData();
   const { classroomID, headerTitle } = useLocalSearchParams();
-  const [selectedName, setSelectedName] = useState(null); // State for selected name
+  // const [selectedName, setSelectedName] = useState(null); // State for selected name
   const [searchQuery, setSearchQuery] = useState(""); // Search query
 
   {
     /* Not sure if we should be able to navigate from this page to the individual students pages */
   }
 
-  const handleNewStudent = () => {
-    console.log("test");
-  };
-
   const handleDelete = (id) => {
-    setData((prevData) => prevData.filter((item) => item.name !== id)); // Remove item by ID
+    setData((prevData) => prevData.filter((item) => item.name !== id));
+    deleteName(id);
   };
 
   const showAlert = (name) => {
@@ -121,7 +110,7 @@ export default function StudentsScreen() {
           </View>
         </Link>
       );
-    } else if (item.name === "CREATE_NEW") {
+    } else if (item.name === "CREATE_NEW" || !item.inClass) {
       return;
     } else {
       return <InsightCard name={item.name} />;
@@ -130,55 +119,44 @@ export default function StudentsScreen() {
 
   return (
     <View style={styles.safeArea}>
-      {!selectedName ? (
-        <>
-          {/* Header */}
-          {/* <Text style={styles.headerText}>Students</Text> */}
-          <View style={styles.header}>
-            <TouchableOpacity
-              style={[styles.tabButton]}
-              onPress={navigateToLessons}
-            >
-              <Text style={styles.tabButtonText}>Lessons</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-              <Text style={[styles.tabButtonTextMain, styles.activeTabText]}>
-                Students
-              </Text>
-            </TouchableOpacity>
-          </View>
+      {/* Header */}
+      {/* <Text style={styles.headerText}>Students</Text> */}
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={[styles.tabButton]}
+          onPress={navigateToLessons}
+        >
+          <Text style={styles.tabButtonText}>Lessons</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
+          <Text style={[styles.tabButtonTextMain, styles.activeTabText]}>
+            Students
+          </Text>
+        </TouchableOpacity>
+      </View>
 
-          {/* Search Bar */}
-          <View style={styles.searchContainer}>
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search student"
-              placeholderTextColor="#888"
-              value={searchQuery}
-              onChangeText={(text) => setSearchQuery(text)}
-            />
-            <Icon
-              name="search"
-              size={24}
-              color="#999"
-              style={styles.searchIcon}
-            />
-          </View>
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search student"
+          placeholderTextColor="#888"
+          value={searchQuery}
+          onChangeText={(text) => setSearchQuery(text)}
+        />
+        <Icon name="search" size={24} color="#999" style={styles.searchIcon} />
+      </View>
 
-          {/* Grid of Students */}
-          <View style={styles.inner}>
-            <FlatList
-              data={data}
-              keyExtractor={(item) => item.name}
-              numColumns={2} // Display two cards per row
-              renderItem={renderItem}
-              contentContainerStyle={styles.grid}
-            />
-          </View>
-        </>
-      ) : (
-        <Profile name={selectedName} onClose={handleCloseProfile} />
-      )}
+      {/* Grid of Students */}
+      <View style={styles.inner}>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.name}
+          numColumns={2} // Display two cards per row
+          renderItem={renderItem}
+          contentContainerStyle={styles.grid}
+        />
+      </View>
 
       <EditButton onPress={handleEditPress} isEditMode={editMode} />
     </View>
@@ -195,7 +173,7 @@ const styles = StyleSheet.create({
     // borderColor: "red",
     // paddingTop: 20,
   },
-  inner: { flex: 1, alignItems: "center" },
+  inner: { flex: 1 },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",

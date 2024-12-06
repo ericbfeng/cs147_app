@@ -51,7 +51,7 @@ const ClassesInterface = () => {
   const [editMode, setEditMode] = useState(false); // Track edit mode state
   // const [data, setData] = useState(ClassroomData); // Manage the classroom data
   const navigation = useNavigation();
-  const { items, deleteItem } = useData();
+  const { classes, deleteClass } = useData();
 
   const handleClassPress = (item) => {
     router.push({
@@ -85,7 +85,7 @@ const ClassesInterface = () => {
         },
         {
           text: "Delete",
-          onPress: () => deleteItem(id),
+          onPress: () => deleteClass(id),
           style: "destructive", // iOS only - makes the button red
         },
       ],
@@ -132,7 +132,7 @@ const ClassesInterface = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.gridContainer}>
         <FlatList
-          data={items}
+          data={classes}
           contentContainerStyle={{ gap: VERTICAL_SPACING }}
           columnWrapperStyle={{ gap: HORIZONTAL_SPACING }}
           renderItem={renderItem}
