@@ -41,7 +41,7 @@ export default function StudentsScreen() {
   }
 
   const handleNewStudent = () => {
-    console.log("test");
+    navigation.navigate("newStudentModal");
   };
 
   const handleDelete = (id) => {
