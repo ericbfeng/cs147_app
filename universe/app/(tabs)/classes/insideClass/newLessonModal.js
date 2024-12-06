@@ -11,39 +11,31 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Theme from "../../../../assets/theme";
+import { useData } from "../DataContext";
+import { useRouter } from "expo-router"; // Use useRouter for navigation
 
 const NewLesson = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    subject: "",
-    description: "",
-    tags: "",
-  });
-  const [submittedData, setSubmittedData] = useState(null);
-
+  // const [submittedData, setSubmittedData] = useState(null);
   const [title, setTitle] = useState("");
   const [zoom, setZoom] = useState("");
   const [date, setDate] = useState("");
   const [duration, setDuration] = useState("");
-
   const [agenda, setAgenda] = useState("");
   const [description, setDescription] = useState("");
   const navigation = useNavigation();
-
-  const handleChange = (field, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
+  const { lessons, addLesson } = useData();
+  const router = useRouter();
 
   const handleSubmit = () => {
     const newData = {
       id: Date.now().toString(),
-      name: title,
-      dataID: 1,
+      name: "Lesson #5",
+      description: title,
+      zoomLink: zoom,
+      date: date,
+      agenda: agenda,
     };
-    addClass(newData);
+    addLesson(newData);
     router.back();
   };
 
@@ -132,7 +124,7 @@ const NewLesson = () => {
       </View>
 
       <SafeAreaView style={styles.doneButtonContainer}>
-        <TouchableOpacity style={styles.doneButton}>
+        <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
           <Text style={styles.doneButtonText}>Done</Text>
         </TouchableOpacity>
       </SafeAreaView>

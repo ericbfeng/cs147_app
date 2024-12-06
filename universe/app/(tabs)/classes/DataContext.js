@@ -20,13 +20,25 @@ export const DataProvider = ({ children }) => {
     );
   };
 
-  const addLesson = (newItem) => {
+  /*
+  const addLesson = ({ classID, newItem }) => {
     setLessons((prevItems) => [newItem, ...prevItems]);
   };
 
-  const deleteLesson = ({ classroomID, itemId }) => {
+  const deleteLesson = ({ classID, itemId }) => {
     setLessons((prevItems) =>
       prevItems.filter((classes) => lessons.classroomID.id !== itemId)
+    );
+  };
+  */
+
+  const addLesson = (newItem) => {
+    setLessons((prevItems) => [...prevItems, newItem]);
+  };
+
+  const deleteLesson = (itemId) => {
+    setLessons((prevItems) =>
+      prevItems.filter((lessons) => lessons.id !== itemId)
     );
   };
 

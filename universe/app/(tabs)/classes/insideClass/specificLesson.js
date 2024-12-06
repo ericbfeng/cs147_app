@@ -16,7 +16,7 @@ export default function LessonDetailScreen() {
   const route = useRoute();
   const navigation = useNavigation();
 
-  const dataFinal = ClassroomData[0].data[0];
+  const dataFinal = ClassroomData[0];
   console.log(dataFinal);
 
   useEffect(() => {

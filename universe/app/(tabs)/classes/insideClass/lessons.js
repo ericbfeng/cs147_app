@@ -16,22 +16,27 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 import EditButton from "../../../../components/EditButton";
 
-import LESSON_DATA from "../../../data/LessonData.json";
+// import LESSON_DATA from "../../../data/LessonData.json";
 import LessonItem from "../../../../components/LessonItem";
 import { useRouter } from "expo-router";
+import { useData } from "../DataContext";
 
 export default function LessonsScreen() {
   const router = useRouter();
+  const { lessons, deleteLesson } = useData();
+
   const [searchQuery, setSearchQuery] = useState(""); // Search query
   const navigation = useNavigation();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
-
   const { classroomID, headerTitle } = useLocalSearchParams();
+  // const numClassID = Number(classroomID);
+
+  /*
   const lessonData = LESSON_DATA.find(
     (item) => item.id === Number(classroomID)
   ).data;
-
   const [data, setData] = useState(lessonData); // Manage the classroom data
+  */
 
   useEffect(() => {
     navigation.setOptions({
@@ -39,17 +44,11 @@ export default function LessonsScreen() {
     });
   }, [navigation]);
 
-  if (!lessonData) {
-    return (
-      <SafeAreaView style={styles.safeArea}>
-        <Text style={styles.errorText}>Lessons not found!</Text>
-      </SafeAreaView>
-    );
-  }
-
+  /*
   const handleDelete = (id) => {
-    setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
+    setData((prevData) => prevData.filter((item) => item.numClassID.id !== id)); // Remove item by ID
   };
+  */
 
   const showAlert = (id) => {
     Alert.alert(
@@ -62,7 +61,8 @@ export default function LessonsScreen() {
         },
         {
           text: "Delete",
-          onPress: () => handleDelete(id),
+          // onPress: () => handleDelete(id),
+          onPress: () => deleteLesson(id),
           style: "destructive", // iOS only - makes the button red
         },
       ],
@@ -137,7 +137,7 @@ export default function LessonsScreen() {
 
       {/* Lessons List */}
       <FlatList
-        data={data.slice().reverse()}
+        data={lessons.slice().reverse()}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         style={styles.list}
