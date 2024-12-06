@@ -14,9 +14,10 @@ import { useRouter } from "expo-router";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const names = [
-  { name: "Sarah W.", isNew: true },
+  // { name: "Sarah W.", isNew: true },
   { name: "John L.", isNew: true },
-  { name: "Liam O.", isNew: false },
+  { name: "Liam O.", isNew: true },
+  { name: "Sarah W.", isNew: false },
   { name: "Jack P.", isNew: false },
   { name: "Gill S.", isNew: false },
   { name: "Samuel L.", isNew: false },
