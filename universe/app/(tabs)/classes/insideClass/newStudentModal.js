@@ -44,7 +44,7 @@ export default function Modal() {
       </View>
 
       <TouchableOpacity
-        onPress={() => handleSubmit(item)}
+        onPress={() => handleAdd(item)}
         style={styles.addButton}
       >
         <Text style={styles.addButtonText}>Add</Text>
@@ -52,7 +52,7 @@ export default function Modal() {
     </View>
   );
 
-  const handleSubmit = (currDude) => {
+  const handleAdd = (currDude) => {
     deleteName(currDude.name);
     const newData = {
       id: Date.now().toString(),
@@ -61,6 +61,10 @@ export default function Modal() {
       inClass: true,
     };
     addName(newData);
+    // router.back();
+  };
+
+  const leaveScreen = () => {
     router.back();
   };
 
@@ -82,7 +86,7 @@ export default function Modal() {
       </View>
 
       <View style={styles.suggestedHeader}>
-        <Text style={styles.suggestedTitle}>Suggested</Text>
+        <Text style={styles.suggestedTitle}>Your Students</Text>
       </View>
 
       <FlatList
@@ -90,6 +94,12 @@ export default function Modal() {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
+
+      <SafeAreaView style={styles.doneButtonContainer}>
+        <TouchableOpacity style={styles.doneButton} onPress={leaveScreen}>
+          <Text style={styles.doneButtonText}>Done</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
     </SafeAreaView>
   );
 }
@@ -183,6 +193,19 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: "white",
     fontSize: 12,
+    fontFamily: "Outfit",
+    fontWeight: "600",
+  },
+  doneButton: {
+    backgroundColor: Theme.colors.darkBlue,
+    margin: 16,
+    padding: 12,
+    borderRadius: 6,
+    alignItems: "center",
+  },
+  doneButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
     fontFamily: "Outfit",
     fontWeight: "600",
   },
