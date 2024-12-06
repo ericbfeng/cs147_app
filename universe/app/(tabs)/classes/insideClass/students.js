@@ -150,7 +150,7 @@ export default function StudentsScreen() {
       {/* Grid of Students */}
       <View style={styles.inner}>
         <FlatList
-          data={data}
+          data={names}
           keyExtractor={(item) => item.name}
           numColumns={2} // Display two cards per row
           renderItem={renderItem}
