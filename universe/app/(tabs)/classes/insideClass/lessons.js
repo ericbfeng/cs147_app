@@ -7,6 +7,7 @@ import {
   FlatList,
   TextInput,
   View,
+  Modal,
   Alert,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
@@ -23,6 +24,19 @@ export default function LessonsScreen() {
   const [searchQuery, setSearchQuery] = useState(""); // Search query
   const navigation = useNavigation();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+  const NewLessonModal = () => {
+    <Modal visible={isModalVisible}>
+      <View style={styles.modalContainer}>
+        <Text>This is the modal content!</Text>
+        <Button title="Close Modal" onPress={toggleModal} />
+      </View>
+    </Modal>;
+  };
 
   const { classroomID, headerTitle } = useLocalSearchParams();
   const lessonData = LESSON_DATA.find(
