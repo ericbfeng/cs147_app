@@ -1,19 +1,17 @@
 import React, { createContext, useState, useContext } from "react";
 import CLASSROOM_DATA from "../../data/ClassroomData.json";
 import CLASSROOM_STUDENT_DATA from "../../data/ClassroomStudentData.json";
+import LESSON_DATA from "../../data/LessonData.json";
 
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [classes, setClasses] = useState(CLASSROOM_DATA);
   const [names, setNames] = useState(CLASSROOM_STUDENT_DATA);
+  const [lessons, setLessons] = useState(LESSON_DATA);
 
   const addClass = (newItem) => {
-    setClasses((prevItems) => [
-      ...prevItems.slice(0, -1), // Everything except last item
-      newItem, // New item goes here
-      prevItems[prevItems.length - 1], // Last item from original array
-    ]);
+    setClasses((prevItems) => [newItem, ...prevItems]);
   };
 
   const deleteClass = (itemId) => {
@@ -22,12 +20,18 @@ export const DataProvider = ({ children }) => {
     );
   };
 
+  const addLesson = (newItem) => {
+    setLessons((prevItems) => [newItem, ...prevItems]);
+  };
+
+  const deleteLesson = ({ classroomID, itemId }) => {
+    setLessons((prevItems) =>
+      prevItems.filter((classes) => lessons.classroomID.id !== itemId)
+    );
+  };
+
   const addName = (newItem) => {
-    setNames((prevItems) => [
-      ...prevItems.slice(0, -1), // Everything except last item
-      newItem, // New item goes here
-      prevItems[prevItems.length - 1], // Last item from original array
-    ]);
+    setNames((prevItems) => [newItem, ...prevItems]);
   };
 
   const deleteName = (itemId) => {
@@ -36,7 +40,17 @@ export const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ classes, addClass, deleteClass, names, addName, deleteName }}
+      value={{
+        classes,
+        addClass,
+        deleteClass,
+        names,
+        addName,
+        deleteName,
+        lessons,
+        addLesson,
+        deleteLesson,
+      }}
     >
       {children}
     </DataContext.Provider>

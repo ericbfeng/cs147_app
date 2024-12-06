@@ -36,6 +36,16 @@ const NewLesson = () => {
     }));
   };
 
+  const handleSubmit = () => {
+    const newData = {
+      id: Date.now().toString(),
+      name: title,
+      dataID: 1,
+    };
+    addClass(newData);
+    router.back();
+  };
+
   useEffect(() => {
     navigation.setOptions({
       title: "Add Lesson",
@@ -55,12 +65,6 @@ const NewLesson = () => {
         tabBarStyle: undefined,
       });
   }, [navigation]);
-
-  const handleSubmit = () => {
-    setSubmittedData({ ...formData });
-    console.log("Submitted Data:", formData);
-    // You can add API calls or other submission logic here
-  };
 
   return (
     <View style={styles.container}>

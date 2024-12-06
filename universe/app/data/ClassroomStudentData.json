@@ -1,55 +1,55 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "name": "Darrell U.",
     "selected": false,
     "inClass": true
   },
   {
-    "id": "2",
+    "id": 2,
     "name": "Danny K.",
     "selected": false,
     "inClass": true
   },
   {
-    "id": "3",
+    "id": 3,
     "name": "Jones I.",
     "selected": false,
     "inClass": true
   },
   {
-    "id": "4",
+    "id": 4,
     "name": "Bob C.",
     "selected": false,
     "inClass": true
   },
   {
-    "id": "5",
+    "id": 5,
     "name": "Michelle J.",
     "selected": false,
     "inClass": true
   },
-  { "name": "CREATE_NEW" },
+  { "id": -1, "name": "CREATE_NEW", "inClass": true },
   {
-    "id": "6",
+    "id": 6,
     "name": "Andrew P.",
     "selected": false,
     "inClass": false
   },
   {
-    "id": "7",
+    "id": 7,
     "name": "Vivek Z.",
     "selected": false,
     "inClass": false
   },
   {
-    "id": "8",
+    "id": 8,
     "name": "Alan D.",
     "selected": false,
     "inClass": false
   },
   {
-    "id": "9",
+    "id": 9,
     "name": "Eric P.",
     "selected": false,
     "inClass": false

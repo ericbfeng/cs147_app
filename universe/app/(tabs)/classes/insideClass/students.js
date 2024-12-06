@@ -99,7 +99,7 @@ export default function StudentsScreen() {
   };
 
   const renderItem = ({ item }) => {
-    if (item.name === "CREATE_NEW" && editMode) {
+    if (item.id === -1 && editMode) {
       return (
         <Link
           href="classes/insideClass/newStudentModal"
@@ -110,7 +110,7 @@ export default function StudentsScreen() {
           </View>
         </Link>
       );
-    } else if (item.name === "CREATE_NEW" || !item.inClass) {
+    } else if (item.id === -1 || !item.inClass) {
       return;
     } else {
       return <InsightCard name={item.name} />;

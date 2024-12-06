@@ -14,12 +14,6 @@ import { useData } from "./DataContext";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
 
 const NewClass = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    subject: "",
-    description: "",
-    tags: "",
-  });
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
   const [tags, setTags] = useState("");

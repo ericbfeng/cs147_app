@@ -4,32 +4,12 @@ import React, { useEffect, useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { TextInput, Image, FlatList, SafeAreaView } from "react-native";
 import { useData } from "../DataContext";
-
-const FriendItem = ({ item }) => (
-  <View style={styles.friendItem}>
-    <View style={styles.friendInfo}>
-      <Image
-        source={require("../../../../assets/images/boy1.png")}
-        style={styles.avatar}
-      />
-      <Text style={styles.name}>{item.name}</Text>
-    </View>
-
-    <TouchableOpacity
-      onPress={() => toggleSelection(item.id)}
-      style={styles.checkboxContainer}
-    >
-      <View style={[styles.checkbox, item.selected && styles.checkboxSelected]}>
-        {item.selected && <Text style={styles.checkmark}>✓</Text>}
-      </View>
-    </TouchableOpacity>
-  </View>
-);
+import { useRouter } from "expo-router"; // Use useRouter for navigation
 
 export default function Modal() {
-  const [checked, setChecked] = useState([]);
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const { names, addName } = useData();
+  const { names, addName, deleteName } = useData();
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -52,15 +32,41 @@ export default function Modal() {
       });
   }, [navigation]);
 
-  const handleSubmit = () => {
+  const FriendItem = ({ item }) => (
+    <View style={styles.friendItem}>
+      <View style={styles.friendInfo}>
+        <Image
+          source={require("../../../../assets/images/boy1.png")}
+          style={styles.avatar}
+        />
+        <Text style={styles.name}>{item.name}</Text>
+      </View>
+
+      <TouchableOpacity
+        onPress={() => handleSubmit(item)}
+        // style={styles.checkboxContainer}
+      >
+        <Text>Add</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
+  const handleSubmit = (currDude) => {
+    deleteName(currDude.name);
     const newData = {
       id: Date.now().toString(),
-      name: title,
+      name: currDude.name,
       selected: false,
       inClass: true,
     };
     addName(newData);
     router.back();
+  };
+
+  const renderItem = ({ item }) => {
+    if (!item.inClass) {
+      return <FriendItem item={item} />;
+    }
   };
 
   return (
@@ -79,17 +85,19 @@ export default function Modal() {
       </View>
 
       <FlatList
-        data={suggestedFriends}
-        renderItem={({ item }) => <FriendItem item={item} />}
+        data={names}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-
-      <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
-        <Text style={styles.doneButtonText}>Done</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 }
+
+/*
+      <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
+        <Text style={styles.doneButtonText}>Done</Text>
+      </TouchableOpacity>
+*/
 
 const styles = StyleSheet.create({
   container: {
@@ -162,14 +170,14 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit",
     color: "#000000",
   },
-  doneButton: {
+  addButton: {
     backgroundColor: "#3897F0",
     margin: 16,
     padding: 12,
     borderRadius: 6,
     alignItems: "center",
   },
-  doneButtonText: {
+  addButtonText: {
     color: "#FFFFFF",
     fontSize: 16,
     fontFamily: "Outfit",
