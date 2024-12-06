@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useData } from "./DataContext";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
+import Theme from "../../../assets/theme";
 
 const NewClass = () => {
   const [title, setTitle] = useState("");
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     marginBottom: 8,
-    fontFamily: "System",
+    fontFamily: "Outfit",
   },
   input: {
     borderWidth: 1,
@@ -128,6 +129,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     fontSize: 16,
+    fontFamily: "Outfit",
     backgroundColor: "white",
   },
   descriptionInput: {
@@ -144,6 +146,7 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: "white",
     fontSize: 16,
+    fontFamily: "Outfit",
     fontWeight: "600",
   },
   submittedDataContainer: {
@@ -156,6 +159,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     marginBottom: 10,
+    fontFamily: "Outfit",
   },
   doneButtonContainer: {
     bottom: 0,
@@ -165,7 +169,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   doneButton: {
-    backgroundColor: "#3897F0",
+    backgroundColor: Theme.colors.darkBlue,
     margin: 16,
     padding: 12,
     borderRadius: 6,

@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
   checkmark: {
     color: "#FFFFFF",
     fontSize: 16,
+    fontFamily: "Outfit",
   },
   suggestedHeader: {
     flexDirection: "row",

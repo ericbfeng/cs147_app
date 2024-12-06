@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useRouter } from "expo-router";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const names = [
   { name: "Sarah W.", isNew: true },
@@ -61,13 +62,22 @@ export default function Insights() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
-        <TextInput
-          style={styles.searchBar}
-          placeholder="Search Student"
-          placeholderTextColor="#888"
-          value={searchQuery}
-          onChangeText={(text) => setSearchQuery(text)}
-        />
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search student"
+            placeholderTextColor="#888"
+            value={searchQuery}
+            onChangeText={(text) => setSearchQuery(text)}
+          />
+          <Icon
+            name="search"
+            size={24}
+            color="#999"
+            style={styles.searchIcon}
+          />
+        </View>
+
         <TouchableOpacity
           onPress={handleChatPress}
           style={styles.chatIconContainer}
@@ -139,6 +149,27 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F0F0F5",
+    width: "85%",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E4E4E7",
+    marginTop: 8,
+    marginRight: 15,
+    marginLeft: 8,
+    paddingHorizontal: 12,
+  },
+  searchInput: {
+    flex: 1,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 4,
+    fontSize: 16,
+    fontFamily: "Outfit",
   },
   avatar: {
     width: 60,

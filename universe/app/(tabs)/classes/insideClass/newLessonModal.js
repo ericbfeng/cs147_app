@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import Theme from "../../../../assets/theme";
 
 const NewLesson = () => {
   const [formData, setFormData] = useState({
@@ -154,13 +155,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     marginBottom: 8,
-    fontFamily: "System",
+    fontFamily: "Outfit",
   },
   input: {
     borderWidth: 1,
     borderColor: "#000",
     borderRadius: 4,
     padding: 10,
+    fontFamily: "Outfit",
     fontSize: 16,
     backgroundColor: "white",
   },
@@ -181,6 +183,7 @@ const styles = StyleSheet.create({
   },
   submitButtonText: {
     color: "white",
+    fontFamily: "Outfit",
     fontSize: 16,
     fontWeight: "600",
   },
@@ -192,6 +195,7 @@ const styles = StyleSheet.create({
   },
   submittedDataTitle: {
     fontSize: 16,
+    fontFamily: "Outfit",
     fontWeight: "600",
     marginBottom: 10,
   },
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   doneButton: {
-    backgroundColor: "#3897F0",
+    backgroundColor: Theme.colors.darkBlue,
     margin: 16,
     padding: 12,
     borderRadius: 6,
