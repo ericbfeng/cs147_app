@@ -23,7 +23,7 @@ export default function StudentsScreen() {
   const router = useRouter();
   const navigation = useNavigation();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
-  const { names, deleteName } = useData();
+  const { names, deleteName, addName } = useData();
   const { classroomID, headerTitle } = useLocalSearchParams();
   // const [selectedName, setSelectedName] = useState(null); // State for selected name
   const [searchQuery, setSearchQuery] = useState(""); // Search query
@@ -35,6 +35,15 @@ export default function StudentsScreen() {
   const handleDelete = (id) => {
     setData((prevData) => prevData.filter((item) => item.name !== id));
     deleteName(id);
+    /*
+    const newData = {
+      id: Date.now().toString(),
+      name: id,
+      selected: false,
+      inClass: false,
+    };
+    addName(newData);
+    */
   };
 
   const showAlert = (name) => {
