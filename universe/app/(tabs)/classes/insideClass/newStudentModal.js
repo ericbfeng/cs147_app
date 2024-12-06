@@ -5,6 +5,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { TextInput, Image, FlatList, SafeAreaView } from "react-native";
 import { useData } from "../DataContext";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
+import Theme from "../../../../assets/theme";
 
 export default function Modal() {
   const router = useRouter();
@@ -44,9 +45,9 @@ export default function Modal() {
 
       <TouchableOpacity
         onPress={() => handleSubmit(item)}
-        // style={styles.checkboxContainer}
+        style={styles.addButton}
       >
-        <Text>Add</Text>
+        <Text style={styles.addButtonText}>Add</Text>
       </TouchableOpacity>
     </View>
   );
@@ -172,15 +173,16 @@ const styles = StyleSheet.create({
     color: "#000000",
   },
   addButton: {
-    backgroundColor: "#3897F0",
-    margin: 16,
-    padding: 12,
+    backgroundColor: Theme.colors.darkBlue,
+    paddingLeft: 12,
+    paddingRight: 12,
+    padding: 8,
     borderRadius: 6,
     alignItems: "center",
   },
   addButtonText: {
-    color: "#FFFFFF",
-    fontSize: 16,
+    color: "white",
+    fontSize: 12,
     fontFamily: "Outfit",
     fontWeight: "600",
   },
