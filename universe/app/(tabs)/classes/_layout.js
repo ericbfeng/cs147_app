@@ -1,11 +1,35 @@
 import { Stack, useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { TouchableOpacity, View } from "react-native";
-// import { useNavigation } from "@react-navigation/native";
+import { Button, View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function Layout() {
   const router = useRouter();
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
+  /*
+  const parentNavigation = navigation.getParent();
+  // console.log(parentNavigation);
+
+  const getRouteNames = () => {
+    if (parentNavigation.getState() && parentNavigation.getState().routes) {
+      return parentNavigation.getState().routes.map((route) => route.name);
+    }
+    return [];
+  };
+
+  const testing123 = () => {
+    return (
+      <View>
+        {getRouteNames().map((routeName) => (
+          <Text key={routeName}>{routeName}</Text>
+        ))}
+      </View>
+    );
+  };
+
+  console.log("HELLO!!!: ", testing123());
+  */
 
   return (
     <Stack
@@ -25,11 +49,12 @@ export default function Layout() {
         headerBackTitleStyle: {
           fontFamily: "Outfit",
         },
+        //headerLeft: () => navigation.navigate("index"),
       }}
     >
       {/* Main Screen */}
       <Stack.Screen
-        name="index"
+        name="classes"
         options={{
           title: "My Classes",
           headerTitleAlign: "center",
@@ -54,6 +79,22 @@ export default function Layout() {
         name="insideClass/students"
         options={{
           title: "Student List",
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name="newLessonModal"
+        options={{
+          presentation: "modal",
+          title: "New Lesson",
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name="newStudentModal"
+        options={{
+          presentation: "modal",
+          title: "Add Student",
           headerTitleAlign: "center",
         }}
       />

@@ -7,9 +7,10 @@ import {
   FlatList,
   TextInput,
   View,
-  Modal,
   Alert,
 } from "react-native";
+import { Link } from "expo-router";
+
 import { useLocalSearchParams } from "expo-router";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
@@ -24,19 +25,6 @@ export default function LessonsScreen() {
   const [searchQuery, setSearchQuery] = useState(""); // Search query
   const navigation = useNavigation();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-  const NewLessonModal = () => {
-    <Modal visible={isModalVisible}>
-      <View style={styles.modalContainer}>
-        <Text>This is the modal content!</Text>
-        <Button title="Close Modal" onPress={toggleModal} />
-      </View>
-    </Modal>;
-  };
 
   const { classroomID, headerTitle } = useLocalSearchParams();
   const lessonData = LESSON_DATA.find(
@@ -80,10 +68,6 @@ export default function LessonsScreen() {
       ],
       { cancelable: true } // Android only - allows tap outside to dismiss
     );
-  };
-
-  const handleNewLesson = () => {
-    console.log("test");
   };
 
   const handleEditPress = () => {
@@ -141,11 +125,14 @@ export default function LessonsScreen() {
 
       {/* Create New Lesson Bar */}
       {editMode && (
-        <View style={styles.createContainer}>
-          <TouchableOpacity onPress={handleNewLesson}>
+        <Link
+          href="classes/insideClass/newLessonModal"
+          style={styles.createContainer}
+        >
+          <View style={styles.createTextContainer}>
             <Text style={styles.createNewText}>Create New Lesson</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </Link>
       )}
 
       {/* Lessons List */}
@@ -204,16 +191,18 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   createContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#E4E4E4",
     marginLeft: 18,
     height: 50,
     marginRight: 18,
     borderRadius: 10,
-    // borderWidth: 1,
-    // borderColor: "#E4E4E7",
+  },
+  createTextContainer: {
+    flexDirection: "row",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   createNewText: {
     fontFamily: "Outfit-Bold",

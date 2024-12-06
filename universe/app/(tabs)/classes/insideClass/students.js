@@ -13,7 +13,7 @@ import {
   Alert,
 } from "react-native";
 import Profile from "../../insights/insightProfile";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams, Link } from "expo-router";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import EditButton from "../../../../components/EditButton";
@@ -112,12 +112,14 @@ export default function StudentsScreen() {
   const renderItem = ({ item }) => {
     if (item.name === "CREATE_NEW" && editMode) {
       return (
-        <TouchableOpacity
+        <Link
+          href="classes/insideClass/newStudentModal"
           style={styles.createNewCard}
-          onPress={handleNewStudent}
         >
-          <Text style={styles.addNewText}>+</Text>
-        </TouchableOpacity>
+          <View style={styles.createPlusContainer}>
+            <Text style={styles.addNewText}>+</Text>
+          </View>
+        </Link>
       );
     } else if (item.name === "CREATE_NEW") {
       return;
@@ -137,12 +139,12 @@ export default function StudentsScreen() {
               style={[styles.tabButton]}
               onPress={navigateToLessons}
             >
-              <Text style={[styles.tabButtonText, styles.activeTabText]}>
-                Lessons
-              </Text>
+              <Text style={styles.tabButtonText}>Lessons</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-              <Text style={styles.tabButtonTextMain}>Students</Text>
+              <Text style={[styles.tabButtonTextMain, styles.activeTabText]}>
+                Students
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -289,12 +291,17 @@ const styles = StyleSheet.create({
     padding: 15,
     marginHorizontal: 15, // Horizontal margin for consistent spacing
     marginVertical: 15, // Vertical margin for consistent spacing
-    alignItems: "center",
-    justifyContent: "center",
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
+  },
+  createPlusContainer: {
+    flexDirection: "row",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   card: {
     backgroundColor: "#DBDFEA",
