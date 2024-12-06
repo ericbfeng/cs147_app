@@ -11,7 +11,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-const NewLesson = () => {
+const NewClass = () => {
   const [formData, setFormData] = useState({
     name: "",
     subject: "",
@@ -21,11 +21,8 @@ const NewLesson = () => {
   const [submittedData, setSubmittedData] = useState(null);
 
   const [title, setTitle] = useState("");
-  const [zoom, setZoom] = useState("");
-  const [date, setDate] = useState("");
-  const [duration, setDuration] = useState("");
-
-  const [agenda, setAgenda] = useState("");
+  const [subject, setSubject] = useState("");
+  const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
   const navigation = useNavigation();
 
@@ -38,7 +35,7 @@ const NewLesson = () => {
 
   useEffect(() => {
     navigation.setOptions({
-      title: "Add Lesson",
+      title: "Add Classroom",
       headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <AntDesign name="close" size={24} color="black" />
@@ -75,42 +72,22 @@ const NewLesson = () => {
       </View>
 
       <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Date</Text>
+        <Text style={styles.label}>Subject</Text>
         <TextInput
           style={styles.input}
           placeholder=""
-          value={date}
-          onChangeText={setDate}
+          value={subject}
+          onChangeText={setSubject}
         />
       </View>
 
       <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Duration</Text>
+        <Text style={styles.label}>Tags</Text>
         <TextInput
           style={styles.input}
           placeholder=""
-          value={duration}
-          onChangeText={setDuration}
-        />
-      </View>
-
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Zoom Link</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={zoom}
-          onChangeText={setZoom}
-        />
-      </View>
-
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Agenda</Text>
-        <TextInput
-          style={[styles.input, styles.agendaInput]}
-          placeholder=""
-          value={agenda}
-          onChangeText={setAgenda}
+          value={tags}
+          onChangeText={setTags}
         />
       </View>
 
@@ -126,11 +103,11 @@ const NewLesson = () => {
         />
       </View>
 
-      <SafeAreaView style={styles.doneButtonContainer}>
+      <View style={styles.doneButtonContainer}>
         <TouchableOpacity style={styles.doneButton}>
           <Text style={styles.doneButtonText}>Done</Text>
         </TouchableOpacity>
-      </SafeAreaView>
+      </View>
     </View>
   );
 };
@@ -159,10 +136,6 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 16,
     backgroundColor: "white",
-  },
-  agendaInput: {
-    height: 40,
-    textAlignVertical: "top",
   },
   descriptionInput: {
     height: 800,
@@ -213,4 +186,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewLesson;
+export default NewClass;

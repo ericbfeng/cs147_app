@@ -13,6 +13,8 @@ import {
 import { useRouter } from "expo-router"; // Use useRouter for navigation
 import EditButton from "../../../components/EditButton";
 import ClassroomData from "../../data/ClassroomData.json";
+import { Link } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
   <View style={styles.classButtonContainer}>
@@ -48,6 +50,7 @@ const ClassesInterface = () => {
   const router = useRouter();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
   const [data, setData] = useState(ClassroomData); // Manage the classroom data
+  const navigation = useNavigation();
 
   const handleClassPress = (item) => {
     router.push({
@@ -61,7 +64,7 @@ const ClassesInterface = () => {
   };
 
   const handleAddNew = () => {
-    console.log("test"); // Toggle edit mode
+    navigation.navigate("newClassModal");
   };
 
   const handleDelete = (id) => {
