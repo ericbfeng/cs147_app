@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useData } from "./DataContext";
+import { useRouter } from "expo-router"; // Use useRouter for navigation
 
 const NewClass = () => {
   const [formData, setFormData] = useState({
@@ -18,20 +20,13 @@ const NewClass = () => {
     description: "",
     tags: "",
   });
-  const [submittedData, setSubmittedData] = useState(null);
-
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
   const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
   const navigation = useNavigation();
-
-  const handleChange = (field, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
+  const { items, addItem } = useData();
+  const router = useRouter();
 
   useEffect(() => {
     navigation.setOptions({
@@ -54,9 +49,13 @@ const NewClass = () => {
   }, [navigation]);
 
   const handleSubmit = () => {
-    setSubmittedData({ ...formData });
-    console.log("Submitted Data:", formData);
-    // You can add API calls or other submission logic here
+    const newData = {
+      id: Date.now().toString(),
+      name: title,
+      dataID: 1,
+    };
+    addItem(newData);
+    router.back();
   };
 
   return (
@@ -104,7 +103,7 @@ const NewClass = () => {
       </View>
 
       <SafeAreaView style={styles.doneButtonContainer}>
-        <TouchableOpacity style={styles.doneButton}>
+        <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
           <Text style={styles.doneButtonText}>Done</Text>
         </TouchableOpacity>
       </SafeAreaView>

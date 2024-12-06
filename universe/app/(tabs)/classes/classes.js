@@ -12,9 +12,9 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router"; // Use useRouter for navigation
 import EditButton from "../../../components/EditButton";
-import ClassroomData from "../../data/ClassroomData.json";
 import { Link } from "expo-router";
 import { useNavigation } from "@react-navigation/native";
+import { useData } from "./DataContext";
 
 const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
   <View style={styles.classButtonContainer}>
@@ -49,8 +49,9 @@ const ClassButton = ({ title, onPress, showDelete, onDelete }) => (
 const ClassesInterface = () => {
   const router = useRouter();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
-  const [data, setData] = useState(ClassroomData); // Manage the classroom data
+  // const [data, setData] = useState(ClassroomData); // Manage the classroom data
   const navigation = useNavigation();
+  const { items, deleteItem } = useData();
 
   const handleClassPress = (item) => {
     router.push({
@@ -67,9 +68,11 @@ const ClassesInterface = () => {
     navigation.navigate("newClassModal");
   };
 
+  /*
   const handleDelete = (id) => {
     setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
   };
+  */
 
   const showAlert = (id) => {
     Alert.alert(
@@ -82,7 +85,7 @@ const ClassesInterface = () => {
         },
         {
           text: "Delete",
-          onPress: () => handleDelete(id),
+          onPress: () => deleteItem(id),
           style: "destructive", // iOS only - makes the button red
         },
       ],
@@ -129,7 +132,7 @@ const ClassesInterface = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.gridContainer}>
         <FlatList
-          data={data}
+          data={items}
           contentContainerStyle={{ gap: VERTICAL_SPACING }}
           columnWrapperStyle={{ gap: HORIZONTAL_SPACING }}
           renderItem={renderItem}
