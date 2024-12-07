@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet, Dimensions } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import Theme from "../assets/theme";
 
@@ -18,12 +18,13 @@ const EditButton = ({ onPress, isEditMode }) => (
 );
 
 const EDIT_BUTTON_SIZE = 56;
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   editButton: {
     position: "absolute",
     // bottom: 100,
-    marginTop: 690,
+    marginTop: height - 260,
     right: 24,
     width: EDIT_BUTTON_SIZE,
     height: EDIT_BUTTON_SIZE,
