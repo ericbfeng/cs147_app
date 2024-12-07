@@ -23,6 +23,7 @@ const insightDetails = {
 export default function InsightExplanation({ action }) {
   const details = insightDetails[action];
   const router = useRouter();
+
   if (!details) {
     return (
       <View style={styles.container}>

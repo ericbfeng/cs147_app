@@ -22,7 +22,8 @@ const EDIT_BUTTON_SIZE = 56;
 const styles = StyleSheet.create({
   editButton: {
     position: "absolute",
-    bottom: 100,
+    // bottom: 100,
+    marginTop: 690,
     right: 24,
     width: EDIT_BUTTON_SIZE,
     height: EDIT_BUTTON_SIZE,

@@ -127,7 +127,7 @@ export default function StudentsScreen() {
   };
 
   return (
-    <View style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea}>
       {/* Header */}
       {/* <Text style={styles.headerText}>Students</Text> */}
       <View style={styles.header}>
@@ -168,7 +168,7 @@ export default function StudentsScreen() {
       </View>
 
       <EditButton onPress={handleEditPress} isEditMode={editMode} />
-    </View>
+    </SafeAreaView>
   );
 }
 
