@@ -7,17 +7,21 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useData } from "./DataContext";
-import { useRouter } from "expo-router"; // Use useRouter for navigation
+import { useRouter } from "expo-router";
 import Theme from "../../../assets/theme";
 
 const NewClass = () => {
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
-  const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
   const navigation = useNavigation();
   const { classes, addClass } = useData();
@@ -54,55 +58,57 @@ const NewClass = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Title</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={title}
-          onChangeText={setTitle}
-        />
-      </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={styles.container}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Title</Text>
+            <TextInput
+              style={styles.input}
+              placeholder=""
+              value={title}
+              onChangeText={setTitle}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Subject</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={subject}
-          onChangeText={setSubject}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Subject</Text>
+            <TextInput
+              style={styles.input}
+              placeholder=""
+              value={subject}
+              onChangeText={setSubject}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Tags</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={tags}
-          onChangeText={setTags}
-        />
-      </View>
+          {/* Removed the Tags Input Field */}
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Description</Text>
-        <TextInput
-          style={[styles.input, styles.descriptionInput]}
-          multiline={true}
-          numberOfLines={5}
-          placeholder=""
-          value={description}
-          onChangeText={setDescription}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Description</Text>
+            <TextInput
+              style={[styles.input, styles.descriptionInput]}
+              multiline={true}
+              numberOfLines={5}
+              placeholder=""
+              value={description}
+              onChangeText={setDescription}
+            />
+          </View>
 
-      <SafeAreaView style={styles.doneButtonContainer}>
-        <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
-          <Text style={styles.doneButtonText}>Done</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    </View>
+          <SafeAreaView style={styles.doneButtonContainer}>
+            <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
+              <Text style={styles.doneButtonText}>Done</Text>
+            </TouchableOpacity>
+          </SafeAreaView>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "white",
-    flex: 1,
+    flexGrow: 1, // Ensures scrollable content
   },
   fieldContainer: {
     marginBottom: 20,
@@ -133,7 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   descriptionInput: {
-    height: 800,
+    height: 200, // Shortened description box height
     textAlignVertical: "top",
   },
   submitButton: {
@@ -148,18 +154,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Outfit",
     fontWeight: "600",
-  },
-  submittedDataContainer: {
-    marginTop: 20,
-    padding: 15,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 8,
-  },
-  submittedDataTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    marginBottom: 10,
-    fontFamily: "Outfit",
   },
   doneButtonContainer: {
     bottom: 0,

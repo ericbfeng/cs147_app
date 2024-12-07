@@ -7,15 +7,19 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Theme from "../../../../assets/theme";
 import { useData } from "../DataContext";
-import { useRouter } from "expo-router"; // Use useRouter for navigation
+import { useRouter } from "expo-router";
 
 const NewLesson = () => {
-  // const [submittedData, setSubmittedData] = useState(null);
   const [title, setTitle] = useState("");
   const [zoom, setZoom] = useState("");
   const [date, setDate] = useState("");
@@ -60,75 +64,85 @@ const NewLesson = () => {
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Title</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={title}
-          onChangeText={setTitle}
-        />
-      </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={styles.container}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Title</Text>
+            <TextInput
+              style={styles.input}
+              placeholder=""
+              value={title}
+              onChangeText={setTitle}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Date</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={date}
-          onChangeText={setDate}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Date</Text>
+            <TextInput
+              style={styles.input}
+              placeholder=""
+              value={date}
+              onChangeText={setDate}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Duration</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={duration}
-          onChangeText={setDuration}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Duration</Text>
+            <TextInput
+              style={styles.input}
+              placeholder=""
+              value={duration}
+              onChangeText={setDuration}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Zoom Link</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          value={zoom}
-          onChangeText={setZoom}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Zoom Link</Text>
+            <TextInput
+              style={styles.input}
+              placeholder=""
+              value={zoom}
+              onChangeText={setZoom}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Agenda</Text>
-        <TextInput
-          style={[styles.input, styles.agendaInput]}
-          placeholder=""
-          value={agenda}
-          onChangeText={setAgenda}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Agenda</Text>
+            <TextInput
+              style={[styles.input, styles.agendaInput]}
+              placeholder=""
+              value={agenda}
+              onChangeText={setAgenda}
+            />
+          </View>
 
-      <View style={styles.fieldContainer}>
-        <Text style={styles.label}>Description</Text>
-        <TextInput
-          style={[styles.input, styles.descriptionInput]}
-          multiline={true}
-          numberOfLines={5}
-          placeholder=""
-          value={description}
-          onChangeText={setDescription}
-        />
-      </View>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label}>Description</Text>
+            <TextInput
+              style={[styles.input, styles.descriptionInput]}
+              multiline={true}
+              numberOfLines={5}
+              placeholder=""
+              value={description}
+              onChangeText={setDescription}
+            />
+          </View>
 
-      <SafeAreaView style={styles.doneButtonContainer}>
-        <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
-          <Text style={styles.doneButtonText}>Done</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    </View>
+          <SafeAreaView style={styles.doneButtonContainer}>
+            <TouchableOpacity style={styles.doneButton} onPress={handleSubmit}>
+              <Text style={styles.doneButtonText}>Done</Text>
+            </TouchableOpacity>
+          </SafeAreaView>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -138,7 +152,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "white",
-    flex: 1,
+    flexGrow: 1,
+    paddingBottom: 100,
   },
   fieldContainer: {
     marginBottom: 20,
@@ -163,7 +178,7 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
   },
   descriptionInput: {
-    height: 800,
+    height: 120, // Shortened description box height
     textAlignVertical: "top",
   },
   submitButton: {
@@ -178,18 +193,6 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit",
     fontSize: 16,
     fontWeight: "600",
-  },
-  submittedDataContainer: {
-    marginTop: 20,
-    padding: 15,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 8,
-  },
-  submittedDataTitle: {
-    fontSize: 16,
-    fontFamily: "Outfit",
-    fontWeight: "600",
-    marginBottom: 10,
   },
   doneButtonContainer: {
     bottom: 0,
