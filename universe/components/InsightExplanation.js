@@ -23,7 +23,7 @@ const insightDetails = {
 export default function InsightExplanation({ action }) {
   const details = insightDetails[action];
   const router = useRouter();
-  if (!details) {
+  if (!action) {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>No Explanation Found</Text>

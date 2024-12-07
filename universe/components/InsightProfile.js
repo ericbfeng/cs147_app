@@ -181,7 +181,7 @@ export default function StudentProfile({ name }) {
   const details = studentDetails[name] || {};
   const router = useRouter();
 
-  if (!details.background) {
+  if (!name) {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>No Profile Found</Text>
