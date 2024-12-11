@@ -51,7 +51,7 @@ const ClassesInterface = () => {
 
   const handleClassPress = (item) => {
     router.push({
-      pathname: "classes/insideClass/lessons",
+      pathname: "classes/insideClass/topNav",
       params: { headerTitle: item.name, classroomID: item.dataID },
     });
   };
@@ -135,7 +135,11 @@ const ClassesInterface = () => {
         />
       </View>
 
-      <EditButton onPress={handleEditPress} isEditMode={editMode} />
+      <EditButton
+        onPress={handleEditPress}
+        isEditMode={editMode}
+        isClasses={true}
+      />
     </SafeAreaView>
   );
 };

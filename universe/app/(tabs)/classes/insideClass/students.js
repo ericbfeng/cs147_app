@@ -27,7 +27,7 @@ const names = [
   { name: "CREATE_NEW" },
 ];
 
-export default function StudentsScreen() {
+export function StudentsScreen() {
   const router = useRouter();
   const navigation = useNavigation();
   const [editMode, setEditMode] = useState(false); // Track edit mode state
@@ -92,12 +92,6 @@ export default function StudentsScreen() {
 
   const [data, setData] = useState(filteredNames);
 
-  useEffect(() => {
-    navigation.setOptions({
-      title: headerTitle,
-    });
-  }, [navigation]);
-
   const navigateToLessons = () => {
     router.push({
       pathname: "classes/insideClass/lessons",
@@ -127,6 +121,7 @@ export default function StudentsScreen() {
   };
 
   return (
+<<<<<<< Updated upstream
     <View style={styles.safeArea}>
       {!selectedName ? (
         <>
@@ -145,6 +140,11 @@ export default function StudentsScreen() {
               <Text style={styles.tabButtonTextMain}>Students</Text>
             </TouchableOpacity>
           </View>
+=======
+    <SafeAreaView style={styles.safeArea}>
+      {/* Header */}
+      {/* <Text style={styles.headerText}>Students</Text> */}
+>>>>>>> Stashed changes
 
           {/* Search Bar */}
           <View style={styles.searchContainer}>

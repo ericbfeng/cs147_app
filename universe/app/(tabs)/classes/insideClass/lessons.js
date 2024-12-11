@@ -19,7 +19,7 @@ import LESSON_DATA from "../../../data/LessonData.json";
 import LessonItem from "../../../../components/LessonItem";
 import { useRouter } from "expo-router";
 
-export default function LessonsScreen() {
+export function LessonsScreen() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(""); // Search query
   const navigation = useNavigation();
@@ -45,6 +45,7 @@ export default function LessonsScreen() {
 
   const [data, setData] = useState(lessonData); // Manage the classroom data
 
+<<<<<<< Updated upstream
   useEffect(() => {
     navigation.setOptions({
       title: headerTitle,
@@ -59,6 +60,9 @@ export default function LessonsScreen() {
     );
   }
 
+=======
+  /*
+>>>>>>> Stashed changes
   const handleDelete = (id) => {
     setData((prevData) => prevData.filter((item) => item.id !== id)); // Remove item by ID
   };
@@ -115,17 +119,6 @@ export default function LessonsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity style={[styles.tabButton, styles.activeTab]}>
-          <Text style={[styles.tabButtonTextMain, styles.activeTabText]}>
-            Lessons
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabButton} onPress={navigateToStudents}>
-          <Text style={styles.tabButtonText}>Students</Text>
-        </TouchableOpacity>
-      </View>
-
       {/* Search Bar */}
       <View style={styles.searchContainer}>
         <TextInput

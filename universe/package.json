@@ -17,6 +17,7 @@
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.0.0",
+    "@react-navigation/material-top-tabs": "^7.0.18",
     "@react-navigation/native": "^7.0.0",
     "expo": "~52.0.7",
     "expo-blur": "~14.0.1",
@@ -30,6 +31,7 @@
     "expo-status-bar": "~2.0.0",
     "expo-symbols": "~0.2.0",
     "expo-system-ui": "~4.0.3",
+    "expo-updates": "~0.26.10",
     "expo-web-browser": "~14.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -40,7 +42,12 @@
     "react-native-screens": "~4.0.0",
     "react-native-svg": "^15.10.0",
     "react-native-web": "~0.19.13",
+<<<<<<< Updated upstream
     "react-native-webview": "13.12.2"
+=======
+    "react-native-webview": "13.12.2",
+    "react-native-pager-view": "6.5.1"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
